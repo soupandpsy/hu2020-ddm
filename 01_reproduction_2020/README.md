@@ -1,5 +1,7 @@
 # 2020 reproduction
 
+English | [中文](README_zh.md)
+
 Pilot and Confirm behavioral analyses, Pilot ex-Gaussian, Confirm HDDM, and separate sensitivity analyses. [Original author repository](https://github.com/hcp4715/moralSelf_ddm).
 
 ## Files and software
