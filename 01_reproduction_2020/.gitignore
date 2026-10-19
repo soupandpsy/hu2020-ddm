@@ -12,9 +12,9 @@ __pycache__/
 **/runs/
 **/analysis_*/
 **/plots_*/
-results/figures/figure04_*/
+Output/figures/figure04_*/
 
 # Local references and repeated posterior predictive checks
 /archive/
-/results/hddm/**/ppc_*/
-/sensitivity/results/**/ppc_*/
+/Output/hddm/**/ppc_*/
+/Output/sensitivity/**/ppc_*/
