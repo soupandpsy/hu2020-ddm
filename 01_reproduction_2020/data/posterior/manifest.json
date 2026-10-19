@@ -1,0 +1,73 @@
+[
+  {
+    "task": "matching",
+    "model": "vtz",
+    "p_outlier": 0,
+    "run": "r01",
+    "seed": 20261011,
+    "draws": 9000,
+    "parameters": [
+      "t(Other.match.Bad)",
+      "t(Other.match.Good)",
+      "t(Other.mismatch.Bad)",
+      "t(Other.mismatch.Good)",
+      "t(Self.match.Bad)",
+      "t(Self.match.Good)",
+      "t(Self.mismatch.Bad)",
+      "t(Self.mismatch.Good)",
+      "v(Other.match.Bad)",
+      "v(Other.match.Good)",
+      "v(Other.mismatch.Bad)",
+      "v(Other.mismatch.Good)",
+      "v(Self.match.Bad)",
+      "v(Self.match.Good)",
+      "v(Self.mismatch.Bad)",
+      "v(Self.mismatch.Good)",
+      "z"
+    ],
+    "file": "matching_vtz_p0_r01_samples.npz",
+    "source_database": "M_match_vtz_s_p0_run01.db"
+  },
+  {
+    "task": "identity",
+    "model": "vtz",
+    "p_outlier": 0,
+    "run": "r01",
+    "seed": 20261022,
+    "draws": 9000,
+    "parameters": [
+      "t(Other.Bad)",
+      "t(Other.Good)",
+      "t(Self.Bad)",
+      "t(Self.Good)",
+      "v(Other.Bad)",
+      "v(Other.Good)",
+      "v(Self.Bad)",
+      "v(Self.Good)",
+      "z"
+    ],
+    "file": "identity_vtz_p0_r01_samples.npz",
+    "source_database": "M_Categ_id_vtz_s_p0_run01.db"
+  },
+  {
+    "task": "valence",
+    "model": "vtz",
+    "p_outlier": 0,
+    "run": "r01",
+    "seed": 20261021,
+    "draws": 9000,
+    "parameters": [
+      "t(Other.Bad)",
+      "t(Other.Good)",
+      "t(Self.Bad)",
+      "t(Self.Good)",
+      "v(Other.Bad)",
+      "v(Other.Good)",
+      "v(Self.Bad)",
+      "v(Self.Good)",
+      "z"
+    ],
+    "file": "valence_vtz_p0_r01_samples.npz",
+    "source_database": "M_Categ_val_vtz_s_p0_run01.db"
+  }
+]

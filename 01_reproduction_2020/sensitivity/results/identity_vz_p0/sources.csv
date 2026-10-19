@@ -1,0 +1,5 @@
+run,seed,database
+r01,20261019,../../../history/02_reproduction_workspace/nnu_hu_repro/categorization/id_vz_p0_run01/M_Categ_id_vz_s_p0_run01.db
+r02,20261020,../../../history/02_reproduction_workspace/nnu_hu_repro/categorization/id_vz_p0_run02/M_Categ_id_vz_s_p0_run02.db
+r03,20261021,../../../history/02_reproduction_workspace/nnu_hu_repro/categorization/id_vz_p0_run03/M_Categ_id_vz_s_p0_run03.db
+r04,20261022,../../../history/02_reproduction_workspace/nnu_hu_repro/categorization/id_vz_p0_run04/M_Categ_id_vz_s_p0_run04.db

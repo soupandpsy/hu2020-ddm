@@ -1,0 +1,17 @@
+{
+  "mode": "analysis_only",
+  "source": "existing",
+  "chains": 4,
+  "diagnostic_gate_passed": true,
+  "pooled_summary_written": true,
+  "scalar_nodes": 467,
+  "thresholds": {
+    "rhat_max": 1.01,
+    "bulk_ess_min": 400,
+    "tail_ess_min": 400
+  },
+  "plots": "not_run",
+  "report": "not_run",
+  "ppc": "not_run",
+  "note": "Single-run summaries are descriptive. Failed/one-chain checks do not authorize pooled inference. This is not the historical Figure 4 report builder."
+}

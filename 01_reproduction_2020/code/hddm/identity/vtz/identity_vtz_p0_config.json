@@ -1,0 +1,107 @@
+{
+  "schema_version": 1,
+  "name": "identity_vtz_p0",
+  "task": "identity",
+  "model": "vtz",
+  "workline": "reproduction",
+  "model_kwargs": {
+    "include": "z",
+    "stim_col": "stim",
+    "depends_on": {
+      "v": [
+        "val",
+        "id"
+      ],
+      "t": [
+        "val",
+        "id"
+      ]
+    },
+    "split_param": "v",
+    "drift_criterion": false,
+    "p_outlier": 0
+  },
+  "sampling": {
+    "samples": 10000,
+    "burn": 1000,
+    "thin": 1,
+    "db": "pickle"
+  },
+  "environment": {
+    "python": "3.7",
+    "hddm": "0.8.0"
+  },
+  "diagnostics": {
+    "rhat_max": 1.01,
+    "bulk_ess_min": 400,
+    "tail_ess_min": 400
+  },
+  "runs": [
+    {
+      "id": "r01",
+      "seed": 20261022,
+      "input": {
+        "path": "data/identity_input.csv"
+      },
+      "model": {
+        "path": "../../../history/02_reproduction_workspace/nnu_hu_repro/categorization/id_vtz_p0_run01/M_Categ_id_vtz_s_p0_run01"
+      },
+      "database": {
+        "path": "../../../history/02_reproduction_workspace/nnu_hu_repro/categorization/id_vtz_p0_run01/M_Categ_id_vtz_s_p0_run01.db"
+      }
+    },
+    {
+      "id": "r02",
+      "seed": 20261026,
+      "input": {
+        "path": "data/identity_input.csv"
+      },
+      "model": {
+        "path": "../../../history/02_reproduction_workspace/nnu_hu_repro/categorization/id_vtz_p0_run02/M_Categ_id_vtz_s_p0_run02"
+      },
+      "database": {
+        "path": "../../../history/02_reproduction_workspace/nnu_hu_repro/categorization/id_vtz_p0_run02/M_Categ_id_vtz_s_p0_run02.db"
+      }
+    },
+    {
+      "id": "r03",
+      "seed": 20261027,
+      "input": {
+        "path": "data/identity_input.csv"
+      },
+      "model": {
+        "path": "../../../history/02_reproduction_workspace/nnu_hu_repro/categorization/id_vtz_p0_run03/M_Categ_id_vtz_s_p0_run03"
+      },
+      "database": {
+        "path": "../../../history/02_reproduction_workspace/nnu_hu_repro/categorization/id_vtz_p0_run03/M_Categ_id_vtz_s_p0_run03.db"
+      }
+    },
+    {
+      "id": "r04",
+      "seed": 20261028,
+      "input": {
+        "path": "data/identity_input.csv"
+      },
+      "model": {
+        "path": "../../../history/02_reproduction_workspace/nnu_hu_repro/categorization/id_vtz_p0_run04/M_Categ_id_vtz_s_p0_run04"
+      },
+      "database": {
+        "path": "../../../history/02_reproduction_workspace/nnu_hu_repro/categorization/id_vtz_p0_run04/M_Categ_id_vtz_s_p0_run04.db"
+      }
+    }
+  ],
+  "data_checks": {
+    "rows": 14493,
+    "subjects": 41,
+    "required_columns": [
+      "subj_idx",
+      "val",
+      "id",
+      "stim",
+      "response",
+      "rt"
+    ]
+  },
+  "output_root": "results/hddm/identity_vtz_p0",
+  "notes": "Preserves settings/seeds from original fit scripts. Existing sources are read-only. Thresholds are explicit screening criteria, not a guarantee of model validity."
+}

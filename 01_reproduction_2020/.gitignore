@@ -1,0 +1,20 @@
+# Local dependencies and large generated outputs
+.rlib/
+__pycache__/
+.ipynb_checkpoints/
+*.pyc
+*.log
+*.db
+*.pkl
+*.pickle
+.env
+.env.*
+**/runs/
+**/analysis_*/
+**/plots_*/
+results/figures/figure04_*/
+
+# Local references and repeated posterior predictive checks
+/archive/
+/results/hddm/**/ppc_*/
+/sensitivity/results/**/ppc_*/

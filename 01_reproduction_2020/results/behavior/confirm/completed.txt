@@ -1,0 +1,1 @@
+Analysis finished; inspect statistical checks and any ex-Gaussian failures before interpretation.

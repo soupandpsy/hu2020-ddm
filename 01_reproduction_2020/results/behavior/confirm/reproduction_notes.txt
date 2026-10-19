@@ -1,0 +1,5 @@
+Behavioral RT outputs in this script are standardized to milliseconds.
+Confirm matching final N should be 42; categorization final N should be 41.
+Paper reports matching RT Valence F(1,40)=57.88, but N=42 implies df=41; treat the printed df=40 as a likely typo if reproduced F is ~57.88.
+Paper confirm categorization Good-self vs Bad-self accuracy prints negative d despite positive t and positive CI; preserve computed dz sign rather than copying the likely typo.
+HDDM input files are exported, but HDDM fitting is not performed in this R script.
