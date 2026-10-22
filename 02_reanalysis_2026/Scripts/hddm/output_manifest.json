@@ -1,0 +1,390 @@
+[
+  {
+    "path": "data_audit.json",
+    "producer": "reproduce.py audit-data"
+  },
+  {
+    "path": "hddm/identity/figures/identity_m4_long_refit_traces.png",
+    "producer": "identity/identity_diagnostics.py --long-refit"
+  },
+  {
+    "path": "hddm/identity/m0/screening/r01/ppc_metrics.json",
+    "producer": "identity/identity_run.py screening"
+  },
+  {
+    "path": "hddm/identity/m0/screening/r01/single_chain_diagnostics.csv",
+    "producer": "identity/identity_run.py screening"
+  },
+  {
+    "path": "hddm/identity/m0/screening/r01/summary.csv",
+    "producer": "identity/identity_run.py screening"
+  },
+  {
+    "path": "hddm/identity/m0/screening_summary.csv",
+    "producer": "reproduce.py reports (after task comparison)"
+  },
+  {
+    "path": "hddm/identity/m1/screening/r01/ppc_metrics.json",
+    "producer": "identity/identity_run.py screening"
+  },
+  {
+    "path": "hddm/identity/m1/screening/r01/single_chain_diagnostics.csv",
+    "producer": "identity/identity_run.py screening"
+  },
+  {
+    "path": "hddm/identity/m1/screening/r01/summary.csv",
+    "producer": "identity/identity_run.py screening"
+  },
+  {
+    "path": "hddm/identity/m1/screening_summary.csv",
+    "producer": "reproduce.py reports (after task comparison)"
+  },
+  {
+    "path": "hddm/identity/m2/screening/r01/ppc_metrics.json",
+    "producer": "identity/identity_run.py screening"
+  },
+  {
+    "path": "hddm/identity/m2/screening/r01/single_chain_diagnostics.csv",
+    "producer": "identity/identity_run.py screening"
+  },
+  {
+    "path": "hddm/identity/m2/screening/r01/summary.csv",
+    "producer": "identity/identity_run.py screening"
+  },
+  {
+    "path": "hddm/identity/m2/screening_summary.csv",
+    "producer": "reproduce.py reports (after task comparison)"
+  },
+  {
+    "path": "hddm/identity/m3/screening/r01/ppc_metrics.json",
+    "producer": "identity/identity_run.py screening"
+  },
+  {
+    "path": "hddm/identity/m3/screening/r01/single_chain_diagnostics.csv",
+    "producer": "identity/identity_run.py screening"
+  },
+  {
+    "path": "hddm/identity/m3/screening/r01/summary.csv",
+    "producer": "identity/identity_run.py screening"
+  },
+  {
+    "path": "hddm/identity/m3/screening_summary.csv",
+    "producer": "reproduce.py reports (after task comparison)"
+  },
+  {
+    "path": "hddm/identity/m4/final/diagnostics/chain_sources.json",
+    "producer": "identity/identity_diagnostics.py"
+  },
+  {
+    "path": "hddm/identity/m4/final/diagnostics/diagnostics.csv",
+    "producer": "identity/identity_diagnostics.py"
+  },
+  {
+    "path": "hddm/identity/m4/long_refit/diagnostics/diagnostics.csv",
+    "producer": "identity/identity_diagnostics.py --long-refit"
+  },
+  {
+    "path": "hddm/identity/m4/long_refit/diagnostics/failed_parameters.csv",
+    "producer": "identity/identity_diagnostics.py --long-refit"
+  },
+  {
+    "path": "hddm/identity/m4/long_refit/diagnostics/review.json",
+    "producer": "identity/identity_diagnostics.py --long-refit"
+  },
+  {
+    "path": "hddm/identity/m4/screening/r01/ppc_metrics.json",
+    "producer": "identity/identity_run.py screening"
+  },
+  {
+    "path": "hddm/identity/m4/screening/r01/single_chain_diagnostics.csv",
+    "producer": "identity/identity_run.py screening"
+  },
+  {
+    "path": "hddm/identity/m4/screening/r01/summary.csv",
+    "producer": "identity/identity_run.py screening"
+  },
+  {
+    "path": "hddm/identity/m4/screening_summary.csv",
+    "producer": "reproduce.py reports (after task comparison)"
+  },
+  {
+    "path": "hddm/identity/model_comparison.csv",
+    "producer": "reproduce.py reports (after task comparison)"
+  },
+  {
+    "path": "hddm/matching/figures/matching_m4_parameter_contrasts.png",
+    "producer": "matching/matching_plot.py --kind summary"
+  },
+  {
+    "path": "hddm/matching/figures/matching_m4_ppc.png",
+    "producer": "matching/matching_plot.py --kind summary"
+  },
+  {
+    "path": "hddm/matching/figures/matching_m4_traces.png",
+    "producer": "matching/matching_plot.py --kind traces"
+  },
+  {
+    "path": "hddm/matching/m0/screening/r01/ppc_metrics.json",
+    "producer": "matching/matching_run.py screening"
+  },
+  {
+    "path": "hddm/matching/m0/screening/r01/single_chain_diagnostics.csv",
+    "producer": "matching/matching_run.py screening"
+  },
+  {
+    "path": "hddm/matching/m0/screening/r01/summary.csv",
+    "producer": "matching/matching_run.py screening"
+  },
+  {
+    "path": "hddm/matching/m0/screening_summary.csv",
+    "producer": "reproduce.py reports (after task comparison)"
+  },
+  {
+    "path": "hddm/matching/m1/screening/r01/ppc_metrics.json",
+    "producer": "matching/matching_run.py screening"
+  },
+  {
+    "path": "hddm/matching/m1/screening/r01/single_chain_diagnostics.csv",
+    "producer": "matching/matching_run.py screening"
+  },
+  {
+    "path": "hddm/matching/m1/screening/r01/summary.csv",
+    "producer": "matching/matching_run.py screening"
+  },
+  {
+    "path": "hddm/matching/m1/screening_summary.csv",
+    "producer": "reproduce.py reports (after task comparison)"
+  },
+  {
+    "path": "hddm/matching/m2/screening/r01/ppc_metrics.json",
+    "producer": "matching/matching_run.py screening"
+  },
+  {
+    "path": "hddm/matching/m2/screening/r01/single_chain_diagnostics.csv",
+    "producer": "matching/matching_run.py screening"
+  },
+  {
+    "path": "hddm/matching/m2/screening/r01/summary.csv",
+    "producer": "matching/matching_run.py screening"
+  },
+  {
+    "path": "hddm/matching/m2/screening_summary.csv",
+    "producer": "reproduce.py reports (after task comparison)"
+  },
+  {
+    "path": "hddm/matching/m3/screening/r01/ppc_metrics.json",
+    "producer": "matching/matching_run.py screening"
+  },
+  {
+    "path": "hddm/matching/m3/screening/r01/single_chain_diagnostics.csv",
+    "producer": "matching/matching_run.py screening"
+  },
+  {
+    "path": "hddm/matching/m3/screening/r01/summary.csv",
+    "producer": "matching/matching_run.py screening"
+  },
+  {
+    "path": "hddm/matching/m3/screening_summary.csv",
+    "producer": "reproduce.py reports (after task comparison)"
+  },
+  {
+    "path": "hddm/matching/m4/final/diagnostics/chain_sources.json",
+    "producer": "matching/matching_diagnostics.py"
+  },
+  {
+    "path": "hddm/matching/m4/final/diagnostics/diagnostics.csv",
+    "producer": "matching/matching_diagnostics.py"
+  },
+  {
+    "path": "hddm/matching/m4/final/diagnostics/matching_parameter_contrasts.csv",
+    "producer": "matching/matching_diagnostics.py --review"
+  },
+  {
+    "path": "hddm/matching/m4/final/diagnostics/matching_ppc_summary.csv",
+    "producer": "matching/matching_diagnostics.py --review"
+  },
+  {
+    "path": "hddm/matching/m4/final/diagnostics/matching_precise_diagnostics.csv",
+    "producer": "matching/matching_diagnostics.py --review"
+  },
+  {
+    "path": "hddm/matching/m4/final/diagnostics/matching_review.json",
+    "producer": "matching/matching_diagnostics.py --review"
+  },
+  {
+    "path": "hddm/matching/m4/screening/r01/ppc_metrics.json",
+    "producer": "matching/matching_run.py screening"
+  },
+  {
+    "path": "hddm/matching/m4/screening/r01/single_chain_diagnostics.csv",
+    "producer": "matching/matching_run.py screening"
+  },
+  {
+    "path": "hddm/matching/m4/screening/r01/summary.csv",
+    "producer": "matching/matching_run.py screening"
+  },
+  {
+    "path": "hddm/matching/m4/screening_summary.csv",
+    "producer": "reproduce.py reports (after task comparison)"
+  },
+  {
+    "path": "hddm/matching/model_comparison.csv",
+    "producer": "reproduce.py reports (after task comparison)"
+  },
+  {
+    "path": "hddm/matching/recovery/complete.json",
+    "producer": "matching/matching_recovery.py --summarize"
+  },
+  {
+    "path": "hddm/matching/recovery/dc_only/diagnostics.csv",
+    "producer": "matching/matching_recovery.py --summarize"
+  },
+  {
+    "path": "hddm/matching/recovery/neutral/diagnostics.csv",
+    "producer": "matching/matching_recovery.py --summarize"
+  },
+  {
+    "path": "hddm/matching/recovery/opposing/diagnostics.csv",
+    "producer": "matching/matching_recovery.py --summarize"
+  },
+  {
+    "path": "hddm/matching/recovery/recovery.csv",
+    "producer": "matching/matching_recovery.py --summarize"
+  },
+  {
+    "path": "hddm/matching/recovery/settings.json",
+    "producer": "matching/matching_recovery.py --summarize"
+  },
+  {
+    "path": "hddm/matching/recovery/z_only/diagnostics.csv",
+    "producer": "matching/matching_recovery.py --summarize"
+  },
+  {
+    "path": "hddm/matching/sensitivity/m4/diagnostics/diagnostics.csv",
+    "producer": "matching/matching_sensitivity.py --analyze"
+  },
+  {
+    "path": "hddm/matching/sensitivity/m4/diagnostics/main_comparison.csv",
+    "producer": "matching/matching_sensitivity.py --analyze"
+  },
+  {
+    "path": "hddm/matching/sensitivity/m4/diagnostics/review.json",
+    "producer": "matching/matching_sensitivity.py --analyze"
+  },
+  {
+    "path": "hddm/selection.json",
+    "producer": "reproduce.py reports (after task comparison)"
+  },
+  {
+    "path": "hddm/valence/figures/valence_m4_long_refit_traces.png",
+    "producer": "valence/valence_diagnostics.py --long-refit"
+  },
+  {
+    "path": "hddm/valence/m0/screening/r01/ppc_metrics.json",
+    "producer": "valence/valence_run.py screening"
+  },
+  {
+    "path": "hddm/valence/m0/screening/r01/single_chain_diagnostics.csv",
+    "producer": "valence/valence_run.py screening"
+  },
+  {
+    "path": "hddm/valence/m0/screening/r01/summary.csv",
+    "producer": "valence/valence_run.py screening"
+  },
+  {
+    "path": "hddm/valence/m0/screening_summary.csv",
+    "producer": "reproduce.py reports (after task comparison)"
+  },
+  {
+    "path": "hddm/valence/m1/screening/r01/ppc_metrics.json",
+    "producer": "valence/valence_run.py screening"
+  },
+  {
+    "path": "hddm/valence/m1/screening/r01/single_chain_diagnostics.csv",
+    "producer": "valence/valence_run.py screening"
+  },
+  {
+    "path": "hddm/valence/m1/screening/r01/summary.csv",
+    "producer": "valence/valence_run.py screening"
+  },
+  {
+    "path": "hddm/valence/m1/screening_summary.csv",
+    "producer": "reproduce.py reports (after task comparison)"
+  },
+  {
+    "path": "hddm/valence/m2/screening/r01/ppc_metrics.json",
+    "producer": "valence/valence_run.py screening"
+  },
+  {
+    "path": "hddm/valence/m2/screening/r01/single_chain_diagnostics.csv",
+    "producer": "valence/valence_run.py screening"
+  },
+  {
+    "path": "hddm/valence/m2/screening/r01/summary.csv",
+    "producer": "valence/valence_run.py screening"
+  },
+  {
+    "path": "hddm/valence/m2/screening_summary.csv",
+    "producer": "reproduce.py reports (after task comparison)"
+  },
+  {
+    "path": "hddm/valence/m3/screening/r01/ppc_metrics.json",
+    "producer": "valence/valence_run.py screening"
+  },
+  {
+    "path": "hddm/valence/m3/screening/r01/single_chain_diagnostics.csv",
+    "producer": "valence/valence_run.py screening"
+  },
+  {
+    "path": "hddm/valence/m3/screening/r01/summary.csv",
+    "producer": "valence/valence_run.py screening"
+  },
+  {
+    "path": "hddm/valence/m3/screening_summary.csv",
+    "producer": "reproduce.py reports (after task comparison)"
+  },
+  {
+    "path": "hddm/valence/m4/final/diagnostics/chain_sources.json",
+    "producer": "valence/valence_diagnostics.py"
+  },
+  {
+    "path": "hddm/valence/m4/final/diagnostics/diagnostics.csv",
+    "producer": "valence/valence_diagnostics.py"
+  },
+  {
+    "path": "hddm/valence/m4/long_refit/diagnostics/diagnostics.csv",
+    "producer": "valence/valence_diagnostics.py --long-refit"
+  },
+  {
+    "path": "hddm/valence/m4/long_refit/diagnostics/failed_parameters.csv",
+    "producer": "valence/valence_diagnostics.py --long-refit"
+  },
+  {
+    "path": "hddm/valence/m4/long_refit/diagnostics/review.json",
+    "producer": "valence/valence_diagnostics.py --long-refit"
+  },
+  {
+    "path": "hddm/valence/m4/screening/r01/ppc_metrics.json",
+    "producer": "valence/valence_run.py screening"
+  },
+  {
+    "path": "hddm/valence/m4/screening/r01/single_chain_diagnostics.csv",
+    "producer": "valence/valence_run.py screening"
+  },
+  {
+    "path": "hddm/valence/m4/screening/r01/summary.csv",
+    "producer": "valence/valence_run.py screening"
+  },
+  {
+    "path": "hddm/valence/m4/screening_summary.csv",
+    "producer": "reproduce.py reports (after task comparison)"
+  },
+  {
+    "path": "hddm/valence/model_comparison.csv",
+    "producer": "reproduce.py reports (after task comparison)"
+  },
+  {
+    "path": "results_summary.csv",
+    "producer": "reproduce.py reports (after task comparison)"
+  }
+]

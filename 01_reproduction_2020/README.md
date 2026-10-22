@@ -1,8 +1,20 @@
-# 2020 reproduction
+# Part I: Hu et al. (2020) reproduction
 
 English | [中文](README_zh.md)
 
-Pilot and Confirm behavioral analyses, Pilot ex-Gaussian, Confirm HDDM, and separate sensitivity analyses. [Original author repository](https://github.com/hcp4715/moralSelf_ddm).
+This section reproduces the principal computational analyses of *Good me, bad me: Prioritization of the good-self during perceptual decision-making*: Pilot and Confirm behavioral statistics, Pilot ex-Gaussian fits, and Confirm HDDM, with separate sensitivity analyses. Selected statistics and model analyses were reproduced, but not every statistic, supplementary analysis or model specification is identical to the paper.
+
+Original materials: [author repository](https://github.com/hcp4715/moralSelf_ddm).
+
+## Results and scope of reproduction
+
+- Pilot retained 29 participants; Confirm retained 42 for Matching and 41 for Categorization. Exported Confirm inputs matched the included tables. Fifteen selected t statistics agreed within tolerances (Pilot < .01; Confirm < .02), not necessarily exact printed rounding.
+- Matching/Identity/Valence vtz p0 and Identity vz p0 passed the configured four-run diagnostic gate. Matching/Valence vz have one run and are descriptive only. **Identity vz p0.05 failed the gate; do not pool its runs.**
+- Figure 3C corrects the author's Identity-summary reference to Valence data. Error bars remain mean +/- 1.96 SE; Pilot lines connect Good/Bad within Subject x Identity, while Confirm lines connect each subject's four conditions.
+- Pilot Categorization RT differs from the author's JASP condition-column assignment; its seven F/omega comparisons are not equivalent. The other 33 comparable ANOVA F values agreed within 1e-9. Omega definitions, inclusion Bayes factors, and Pilot Categorization Accuracy nuisance-factor settings also differ; statistics are not all identical to the paper.
+- Ex-Gaussian uses 1,000 bootstrap iterations rather than the reported 2,000. One cell (7014, Val/Other/Bad; 3 trials) was not fitted; 231 completed cells yield 27 eligible subjects. Maximum mu/sigma/tau differences from available author estimates were about .0283/.0567/.0208 seconds; ANOVA equivalence is not claimed. See [cell results](Output/behavior/pilot/exgaussian/parameters_all.csv) and retained warnings.
+- Supplementary ex-Gaussian Bayesian/simple-effect analyses and Figure S3, full Table S2/S3 summaries, and Bayes-factor robustness figures remain incomplete. Pilot DDM was not reported in the paper and is not implemented here.
+- These diagnostic passes refer to the historical configured criteria; they must not be equated automatically with the rank-normalized Rhat/ESS criteria of the 2026 analysis. See the independent [2026 reanalysis](../02_reanalysis_2026/README.md).
 
 ## Files and software
 
@@ -14,7 +26,7 @@ Pilot and Confirm behavioral analyses, Pilot ex-Gaussian, Confirm HDDM, and sepa
 |`Output/`|Behavior statistics, model summaries/diagnostics and figures|
 |`Output/sensitivity/`|Identity vz p_outlier=0/.05 extensions|
 
-`vtz` allows condition-dependent v/t and estimates z; `vz` shares t across conditions. `p0`/`p0p05` mean p_outlier=0/.05; `r01` is a run ID. Keep the JSON files: fitting and plotting use them.
+`vtz` allows condition-dependent v/t and estimates z; `vz` shares t across conditions. `p0`/`p0p05` mean p_outlier=0/.05; `r01` is a run ID. Fitting and plotting read the model settings from JSON files.
 
 Runtime used: **R 4.6.0; Python 3.7.12; HDDM 0.8.0; NumPy 1.19.5; SciPy 1.5.3; Matplotlib 3.3.2**. R packages: Rcpp, dplyr, tidyr, ggplot2, afex, BayesFactor, effectsize and retimes (Pilot only; archived on CRAN). Exact versions are recorded in each study's `dependencies.csv` and `sessionInfo.txt`. Install dependencies before running; local libraries and full model databases are not included.
 
@@ -75,16 +87,6 @@ Identity and Valence have equivalent task entries. Omit `--samples` for file-ref
 ```text
 python -B Scripts/hddm/identity/vz/identity_vz_run.py --config Scripts/hddm/identity/vz/identity_vz_p0_config.json --mode all --runs r01 r02 r03 r04
 ```
-
-## Result status and differences
-
-- Pilot retained 29 participants; Confirm retained 42 for Matching and 41 for Categorization. Exported Confirm inputs matched the included tables. Fifteen selected t statistics agreed within tolerances (Pilot < .01; Confirm < .02), not necessarily exact printed rounding.
-- Matching/Identity/Valence vtz p0 and Identity vz p0 passed the configured four-run diagnostic gate. Matching/Valence vz have one run and are descriptive only. **Identity vz p0.05 failed the gate; do not pool its runs.**
-- Figure 3C corrects the author's Identity-summary reference to Valence data. Error bars remain mean +/- 1.96 SE; Pilot lines connect Good/Bad within Subject x Identity, while Confirm lines connect each subject's four conditions.
-- Pilot Categorization RT differs from the author's JASP condition-column assignment; its seven F/omega comparisons are not equivalent. The other 33 comparable ANOVA F values agreed within 1e-9. Omega definitions, inclusion Bayes factors, and Pilot Categorization Accuracy nuisance-factor settings also differ; statistics are not all identical to the paper.
-- Ex-Gaussian uses 1,000 bootstrap iterations rather than the reported 2,000. One cell (7014, Val/Other/Bad; 3 trials) was not fitted; 231 completed cells yield 27 eligible subjects. Maximum mu/sigma/tau differences from available author estimates were about .0283/.0567/.0208 seconds; ANOVA equivalence is not claimed. See [cell results](Output/behavior/pilot/exgaussian/parameters_all.csv) and retained warnings.
-- Supplementary ex-Gaussian Bayesian/simple-effect analyses and Figure S3, full Table S2/S3 summaries, and Bayes-factor robustness figures remain incomplete. Pilot DDM was not reported in the paper and is not implemented here.
-- Existing model analyses and redraw routes were validated during organization; full MCMC and PPC were not rerun. `.gitignore` excludes libraries, full samples and repeated outputs. The 2026 reanalysis has not started.
 
 ## Organization
 

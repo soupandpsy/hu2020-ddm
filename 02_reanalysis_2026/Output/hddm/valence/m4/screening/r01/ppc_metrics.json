@@ -1,0 +1,7 @@
+{
+  "choice_rmse": 0.04349422303476051,
+  "rt_median_rmse_seconds": 0.027053248030468602,
+  "draws": 50,
+  "seed": 203112611,
+  "scope": "node/subject/condition checks; inspection still required"
+}

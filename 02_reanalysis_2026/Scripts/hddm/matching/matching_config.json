@@ -1,0 +1,42 @@
+{
+  "schema": 1,
+  "image": "hcp4715/hddm@sha256:5b30f195d3d41905f5461dbe9c786ea2ab531b4355d7464cb0fbfb5d6adfd238",
+  "method_commit": "468965c8d4c991bb7633f3f38257a6bac978bce5",
+  "tasks": [
+    "matching",
+    "identity",
+    "valence"
+  ],
+  "models": [
+    "m0",
+    "m1",
+    "m2",
+    "m3",
+    "m4"
+  ],
+  "samples": 10000,
+  "burn": 5000,
+  "thin": 1,
+  "p_outlier": 0.05,
+  "informative": true,
+  "seed_base": 202610210,
+  "threads_per_job": 1,
+  "requested_screening_parallel": 5,
+  "requested_final_parallel": 9,
+  "ppc_draws_screening": 50,
+  "ppc_draws_final": 200,
+  "rhat_max": 1.01,
+  "ess_min": 400,
+  "selection": "provisional multi-criterion selection only; one chain cannot establish between-chain convergence",
+  "rt_policy": "retain positive RT; p_outlier=.05; later sensitivity excludes RT<=.2",
+  "fit_rows": {
+    "matching": 24527,
+    "identity": 14493,
+    "valence": 14431
+  },
+  "subjects": {
+    "matching": 42,
+    "identity": 41,
+    "valence": 41
+  }
+}

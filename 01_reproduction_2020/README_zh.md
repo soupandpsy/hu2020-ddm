@@ -1,10 +1,22 @@
-# 2020 年复现
+# 第一部分：Hu et al.（2020）复现
 
 [English](README.md) | 中文
 
-包括 Pilot（预实验）和 Confirm（正式实验）的行为分析、Pilot ex-Gaussian、Confirm HDDM，以及单独列出的敏感性分析。[原作者仓库](https://github.com/hcp4715/moralSelf_ddm)。
+本部分复现《Good me, bad me: Prioritization of the good-self during perceptual decision-making》的主要计算分析，涵盖Pilot与Confirm行为统计、Pilot ex-Gaussian和Confirm HDDM，并单独保存敏感性分析。结果总体上复现了部分选定统计量和模型分析，但并非所有统计量、补充分析或模型设置均与论文完全一致。
 
-## 文件与软件
+原始材料见[作者仓库](https://github.com/hcp4715/moralSelf_ddm)。
+
+## 复现结果与边界
+
+- Pilot 保留 29 名被试；Confirm Matching 保留 42 名，Categorization 保留 41 名。R 导出的 Confirm 输入与仓库内输入一致。15 项选定的 t 统计量在指定容差内一致（Pilot < .01；Confirm < .02），不代表严格符合论文打印值的舍入结果。
+- Matching/Identity/Valence vtz p0 和 Identity vz p0 通过了配置中的四次运行诊断标准。Matching/Valence vz 只有一次运行，仅用于描述。**Identity vz p0.05 未通过诊断，不应合并其各次样本。**
+- Figure 3C 将作者误用的 Identity 汇总改为 Valence 数据；误差线仍为均值 ± 1.96 SE。Pilot 个体线在 Subject × Identity 内连接 Good/Bad，Confirm 则连接每名被试的四个条件。
+- Pilot Categorization RT 与作者 JASP 的条件列分配不同，对应七项 F/omega 不能视为等价比较。其余 33 项可比 ANOVA F 值在 1e-9 内一致。Omega 定义、包含贝叶斯因子及 Pilot Categorization Accuracy 的干扰因素设置也存在差异，因此不能声称所有统计量与论文相同。
+- ex-Gaussian 使用 1,000 次 bootstrap，而论文报告 2,000 次。一个单元（7014，Val/Other/Bad，仅 3 个试次）未拟合；231 个完成拟合的单元筛选后得到 27 名符合条件的被试。与可取得的作者估计相比，mu/sigma/tau 最大差异约为 .0283/.0567/.0208 秒；不声称 ANOVA 等价。详见[各单元结果](Output/behavior/pilot/exgaussian/parameters_all.csv)及保留的警告记录。
+- 补充 ex-Gaussian 贝叶斯与简单效应分析、Figure S3、完整 Table S2/S3 汇总和贝叶斯因子稳健性图尚未全部完成。论文未报告 Pilot DDM，本项目也未实现该部分。
+- 本部分记录2020复现工作。上述模型通过的是当时配置中的诊断标准，不能自动等同于2026再分析采用的rank-normalized Rhat/ESS标准。2026再分析及其独立结论见[第二部分](../02_reanalysis_2026/README_zh.md)。
+
+## 文件结构与软件环境
 
 |目录|内容|
 |---|---|
@@ -14,13 +26,13 @@
 |`Output/`|行为统计、模型汇总与诊断、结果图|
 |`Output/sensitivity/`|Identity vz 的 p_outlier=0/.05 扩展分析|
 
-`vtz` 允许 v/t 随条件变化并估计 z；`vz` 的 t 在条件间共享。`p0`/`p0p05` 表示 p_outlier=0/.05；`r01` 为运行编号。JSON 文件参与拟合和绘图，请保留。
+`vtz` 允许 v/t 随条件变化并估计 z；`vz` 的 t 在条件间共享。`p0`/`p0p05` 表示 p_outlier=0/.05；`r01` 为运行编号。拟合和绘图通过 JSON 文件读取模型配置。
 
 使用版本：**R 4.6.0；Python 3.7.12；HDDM 0.8.0；NumPy 1.19.5；SciPy 1.5.3；Matplotlib 3.3.2**。R 包包括 Rcpp、dplyr、tidyr、ggplot2、afex、BayesFactor、effectsize 和 retimes（仅 Pilot 使用，已被 CRAN 归档）。具体包版本见各研究结果中的 `dependencies.csv`、`sessionInfo.txt`。运行前需安装依赖；仓库不包含本地包库和完整模型数据库。
 
 以下命令均在本目录执行。大写目录占位符需替换为实际输出路径；在 WSL 中使用 Linux 路径。
 
-## 重画已有结果
+## 查看与重画已有结果
 
 ```text
 Rscript --vanilla Scripts/pilot_behavior/pilot_plot.R --analysis-dir Output/behavior/pilot
@@ -30,7 +42,7 @@ python -B Scripts/hddm/figure04_plot.py
 
 上述命令读取保存的表格或样本，不重新拟合。Figure 2 对应 Pilot 行为结果；Figure 3 对应 Confirm 行为结果；[Figure 4](Output/figures/figure04_vtz_p0_r01_drift.pdf) 对应 Confirm vtz p0 r01 的漂移率。Matching 的 mismatch 漂移率对应 Figure S6。Figure 4 使用随仓库提供的 35 个群体参数样本（每个 9,000 次抽样），不是多链合并结果；这些精简样本不能替代完整数据库用于诊断或 PPC。
 
-## 重新分析与拟合
+## 从数据重新分析
 
 **1. 处理原始数据。** 每个入口会显示新建的分析目录；Pilot 包含 ex-Gaussian 拟合。
 
@@ -75,16 +87,6 @@ Identity 和 Valence 有对应任务入口。省略 `--samples` 时只检查文�
 ```text
 python -B Scripts/hddm/identity/vz/identity_vz_run.py --config Scripts/hddm/identity/vz/identity_vz_p0_config.json --mode all --runs r01 r02 r03 r04
 ```
-
-## 结果状态与差异
-
-- Pilot 保留 29 名被试；Confirm Matching 保留 42 名，Categorization 保留 41 名。R 导出的 Confirm 输入与仓库内输入一致。15 项选定的 t 统计量在指定容差内一致（Pilot < .01；Confirm < .02），不代表严格符合论文打印值的舍入结果。
-- Matching/Identity/Valence vtz p0 和 Identity vz p0 通过了配置中的四次运行诊断标准。Matching/Valence vz 只有一次运行，仅用于描述。**Identity vz p0.05 未通过诊断，不应合并其各次样本。**
-- Figure 3C 将作者误用的 Identity 汇总改为 Valence 数据；误差线仍为均值 ± 1.96 SE。Pilot 个体线在 Subject × Identity 内连接 Good/Bad，Confirm 则连接每名被试的四个条件。
-- Pilot Categorization RT 与作者 JASP 的条件列分配不同，对应七项 F/omega 不能视为等价比较。其余 33 项可比 ANOVA F 值在 1e-9 内一致。Omega 定义、包含贝叶斯因子及 Pilot Categorization Accuracy 的干扰因素设置也存在差异，因此不能声称所有统计量与论文相同。
-- ex-Gaussian 使用 1,000 次 bootstrap，而论文报告 2,000 次。一个单元（7014，Val/Other/Bad，仅 3 个试次）未拟合；231 个完成拟合的单元筛选后得到 27 名符合条件的被试。与可取得的作者估计相比，mu/sigma/tau 最大差异约为 .0283/.0567/.0208 秒；不声称 ANOVA 等价。详见[各单元结果](Output/behavior/pilot/exgaussian/parameters_all.csv)及保留的警告记录。
-- 补充 ex-Gaussian 贝叶斯与简单效应分析、Figure S3、完整 Table S2/S3 汇总和贝叶斯因子稳健性图尚未全部完成。论文未报告 Pilot DDM，本项目也未实现该部分。
-- 整理期间核验了已有模型分析和重绘流程，没有重新执行完整 MCMC 或 PPC。`.gitignore` 排除包库、完整样本和重复运行输出。2026 年方法再分析尚未开展。
 
 ## 目录组织
 

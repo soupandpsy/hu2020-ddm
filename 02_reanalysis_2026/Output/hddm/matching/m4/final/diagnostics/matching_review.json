@@ -1,0 +1,13 @@
+{
+  "diagnostics_pass": true,
+  "max_rhat": 1.002201003957478,
+  "min_bulk_ess": 917.3278876300215,
+  "min_tail_ess": 471.53979047767285,
+  "max_mcse_over_sd": 0.04404367563047255,
+  "draws_per_chain": 5000,
+  "chains": 4,
+  "ppc_seed": 2026102142,
+  "ppc_draws_per_chain": 50,
+  "ppc_caveat": "Two normalized contamination conventions are predictive sensitivity checks, not exact full-likelihood PPC. Installed likelihood has constant outlier floor without finite support; native simulator differs in signed density. No fitted likelihood changed.",
+  "ess_reference": "https://mc-stan.org/learn-stan/diagnostics-warnings.html"
+}

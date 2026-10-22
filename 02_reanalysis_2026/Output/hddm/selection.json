@@ -1,0 +1,64 @@
+{
+  "matching": {
+    "model": "m4",
+    "provisional": true,
+    "reason": "Lowest single-chain DIC and lower choice/median-RT PPC errors among these five constrained candidates; all posterior draws finite; structurally full-rank drift design and minimum recovery passed. Chosen only for further four-chain evaluation, not a decisive model-selection conclusion.",
+    "screening_metrics": {
+      "task": "matching",
+      "model": "m4",
+      "chains": "1",
+      "status": "screening_only",
+      "rhat": "",
+      "dic": "-3647.2698863445457",
+      "ess_bulk_min": "289.8145969423096",
+      "ess_tail_min": "151.19703294415055",
+      "choice_rmse": "0.0718914478928573",
+      "rt_median_rmse_seconds": "0.03997231408095525"
+    },
+    "group_ess_bulk_min": 2069.530214978726,
+    "max_group_quarter_shift_sd": 0.12250988265925815,
+    "limitation": "Single-chain mixing is not proof of convergence; model uncertainty not propagated. dc may absorb stimulus difficulty asymmetry. Four-chain diagnosis gates substantive interpretation."
+  },
+  "identity": {
+    "model": "m4",
+    "provisional": true,
+    "reason": "Lowest single-chain DIC and lower choice/median-RT PPC errors among these five constrained candidates; all posterior draws finite; structurally full-rank drift design and minimum recovery passed. Chosen only for further four-chain evaluation, not a decisive model-selection conclusion.",
+    "screening_metrics": {
+      "task": "identity",
+      "model": "m4",
+      "chains": "1",
+      "status": "screening_only",
+      "rhat": "",
+      "dic": "-14007.319894603348",
+      "ess_bulk_min": "21.15522938197376",
+      "ess_tail_min": "32.70630306348624",
+      "choice_rmse": "0.050286716893367965",
+      "rt_median_rmse_seconds": "0.02610880787188891"
+    },
+    "group_ess_bulk_min": 303.8407458447842,
+    "max_group_quarter_shift_sd": 0.09378811879130251,
+    "limitation": "Single-chain mixing is not proof of convergence; model uncertainty not propagated. dc may absorb stimulus difficulty asymmetry. Four-chain diagnosis gates substantive interpretation.",
+    "mixing_warning": "Subject 7339 a/t/v switch slowly between regions; min bulk ESS about 21. Group mean traces more stable; still require four-chain checks."
+  },
+  "valence": {
+    "model": "m4",
+    "provisional": true,
+    "reason": "Lowest single-chain DIC and lower choice/median-RT PPC errors among these five constrained candidates; all posterior draws finite; structurally full-rank drift design and minimum recovery passed. Chosen only for further four-chain evaluation, not a decisive model-selection conclusion.",
+    "screening_metrics": {
+      "task": "valence",
+      "model": "m4",
+      "chains": "1",
+      "status": "screening_only",
+      "rhat": "",
+      "dic": "-13768.956155323098",
+      "ess_bulk_min": "4.327930570916211",
+      "ess_tail_min": "10.701615895222162",
+      "choice_rmse": "0.04349422303476051",
+      "rt_median_rmse_seconds": "0.027053248030468602"
+    },
+    "group_ess_bulk_min": 23.379503023730305,
+    "max_group_quarter_shift_sd": 0.8787316917493226,
+    "limitation": "Single-chain mixing is not proof of convergence; model uncertainty not propagated. dc may absorb stimulus difficulty asymmetry. Four-chain diagnosis gates substantive interpretation.",
+    "mixing_warning": "Subject 7329 shows very slow mixing and a/t/v group means drift; min individual bulk ESS about 4.3, group about 23.4. r01 not yet eligible for substantive inference. Appended chains test stability; failed four-chain checks require independent refit, not a silent burn-in adjustment."
+  }
+}

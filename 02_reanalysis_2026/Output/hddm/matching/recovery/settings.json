@@ -1,0 +1,51 @@
+{
+  "samples": 6000,
+  "burn": 3000,
+  "thin": 1,
+  "subjects": 12,
+  "trials_per_stim_cell": 60,
+  "scenarios": {
+    "neutral": [
+      0.5,
+      [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    ],
+    "z_only": [
+      0.58,
+      [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    ],
+    "dc_only": [
+      0.5,
+      [
+        -0.25,
+        0.25,
+        -0.15,
+        0.15
+      ]
+    ],
+    "opposing": [
+      0.58,
+      [
+        -0.3,
+        -0.2,
+        -0.25,
+        -0.15
+      ]
+    ]
+  },
+  "workers": 2,
+  "seed_base": 202612000,
+  "p_outlier": 0.05,
+  "contamination": "Operational normalized signed-RT uniform(-5,5), .05 mixture; matches default constant floor within support, not globally exact installed likelihood.",
+  "scope": "Four fixed scenarios, one synthetic dataset each and four chains; not SBC, model recovery or population-wide coverage estimate",
+  "script_sha256": "9778dc595a6e75c42e1958384d9e21b9a257dc60f0acbb4b1d57237c146462da"
+}

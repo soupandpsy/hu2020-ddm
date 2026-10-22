@@ -1,0 +1,39 @@
+{
+  "valence": {
+    "max_rhat": 1.5282021910602044,
+    "min_bulk_ess": 7.053768256101288,
+    "min_tail_ess": 26.58519880478964,
+    "failed_parameters": 48,
+    "group_failed": [
+      "a",
+      "a_std",
+      "v(Other)",
+      "v(Self)",
+      "v_std",
+      "t",
+      "t_std"
+    ],
+    "subject_data": [
+      {
+        "subject": 7316,
+        "n": 359,
+        "rt_min": 0.3538,
+        "rt_q01": 0.371774,
+        "rt_median": 0.5524,
+        "fast_rt_le_02": 0,
+        "accuracy": 0.9526462395543176,
+        "choice": 0.520891364902507
+      },
+      {
+        "subject": 7325,
+        "n": 355,
+        "rt_min": 0.2758,
+        "rt_q01": 0.301186,
+        "rt_median": 0.4713,
+        "fast_rt_le_02": 0,
+        "accuracy": 0.9408450704225352,
+        "choice": 0.5211267605633803
+      }
+    ]
+  }
+}

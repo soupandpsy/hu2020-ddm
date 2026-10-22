@@ -1,0 +1,13 @@
+{
+  "diagnostics_pass": false,
+  "max_rhat": 1.0073706413286014,
+  "min_bulk_ess": 825.3142423921284,
+  "min_tail_ess": 342.4924316683801,
+  "chain_sources": [
+    "Output/hddm/matching/m4/sensitivity/r01",
+    "Output/hddm/matching/m4/sensitivity/r02",
+    "Output/hddm/matching/m4/sensitivity/r03",
+    "Output/hddm/matching/m4/sensitivity/r04"
+  ],
+  "interpretation": "Additional RT>.2 robustness check; original author HDDM preprocessing retained fast responses. No cross-dataset chain merging."
+}

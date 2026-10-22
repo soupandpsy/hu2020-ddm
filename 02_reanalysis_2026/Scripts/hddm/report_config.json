@@ -1,0 +1,37 @@
+{
+  "selection": {
+    "matching": {
+      "model": "m4",
+      "provisional": true,
+      "reason": "Recorded multi-criterion screening decision, reproduced as an explicit analysis input; not automatic proof of model superiority."
+    },
+    "identity": {
+      "model": "m4",
+      "provisional": true,
+      "reason": "Recorded multi-criterion screening decision, reproduced as an explicit analysis input; not automatic proof of model superiority."
+    },
+    "valence": {
+      "model": "m4",
+      "provisional": true,
+      "reason": "Recorded multi-criterion screening decision, reproduced as an explicit analysis input; not automatic proof of model superiority."
+    }
+  },
+  "long_review_subjects": {
+    "identity": [
+      7307,
+      7335
+    ],
+    "valence": [
+      7316,
+      7325
+    ]
+  },
+  "interpretation": {
+    "matching": "Conditional on provisional M4 and shared-direction v; Match-choice bias, not Good-self preference"
+  },
+  "predictive_limitations": [
+    "response_window_not_conditioned",
+    "normalized_contamination_conventions_not_exact_likelihood"
+  ],
+  "scope": "Fixed historical analysis decisions; numerical results and diagnostic status are recomputed."
+}
