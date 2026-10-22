@@ -71,6 +71,23 @@ python Scripts/hddm/reproduce.py verify --output Output_new
 
 A complete run requires the adjacent `01_reproduction_2020/Data` and a new output directory. The [output manifest](Scripts/hddm/output_manifest.json) identifies file producers. Postprocessing was checked using historical draws; the reorganized full fitting pipeline has not been rerun from scratch. Databases and draw-level samples are not distributed.
 
+### Task entries and provenance
+
+Each task retains its own configuration, models, run, analyze and plot entry points. Matching additionally has recovery and sensitivity entries. `run fit` fits one chain; the other Run phases schedule smoke, screening, final or independent long-refit jobs. Analyze operations execute independently:
+
+```sh
+python Scripts/hddm/matching/matching_run.py fit --model m4 --chain 1 --phase screening --output Output_new --plan
+python Scripts/hddm/matching/matching_analyze.py compare --output Output_new --plan
+python Scripts/hddm/matching/matching_analyze.py diagnostics --output Output_new --plan
+python Scripts/hddm/matching/matching_analyze.py ppc --output Output_new --plan
+```
+
+Replace `matching` with `identity` or `valence` for their entries. Remove `--plan` to execute; `--help` lists each operation's options. Formal fitting appends r02–r04 to a compatible screening r01. Long refits use four independent chains. Compare reads existing screening outputs and does not rerun PPC.
+
+In comparison tables, `status` and `chains` describe screening only. `selection_status` records provisional selection; `followup_status` distinguishes `screening_only`, `diagnostics_pass` and `nonconverged`. Passing convergence does not remove predictive or recovery limitations.
+
+The pre-refactor public snapshot is commit `639aa66af934db39b9e2962a6c5154350266758e`, tagged `reanalysis-before-entry-refactor-20261023`. This identifies the archived public report, not the code that generated every historical fit. Original fit fingerprints remain authoritative and unchanged. The manifest's `producer` describes the current entry point; `historical_snapshot` identifies the earlier published artifact. Chain-source paths are relative to `Output/`; databases are not distributed. New fits record the changed `common.py` hash and cannot append to historical chains with different fingerprints. Use a fresh output directory for new fits, or the original fingerprint-matched code for historical continuation.
+
 ## References
 
 [Hu et al. (2020)](https://doi.org/10.1525/collabra.301); [Pan et al. (2025), dockerHDDM](https://doi.org/10.1177/25152459241298700); [stimulus-coding code](https://github.com/Chuan-Peng-Lab/ddm_stim_coding_posts), commit `468965c8d4c991bb7633f3f38257a6bac978bce5`.

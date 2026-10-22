@@ -12,7 +12,10 @@ os.environ['HU2026_OUTPUT']=str(out);os.environ['HU2026_TASK']='matching'
 policy=json.loads((HERE/'report_config.json').read_text())
 if any(v['model']!='m4' for v in policy['selection'].values()):raise ValueError('This reporting pipeline requires the declared M4 candidates')
 commands=[]
-def add(task,op,*args):commands.append([sys.executable,str(HERE/task/(task+'_'+op+'.py')),*args,'--output',str(out)])
+def add(task,op,*args):
+ if op in ('compare','diagnostics','ppc'):
+  args=(op,*args);op='analyze'
+ commands.append([sys.executable,str(HERE/task/(task+'_'+op+'.py')),*args,'--output',str(out)])
 add('matching','run','preflight')
 for task in policy['selection']:
  for phase in ['smoke','screening']:add(task,'run',phase,'--workers',str(a.workers))

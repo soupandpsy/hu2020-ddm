@@ -1,6 +1,6 @@
 task,model,chains,status,rhat,dic,ess_bulk_min,ess_tail_min,choice_rmse,rt_median_rmse_seconds,provisional_selected,selection_status,screening_scope,followup_status
-identity,m0,1,screening_only,,-13021.704838543048,17.404306614902765,11.144818955870688,0.05276213882177091,0.03668451500243682,False,stopped_nonconverged,single_chain_descriptive_not_decisive,stopped_nonconverged_no_inference
-identity,m1,1,screening_only,,-13613.677019003813,3.2760529899796005,28.18344374196663,0.05414639162447313,0.029187490284778305,False,stopped_nonconverged,single_chain_descriptive_not_decisive,stopped_nonconverged_no_inference
-identity,m2,1,screening_only,,-13449.511199258937,8.074699493230755,14.48160652164829,0.05354084683969782,0.03211245979123687,False,stopped_nonconverged,single_chain_descriptive_not_decisive,stopped_nonconverged_no_inference
-identity,m3,1,screening_only,,-13644.547529856094,5.902833370102664,25.57168558841753,0.0537846534938175,0.031027689050561684,False,stopped_nonconverged,single_chain_descriptive_not_decisive,stopped_nonconverged_no_inference
-identity,m4,1,screening_only,,-14007.319894603348,21.15522938197376,32.70630306348624,0.050286716893367965,0.02610880787188891,True,stopped_nonconverged,single_chain_descriptive_not_decisive,stopped_nonconverged_no_inference
+identity,m0,1,screening_only,,-13021.704838543048,17.404306614902765,11.144818955870688,0.05276213882177091,0.03668451500243682,False,screening_only,single_chain_descriptive_not_decisive,screening_only
+identity,m1,1,screening_only,,-13613.677019003813,3.2760529899796005,28.18344374196663,0.05414639162447313,0.029187490284778305,False,screening_only,single_chain_descriptive_not_decisive,screening_only
+identity,m2,1,screening_only,,-13449.511199258937,8.074699493230755,14.48160652164829,0.05354084683969782,0.03211245979123687,False,screening_only,single_chain_descriptive_not_decisive,screening_only
+identity,m3,1,screening_only,,-13644.547529856094,5.902833370102664,25.57168558841753,0.0537846534938175,0.031027689050561684,False,screening_only,single_chain_descriptive_not_decisive,screening_only
+identity,m4,1,screening_only,,-14007.319894603348,21.15522938197376,32.70630306348624,0.050286716893367965,0.02610880787188891,True,provisional_selected,single_chain_descriptive_not_decisive,nonconverged

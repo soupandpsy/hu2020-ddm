@@ -1,2 +1,2 @@
 task,model,chains,status,rhat,dic,ess_bulk_min,ess_tail_min,choice_rmse,rt_median_rmse_seconds,provisional_selected,selection_status,screening_scope,followup_status
-matching,m1,1,screening_only,,-2809.51570220582,271.29338267854286,384.7129725812597,0.08985132088973694,0.042842489364253,False,not_selected_for_four_chain,single_chain_descriptive_not_decisive,screening_only
+matching,m1,1,screening_only,,-2809.51570220582,271.29338267854286,384.7129725812597,0.08985132088973694,0.042842489364253,False,screening_only,single_chain_descriptive_not_decisive,screening_only

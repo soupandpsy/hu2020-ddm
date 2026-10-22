@@ -71,6 +71,23 @@ python Scripts/hddm/reproduce.py verify --output Output_new
 
 完整运行需要相邻的`01_reproduction_2020/Data`和一个尚不存在的输出目录。[输出清单](Scripts/hddm/output_manifest.json)记录各文件的生成入口。后处理已使用历史样本验证；整理后的完整拟合流程尚未从零重跑。数据库与逐次样本不随仓库分发。
 
+### 任务入口与历史来源
+
+每个任务保留配置、模型定义、运行、分析和绘图入口；Matching 另有恢复和敏感性分析入口。`run fit` 拟合单链，其余 Run 阶段调度 smoke、screening、final 或独立长链。Analyze 的三个操作可单独执行：
+
+```sh
+python Scripts/hddm/matching/matching_run.py fit --model m4 --chain 1 --phase screening --output Output_new --plan
+python Scripts/hddm/matching/matching_analyze.py compare --output Output_new --plan
+python Scripts/hddm/matching/matching_analyze.py diagnostics --output Output_new --plan
+python Scripts/hddm/matching/matching_analyze.py ppc --output Output_new --plan
+```
+
+将 `matching` 替换为 `identity` 或 `valence` 即可使用相应入口。去掉 `--plan` 才会执行，`--help` 显示各操作选项。正式拟合在指纹一致的初筛 r01 后追加 r02–r04；长链重拟合使用四条独立链。Compare 读取已有初筛输出，不重新运行 PPC。
+
+比较表中的 `status` 和 `chains` 仅描述初筛；`selection_status` 记录暂定选择，`followup_status` 区分仅初筛（`screening_only`）、通过收敛诊断（`diagnostics_pass`）和未收敛（`nonconverged`）。通过收敛诊断不代表预测或参数恢复检验通过。
+
+重构前公开版本为提交 `639aa66af934db39b9e2962a6c5154350266758e`，历史标签为 `reanalysis-before-entry-refactor-20261023`。它标记已公开的仓库快照，不代表全部历史拟合均由该版代码产生；实际拟合来源以原始 fingerprint 为准。清单中的 `producer` 指向当前入口，`historical_snapshot` 指向先前公开结果。链来源路径相对于 `Output/`，数据库不随仓库分发。新拟合会记录变化后的 `common.py` 哈希，不能追加到指纹不同的历史链；新拟合使用独立输出目录，历史续跑则需使用与原指纹一致的代码。
+
 ## 参考资料
 
 [Hu等（2020）](https://doi.org/10.1525/collabra.301)；[Pan等（2025），dockerHDDM](https://doi.org/10.1177/25152459241298700)；[刺激编码方法代码](https://github.com/Chuan-Peng-Lab/ddm_stim_coding_posts)，commit `468965c8d4c991bb7633f3f38257a6bac978bce5`。

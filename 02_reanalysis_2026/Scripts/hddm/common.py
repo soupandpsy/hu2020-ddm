@@ -129,7 +129,7 @@ def schedule(jobs,workers):
             out.parent.mkdir(parents=True,exist_ok=True)
             log=out.parent/("r%02d.stdout.log"%chain);err=out.parent/("r%02d.stderr.log"%chain)
             stdout=log.open("x");stderr=err.open("x")
-            cmd=[sys.executable,"-u",str(HERE/task/(task+"_fit.py")),"--model",name,"--chain",str(chain),"--phase",phase]
+            cmd=[sys.executable,"-u",str(HERE/task/(task+"_run.py")),"fit","--model",name,"--chain",str(chain),"--phase",phase]
             proc=subprocess.Popen(cmd,stdout=stdout,stderr=stderr)
             active.append((proc,stdout,stderr,(task,name,chain,phase)))
             print("START",proc.pid,task,name,chain,phase,flush=True)
@@ -239,7 +239,7 @@ def final(task_filter=None,model_name="m4"):
         diag.to_csv(dest/"diagnostics.csv")
         dataset.to_netcdf(dest/"posterior.nc")
         passed=bool((diag.r_hat<settings()["rhat_max"]).all() and (diag.ess_bulk>=400).all() and (diag.ess_tail>=400).all())
-        write(dest/"chain_sources.json",{"paths":[str(p.relative_to(OUTPUT)) for p in paths],"diagnostics_pass":passed,"selection_provisional":True})
+        write(dest/"chain_sources.json",{"path_base":"Output","paths":[p.relative_to(OUTPUT).as_posix() for p in paths],"diagnostics_pass":passed,"selection_provisional":True})
         # Report only parameters actually estimated by this model.
         for c in ts[0]:
             if "_subj" in c or "_std" in c or "trans" in c:continue
@@ -579,9 +579,17 @@ def four_chain_ppc(task,model):
         ppc(fitted,load_data(task),target,settings()['ppc_draws_final']//4,
             settings()['seed_base']+800000+settings()['tasks'].index(task)*100+i)
 
-def entry(task,operation):
+def entry(task,operation,argv=None):
+    argv=list(sys.argv[1:] if argv is None else argv)
+    if operation=='analyze':
+        selector=argparse.ArgumentParser(description=task+' analysis: independent operations')
+        selector.add_argument('operation',choices=['compare','diagnostics','ppc'])
+        selected=selector.parse_args(argv[:1])
+        return entry(task,selected.operation,argv[1:])
+    if operation=='run' and argv and argv[0]=='fit':
+        operation='fit';argv=argv[1:]
     parser=argparse.ArgumentParser(description=task+' '+operation)
-    if operation=='run':parser.add_argument('phase',choices=['smoke','screening','final','preflight','long-refit'])
+    if operation=='run':parser.add_argument('phase',choices=['fit','smoke','screening','final','preflight','long-refit'],help='fit: single chain (use fit --help); other phases: scheduled runs')
     if operation=='fit':
         parser.add_argument('--phase',choices=['smoke','screening','final','sensitivity','long_refit'],default='screening')
         parser.add_argument('--chain',type=int,default=1)
@@ -600,7 +608,9 @@ def entry(task,operation):
     parser.add_argument('--workers',type=int,choices=range(1,5),default=1)
     parser.add_argument('--output',type=Path)
     parser.add_argument('--plan',action='store_true')
-    args=parser.parse_args()
+    args=parser.parse_args(argv)
+    if operation=='run' and args.phase=='fit':
+        parser.error('Place fit before its options: run.py fit --help')
     global OUTPUT,FIGURES_OUTPUT
     if getattr(args,"figures_output",None):FIGURES_OUTPUT=args.figures_output.expanduser().resolve()
     if args.output:OUTPUT=args.output.expanduser().resolve()
@@ -763,14 +773,17 @@ def regenerate_reports():
           group_ess_bulk_min=min(ess),max_group_quarter_shift_sd=max(map(abs,shifts)),
           limitation='Single-chain screening cannot establish convergence; model selection uncertainty is not propagated.')
         table['provisional_selected']=table.model.eq(model)
-        table['selection_status']=np.where(table.model.eq(model),'provisional_selected','not_selected_for_four_chain')
+        table['selection_status']=np.where(table.model.eq(model),'provisional_selected','screening_only')
         table['screening_scope']='single_chain_descriptive_not_decisive'
         if task=='matching':
             passed=json.loads((base/'m4/final/diagnostics/matching_review.json').read_text())['diagnostics_pass']
-            status='main_diagnostics_pass_with_validation_limits' if passed else 'main_nonconverged'
+            status='diagnostics_pass' if passed else 'nonconverged'
         else:
             review=json.loads((base/'m4/long_refit/diagnostics/review.json').read_text())[task]
-            status='long_refit_nonconverged' if review['failed_parameters'] else 'long_refit_diagnostics_pass'
+            status='nonconverged' if review['failed_parameters'] else 'diagnostics_pass'
+        selection[task]['selection_status']='provisional_selected'
+        selection[task]['followup_status']=status
+        selection[task]['diagnostic_basis']='final_four_chain' if task=='matching' else 'independent_long_refit'
         table['followup_status']=np.where(table.model.eq(model),status,'screening_only')
         table.to_csv(base/'model_comparison.csv',index=False)
         for m,part in table.groupby('model'):part.to_csv(base/m/'screening_summary.csv',index=False)

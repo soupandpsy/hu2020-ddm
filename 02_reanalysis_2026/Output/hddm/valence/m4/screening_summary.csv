@@ -1,2 +1,2 @@
 task,model,chains,status,rhat,dic,ess_bulk_min,ess_tail_min,choice_rmse,rt_median_rmse_seconds,provisional_selected,selection_status,screening_scope,followup_status
-valence,m4,1,screening_only,,-13768.956155323098,4.327930570916211,10.701615895222162,0.04349422303476051,0.027053248030468602,True,stopped_nonconverged,single_chain_descriptive_not_decisive,stopped_nonconverged_no_inference
+valence,m4,1,screening_only,,-13768.956155323098,4.327930570916211,10.701615895222162,0.04349422303476051,0.027053248030468602,True,provisional_selected,single_chain_descriptive_not_decisive,nonconverged

@@ -17,7 +17,10 @@
     },
     "group_ess_bulk_min": 2069.530214978726,
     "max_group_quarter_shift_sd": 0.12250988265925815,
-    "limitation": "Single-chain mixing is not proof of convergence; model uncertainty not propagated. dc may absorb stimulus difficulty asymmetry. Four-chain diagnosis gates substantive interpretation."
+    "limitation": "Single-chain mixing is not proof of convergence; model uncertainty not propagated. dc may absorb stimulus difficulty asymmetry. Four-chain diagnosis gates substantive interpretation.",
+    "selection_status": "provisional_selected",
+    "followup_status": "diagnostics_pass",
+    "diagnostic_basis": "final_four_chain"
   },
   "identity": {
     "model": "m4",
@@ -38,7 +41,10 @@
     "group_ess_bulk_min": 303.8407458447842,
     "max_group_quarter_shift_sd": 0.09378811879130251,
     "limitation": "Single-chain mixing is not proof of convergence; model uncertainty not propagated. dc may absorb stimulus difficulty asymmetry. Four-chain diagnosis gates substantive interpretation.",
-    "mixing_warning": "Subject 7339 a/t/v switch slowly between regions; min bulk ESS about 21. Group mean traces more stable; still require four-chain checks."
+    "mixing_warning": "Subject 7339 a/t/v switch slowly between regions; min bulk ESS about 21. Group mean traces more stable; still require four-chain checks.",
+    "selection_status": "provisional_selected",
+    "followup_status": "nonconverged",
+    "diagnostic_basis": "independent_long_refit"
   },
   "valence": {
     "model": "m4",
@@ -59,6 +65,9 @@
     "group_ess_bulk_min": 23.379503023730305,
     "max_group_quarter_shift_sd": 0.8787316917493226,
     "limitation": "Single-chain mixing is not proof of convergence; model uncertainty not propagated. dc may absorb stimulus difficulty asymmetry. Four-chain diagnosis gates substantive interpretation.",
-    "mixing_warning": "Subject 7329 shows very slow mixing and a/t/v group means drift; min individual bulk ESS about 4.3, group about 23.4. r01 not yet eligible for substantive inference. Appended chains test stability; failed four-chain checks require independent refit, not a silent burn-in adjustment."
+    "mixing_warning": "Subject 7329 shows very slow mixing and a/t/v group means drift; min individual bulk ESS about 4.3, group about 23.4. r01 not yet eligible for substantive inference. Appended chains test stability; failed four-chain checks require independent refit, not a silent burn-in adjustment.",
+    "selection_status": "provisional_selected",
+    "followup_status": "nonconverged",
+    "diagnostic_basis": "independent_long_refit"
   }
 }

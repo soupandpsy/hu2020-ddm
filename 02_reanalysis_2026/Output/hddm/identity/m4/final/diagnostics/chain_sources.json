@@ -1,10 +1,11 @@
 {
   "paths": [
-    "Output/hddm/identity/m4/screening/r01",
-    "Output/hddm/identity/m4/final/r02",
-    "Output/hddm/identity/m4/final/r03",
-    "Output/hddm/identity/m4/final/r04"
+    "hddm/identity/m4/screening/r01",
+    "hddm/identity/m4/final/r02",
+    "hddm/identity/m4/final/r03",
+    "hddm/identity/m4/final/r04"
   ],
   "diagnostics_pass": false,
-  "selection_provisional": true
+  "selection_provisional": true,
+  "path_base": "Output"
 }
