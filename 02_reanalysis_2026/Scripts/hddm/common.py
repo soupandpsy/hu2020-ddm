@@ -597,7 +597,7 @@ def entry(task,operation,argv=None):
         parser.add_argument('--review',action='store_true',help='Matching precise contrasts and predictive conventions, after PPC')
         parser.add_argument('--long-refit',action='store_true')
     if operation=='plot':
-        parser.add_argument('--kind',choices=['summary','traces'],default='summary' if task=='matching' else 'traces')
+        parser.add_argument('--kind',choices=['summary','traces','schematic'] if task=='matching' else ['summary','traces'],default='summary' if task=='matching' else 'traces')
         parser.add_argument('--figures-output',type=Path,help='Save new figures here without changing the result-table source')
     if operation=='sensitivity':parser.add_argument('--analyze',action='store_true')
     if operation=='recovery':
@@ -623,6 +623,10 @@ def entry(task,operation,argv=None):
         assert (ROOT/'Data'/(task+'_input.csv')).is_file()
         print(json.dumps(dict(task=task,operation=operation,input=str(ROOT/'Data'/(task+'_input.csv')),
           output_root=str(OUTPUT),task_output=str(OUTPUT/'hddm'/task)),indent=2));return
+    if operation=='plot' and args.kind=='schematic':
+        from matching.matching_plot import draw_schematic
+        print(draw_schematic(FIGURES_OUTPUT or OUTPUT/'hddm'/task/'figures'))
+        return
     numerical_libraries()
     if operation=='fit':
         if args.phase=='long_refit':os.environ['HU2026_LONG_REFIT']='1'

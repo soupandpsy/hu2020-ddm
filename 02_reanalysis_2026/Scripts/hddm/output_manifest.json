@@ -483,5 +483,10 @@
     "path": "results_summary.csv",
     "producer": "reproduce.py reports (after task comparison)",
     "historical_snapshot": "639aa66af934db39b9e2962a6c5154350266758e"
+  },
+  {
+    "path": "hddm/matching/figures/matching_ddm_schematic.png",
+    "producer": "matching/matching_plot.py --kind schematic",
+    "description": "Conceptual method illustration; no observations or posterior estimates."
   }
 ]

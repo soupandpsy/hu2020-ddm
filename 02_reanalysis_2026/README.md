@@ -1,146 +1,230 @@
-# Moral self-associations and perceptual decisions: HDDM reanalysis
+# Moral Self-Associations and Perceptual Decision-Making: HDDM Reanalysis
 
-[中文](README_zh.md) · [Full results and calculations](results.ipynb)
+[中文](README_zh.md) · [Results Notebook](results.ipynb) · [Project Home](../README.md)
 
-## Research purpose
+## 1. Research Aim
 
-Using the confirmatory data from Hu et al. (2020), this analysis examines whether good-self associations show faster evidence accumulation than bad-self and good-other associations, while distinguishing stimulus-related evidence from response bias.
+This analysis uses the confirmatory data from Hu et al. (2020) to examine how moral self-associations influence perceptual decision-making, using a stimulus-coded hierarchical drift diffusion model (HDDM).
 
-## Data and experimental tasks
+The Matching task examines differences in evidence accumulation between Good-self and other association conditions. The Identity and Valence tasks examine the effects of moral valence and identity information on classification decisions, respectively. The model distinguishes stimulus-related evidence accumulation from starting-point and drift biases.
 
-Data come from the [original study's public materials](https://github.com/hcp4715/moralSelf_ddm). Identity (Self, Other) and moral valence (Good, Bad) define four association conditions. The three tasks are fitted separately.
+Because the model parameterization differs from that of the original study, this is an exploratory reanalysis rather than a direct numerical replication of the original model.
 
-|Task|Judgment|Participants|Valid trials|
-|---|---|---:|---:|
-|Matching|Whether a shape and label match|42|24527|
-|Identity|Whether a stimulus belongs to Self or Other|41|14493|
-|Valence|Whether a stimulus belongs to Good or Bad|41|14431|
+## 2. Data and Experimental Tasks
 
-Inputs are stored in `Data/`. The main analysis retains positive reaction times, measured in seconds. One invalid keypress trial was excluded from Matching.
+Data were obtained from the [original study's public repository](https://github.com/hcp4715/moralSelf_ddm). Identity (Self, Other) and moral valence (Good, Bad) define four association conditions. The three tasks were modeled separately.
 
-## Model specification
+| Task     | Judgment                                            | Participants | Valid trials |
+| -------- | --------------------------------------------------- | ------------ | ------------ |
+| Matching | Whether a shape and label match                     | 42           | 24,527       |
+| Identity | Whether a stimulus is associated with Self or Other | 41           | 14,493       |
+| Valence  | Whether a stimulus is associated with Good or Bad   | 41           | 14,431       |
 
-### Stimulus coding
+Model inputs are stored in `Data/`. The primary analysis retained positive reaction times in seconds. One invalid keypress trial was excluded from Matching.
 
-The models use `HDDMStimCoding` with `split_param="v"`. `response` codes the actual choice and `stim` codes the stimulus category; response boundaries are not relabeled as correct and incorrect.
+## 3. Model Specification
 
-|Task|Upper boundary: response=1; category coded stim=1|Lower boundary: response=0; category coded stim=0|
-|---|---|---|
-|Matching|Match|Mismatch|
-|Identity|Self|Other|
-|Valence|Good|Bad|
+### 3.1 Stimulus Coding
 
-Taking the upper boundary as the positive direction, signed drift is:
+The models use `HDDMStimCoding` with `split_param="v"`.
+
+The `stim` variable codes the correct response direction associated with the stimulus, whereas `response` codes the participant's actual choice. A trial is correct when these values agree and incorrect when they differ. Unlike accuracy coding, stimulus coding preserves the response categories associated with the decision boundaries.
+
+| Task     | Upper boundary (response = 1) | Lower boundary (response = 0) |
+| -------- | ----------------------------- | ----------------------------- |
+| Matching | Match                         | Mismatch                      |
+| Identity | Self                          | Other                         |
+| Valence  | Good                          | Bad                           |
+
+Here, `stim = 1` indicates that the correct response corresponds to the upper boundary, and `stim = 0` indicates the lower boundary.
+
+Taking the upper boundary as the positive direction, signed drift is defined as:
 
 $$
-\mu=(2\,\mathrm{stim}-1)v+dc.
+\mu=(2\,\mathrm{stim}-1)v+dc
 $$
 
-The two stimulus directions therefore share $v$ within each condition, with opposite signs; $dc$ enters with the same sign in both directions. $v$ is the stimulus-related drift component, rather than an overall tendency toward one response.
+The two stimulus directions share the same drift magnitude $v$ within each condition but have opposite signs. The drift criterion $dc$ is added with the same sign in both directions. Thus, $v$ represents stimulus-related evidence accumulation rather than an overall tendency toward a particular response.
 
-### Model parameters and psychological interpretation
+### 3.2 Model Parameters and Psychological Interpretation
 
-|Parameter|Computational meaning|Interpretation in these tasks|
-|---|---|---|
-|$v$|Mean stimulus-related evidence change per unit time; its sign reverses with stimulus category|Evidence accumulation for match discrimination in Matching, Self/Other classification in Identity, and Good/Bad classification in Valence. Increasing positive $v$ supplies stronger evidence in the correct direction; condition differences do not directly measure preference.|
-|$a$|Distance between the decision boundaries|A model-based measure of the evidence required to choose in each task. Holding other parameters constant, larger $a$ generally corresponds to more cautious decisions.|
-|$t$|The component of reaction time outside evidence accumulation, in seconds|Combined time for processes such as sensory encoding and response execution in each task. These stages cannot be separated by this model; $t$ corresponds to the original study's nondecision time $t_0$.|
-|$z$|Relative starting point between 0 and 1; the absolute starting point is $az$, with 0.5 centered|A response tendency before accumulation begins. $z>0.5$ favors Match, Self, and Good in the respective tasks. The internal `z_trans` parameter is inverse-logit transformed before interpretation as $z$.|
-|$dc$|An additive shift in signed drift, with the same sign for both stimulus directions|A directional bias during accumulation. $dc>0$ shifts drift toward Match, Self, and Good, respectively. It may also absorb asymmetric stimulus difficulty and cannot establish a causal preference on its own.|
+| Parameter                   | Computational meaning                                                   | Interpretation in the present tasks                                                                                                                                                                                          |
+| --------------------------- | ----------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **$v$** Drift rate          | Mean rate of stimulus-related evidence accumulation                     | Reflects evidence accumulation for match discrimination in Matching, Self/Other classification in Identity, and Good/Bad classification in Valence. Larger positive $v$ indicates stronger evidence in the correct direction |
+| **$a$** Boundary separation | Distance between the two decision boundaries                            | Represents the amount of evidence required before making a decision. Larger $a$ generally corresponds to more cautious decisions when other parameters are held constant                                                     |
+| **$t$** Non-decision time   | Reaction-time component outside evidence accumulation, in seconds       | Includes processes such as sensory encoding, motor preparation, and response execution. These components cannot be separated by the present model and correspond to the original study's non-decision time $t_0$             |
+| **$z$** Starting point      | Relative initial position of evidence accumulation, ranging from 0 to 1 | Represents a response bias before accumulation begins; $z=0.5$ indicates a centered starting point                                                                                                                           |
+| **$dc$** Drift criterion    | Directional offset added to stimulus-related drift                      | Represents a response bias during evidence accumulation and may also capture asymmetries in stimulus difficulty                                                                                                              |
 
-Psychological interpretations depend on the model assumptions. $z$ changes the initial position, whereas $dc$ changes the mean direction of accumulation. A Match response bias in Matching is not a direct measure of good-self preference.
+The drift rate $v$ is the primary parameter used to examine the Good-self processing advantage. In Matching, separate drift magnitude parameters are estimated for the four association conditions. Larger $v$ indicates more efficient evidence accumulation under the model but does not identify the specific perceptual or neural processing stage responsible for the difference.
 
-### Candidate models and fitting
+The starting point $z$ represents a response tendency before accumulation. Under the current coding scheme, $z>0.5$ indicates an initial position closer to the Match, Self, or Good boundary in the respective tasks. A Match response bias in Matching cannot be interpreted directly as a Good-self preference.
 
-All models estimate $a$, $t$, and $v$ hierarchically. $a$ and $t$ are shared across conditions within each task. The condition dependencies of $v$ and the five candidate models are listed below. “Shared” means shared across experimental conditions, not identical parameter values across participants.
+The drift criterion $dc$ represents a directional offset during accumulation. Positive $dc$ shifts drift toward the Match, Self, or Good boundary, whereas negative values shift drift toward the opposite boundary.
 
-|Task|Condition dependence of $v$|Stimulus directions sharing $v$|
-|---|---|---|
-|Matching|Identity × moral valence|Match / Mismatch|
-|Identity|Moral valence|Self / Other|
-|Valence|Identity|Good / Bad|
+The parameters $z$ and $dc$ act on different components of the decision process: the initial position and the mean direction of accumulation, respectively. Their empirical separability remains subject to parameter-recovery validation.
 
-|Model|$z$|$dc$|
-|---|---|---|
-|M0|Fixed at 0.5|Fixed at 0|
-|M1|Estimated, shared across conditions|Fixed at 0|
-|M2|Fixed at 0.5|Estimated, shared across conditions|
-|M3|Estimated, shared across conditions|Estimated, shared across conditions|
-|M4|Estimated, shared across conditions|Same condition dependence as $v$|
+The relative starting point is $z$ and the absolute position is $az$; the internal sampling parameter `z_trans` is inverse-logit transformed before interpretation as $z$.
 
-Fits use HDDM informative priors (`informative=True`) and a fixed outlier-mixture probability of 0.05. Each screening fit used one chain with 10000 iterations, 5000 discarded, and `thin=1`. DIC, traces, and predictive checks informed provisional selection of M4 for each task, followed by three additional chains with the same settings. Identity and Valence were subsequently refitted with four entirely new chains, each with 60000 iterations and 30000 discarded; these were not pooled with the original chains. Single-chain screening cannot establish convergence, and M4 is not a conclusively superior model.
+![Stimulus-coded DDM for Matching](Output/hddm/matching/figures/matching_ddm_schematic.png)
 
-## Results
+**Figure 1. Stimulus-coded drift diffusion model for the Matching task.** A: Illustrative evidence paths start at the absolute position $az$; first contact with the Match or Mismatch boundary determines the choice. Reaction time is decision time plus nondecision time $t$. B: Within an association condition, effective drift is $+v+dc$ for a Match stimulus and $-v+dc$ for a Mismatch stimulus. The example uses $v>0$ and $0<dc<v$ to show how a positive drift bias shifts both directions toward Match; $dc$ can also be negative. Paths, arrow lengths, and starting position are conceptual, not observations, posterior predictions, or fitted parameters, and provide no evidence of model adequacy.
 
-### Matching
+### 3.3 Candidate Models and Fitting
 
-Under M4, drift rate was higher for good-self than for bad-self and good-other. The Good−Bad difference was also larger for Self than for Other.
+All models estimate $a$, $t$, and $v$ hierarchically. The parameters $a$ and $t$ are shared across experimental conditions within each task, whereas $v$ varies according to the task-specific condition structure. Sharing a parameter across conditions does not imply identical parameter values across participants.
 
-|Drift-rate contrast|Mean difference|95% credible interval|
-|---|---:|---|
-|Good-self − Bad-self|0.666|[0.387, 0.942]|
-|Good-self − Good-other|0.438|[0.160, 0.719]|
-|Good-other − Bad-other|−0.009|[−0.278, 0.267]|
-|Identity × moral valence interaction¹|0.675|[0.284, 1.059]|
+| Task     | Condition dependence of $v$ | Stimulus directions sharing drift magnitude |
+| -------- | --------------------------- | ------------------------------------------- |
+| Matching | Identity × Valence          | Match / Mismatch                            |
+| Identity | Valence                     | Self / Other                                |
+| Valence  | Identity                    | Good / Bad                                  |
 
-¹ (Good-self−Bad-self)−(Good-other−Bad-other). Intervals are 95% equal-tailed posterior credible intervals.
+Five candidate models were fitted separately for each task.
 
-$z$ was 0.568 [0.558, 0.578], indicating a starting-point bias toward Match. The good-self minus bad-self $dc$ contrast was 0.600 [0.427, 0.774]. These biases describe response tendencies in matching judgments.
+| Model | Starting point $z$                  | Drift criterion $dc$                             |
+| ----- | ----------------------------------- | ------------------------------------------------ |
+| M0    | Fixed at 0.5                        | Fixed at 0                                       |
+| M1    | Estimated, shared across conditions | Fixed at 0                                       |
+| M2    | Fixed at 0.5                        | Estimated, shared across conditions              |
+| M3    | Estimated, shared across conditions | Estimated, shared across conditions              |
+| M4    | Estimated, shared across conditions | Varies with the relevant experimental conditions |
 
-![Matching parameter estimates and contrasts](Output/hddm/matching/figures/matching_m4_parameter_contrasts.png)
+Models used HDDM informative priors (`informative=True`) and a fixed outlier-mixture probability of 0.05.
 
-**Figure 1. Matching parameter estimates and condition contrasts.** Points are posterior means and lines are 95% credible intervals; $v$ denotes stimulus-related drift, $dc$ drift bias, and $z$ the relative starting point.
+Each candidate model was initially fitted with one MCMC chain of 10,000 iterations, including 5,000 burn-in iterations, with `thin=1`. DIC, sampling traces, and preliminary posterior predictive measures informed the provisional selection of M4, followed by three additional chains with the same settings.
 
-### Convergence diagnostics
+Identity and Valence were subsequently refitted using four independent longer chains, each with 60,000 iterations and 30,000 burn-in iterations. These chains were not pooled with the original fits.
 
-Matching M4 passed the four-chain diagnostics. Identity and Valence M4 remained nonconverged after independent long-chain refits, so their parameter estimates are not interpreted.
+Model selection remains uncertain because the initial screening used only one chain per candidate model.
 
-|Task|Maximum Rhat|Minimum bulk ESS|Minimum tail ESS|Assessment|
-|---|---:|---:|---:|---|
-|Matching|1.0022|917|472|Passed|
-|Identity (long refit)|1.3076|10|17|Not passed|
-|Valence (long refit)|1.5282|7|27|Not passed|
+## 4. Results
 
-Criteria were rank-normalized Rhat<1.01 and bulk/tail ESS≥400, supplemented by trace inspection. Rhat assesses agreement between chains; ESS measures effective sampling information. M0–M3 have only single-chain screening results, which cannot establish four-chain convergence.
+### 4.1 Matching
 
-![Matching four-chain traces and distributions](Output/hddm/matching/figures/matching_m4_traces.png)
+Under candidate M4, the estimated drift magnitude was higher for Good-self than for Bad-self and Good-other. The Good−Bad difference was also larger for Self than for Other.
 
-**Figure 2. Matching traces and parameter distributions.** Colors distinguish chains; the left column shows sampling traces and the right column shows parameter distributions.
+| Drift-magnitude contrast       | Posterior mean difference | 95% credible interval |
+| ------------------------------ | ------------------------- | --------------------- |
+| Good-self − Bad-self           | 0.666                     | [0.387, 0.942]        |
+| Good-self − Good-other         | 0.438                     | [0.160, 0.719]        |
+| Good-other − Bad-other         | −0.009                    | [−0.278, 0.267]       |
+| Identity × Valence interaction | 0.675                     | [0.284, 1.059]        |
 
-## Model checks and limitations
+The interaction contrast is defined as:
 
-**Posterior predictive checks (PPC).** The model overpredicts the slow-RT tail. The experiment used a response window of approximately 0.9–1.2 seconds, whereas predictions were not subject to the same window. Trial-specific windows have not been recovered, leaving their contribution to the discrepancy unresolved.
+$$
+(v_{GS}-v_{BS})-(v_{GO}-v_{BO})
+$$
 
-![Matching posterior predictive checks](Output/hddm/matching/figures/matching_m4_ppc.png)
+Intervals are 95% equal-tailed posterior credible intervals.
 
-**Figure 3. Observed and predicted Matching outcomes.** Black crosses show observations; colored points and intervals show predictive means and 95% intervals of predictive statistics. Panels show choice proportions and RT quantiles. Two additional outlier-generation conventions assess predictive sensitivity; neither exactly matches the full fitted outlier likelihood.
+The posterior mean of $z$ was 0.568, with a 95% credible interval of [0.558, 0.578], indicating a starting-point bias toward the Match boundary.
 
-**Sensitivity analysis.** Excluding RT≤0.2 seconds changed the main group estimates little, but one individual parameter had tail ESS=342, below the criterion.
+The Good-self minus Bad-self contrast in $dc$ was 0.600 [0.427, 0.774], indicating a difference in drift bias toward the Match boundary between these conditions.
 
-**Parameter recovery.** All four simulated scenarios contained convergence failures, leaving recovery performance unresolved. One simulated dataset per scenario is also insufficient to assess repeated-sampling interval coverage.
+These estimates are conditional on the candidate M4 model and its parameter constraints.
 
-The Matching results are consistent in direction with a good-self processing advantage, but fit and recovery checks limit their interpretation. Sharing $v$ across stimulus directions and $t$ across conditions, adding $dc$, and changing the outlier specification produce estimands that differ from the 2020 model; parameter values are not directly comparable. Nonconvergence in Identity and Valence also prevents assessment of the original cross-task conclusion.
+![Matching M4](Output/hddm/matching/figures/matching_m4_parameter_contrasts.png)
 
-## Files and reproduction
+*Figure 2. Parameter estimates and condition contrasts under Matching M4. Points represent posterior means, and intervals represent 95% credible intervals.*
 
-`Data/` contains task inputs, `Scripts/hddm/` contains shared calculations and task-specific entry points, and `Output/` contains result tables and figures. Matching has 7 task-level files; Identity and Valence have 5 each. The [notebook](results.ipynb) reads public results only. The [output manifest](Scripts/hddm/output_manifest.json) lists 97 public result files and their producers.
+### 4.2 Convergence Diagnostics
 
-Fitting uses dockerHDDM (HDDM 1.0.1RC). The fixed image and sampling settings are recorded in the [task configuration](Scripts/hddm/matching/matching_config.json); Identity and Valence have corresponding configurations in their own directories. Within that environment, run from this directory:
+| Task                     | Maximum R-hat | Minimum bulk ESS | Minimum tail ESS | Assessment |
+| ------------------------ | ------------- | ---------------- | ---------------- | ---------- |
+| Matching M4              | 1.0022        | 917              | 472              | Passed     |
+| Identity M4 (long refit) | 1.3076        | 10               | 17               | Failed     |
+| Valence M4 (long refit)  | 1.5282        | 7                | 27               | Failed     |
 
-```sh
+The convergence criteria were rank-normalized R-hat < 1.01, bulk ESS ≥ 400, and tail ESS ≥ 400, supplemented by visual inspection of sampling traces.
+
+Matching M4 met the predefined four-chain convergence criteria. Identity and Valence showed substantial convergence problems after independent long-chain refitting; their parameter estimates are therefore not interpreted inferentially.
+
+M0–M3 were evaluated only during single-chain screening, which cannot establish multichain convergence.
+
+![Matching M4](Output/hddm/matching/figures/matching_m4_traces.png)
+
+*Figure 3. Sampling traces and posterior distributions for Matching M4.*
+
+## 5. Model Checks and Limitations
+
+### Posterior Predictive Checks (PPC)
+
+Matching M4 overpredicted the slow-reaction-time tail. The original experiment imposed response windows of approximately 0.9–1.2 seconds, whereas the current predictions did not apply the corresponding trial-specific windows. The contribution of this discrepancy remains unresolved.
+
+Two supplementary outlier-generation conventions were also used for predictive sensitivity checks. Neither exactly matches the full outlier likelihood used during fitting.
+
+![Matching M4](Output/hddm/matching/figures/matching_m4_ppc.png)
+
+*Figure 4. Observed and predicted choice proportions and reaction-time quantiles under Matching M4. Black crosses represent observed values; colored points and intervals represent posterior predictive statistics.*
+
+### Sensitivity Analysis
+
+Excluding trials with RT ≤ 0.2 seconds produced little change in the main group-level estimates. However, one individual parameter had a tail ESS of 342, below the predefined threshold.
+
+### Parameter Recovery
+
+All four simulated parameter-recovery scenarios showed convergence problems, leaving recovery performance unresolved. Each scenario used only one simulated dataset, which is insufficient for assessing interval coverage across repeated samples.
+
+### Interpretation
+
+The Matching estimates are directionally consistent with a Good-self evidence-accumulation advantage, but their interpretation is limited by model selection, predictive fit, and parameter recovery.
+
+The present analysis differs from the original study by sharing $v$ across stimulus directions, sharing $t$ across conditions, introducing $dc$, and using a different outlier specification. The resulting parameter estimates are therefore not directly comparable.
+
+Nonconvergence in Identity and Valence prevents an assessment of the cross-task effects reported in the original study.
+
+## 6. Files and Reproducibility
+
+| Directory or file        | Contents                                                                                 |
+| ------------------------ | ---------------------------------------------------------------------------------------- |
+| `Data/`                  | Model inputs for Matching, Identity, and Valence                                         |
+| `Scripts/hddm/common.py` | Shared HDDM model construction, fitting, and analysis functions                          |
+| `Scripts/hddm/matching/` | Matching model fitting, analysis, plotting, parameter recovery, and sensitivity analysis |
+| `Scripts/hddm/identity/` | Identity model fitting, analysis, and plotting                                           |
+| `Scripts/hddm/valence/`  | Valence model fitting, analysis, and plotting                                            |
+| `Output/`                | Model comparisons, parameter estimates, diagnostics, and figures                         |
+| `results.ipynb`          | Summary and presentation of saved analysis results                                       |
+
+Public outputs and their sources are documented in [output_manifest.json](Scripts/hddm/output_manifest.json).
+
+Fitting uses dockerHDDM (HDDM 1.0.1RC). The container image and sampling settings are specified in the task configuration.
+
+From the `02_reanalysis_2026/` directory, inspect the reproduction plan:
+
+```
 python Scripts/hddm/reproduce.py plan --output Output_new
-python Scripts/hddm/reproduce.py run --output Output_new --workers 2
-python Scripts/hddm/reproduce.py verify --output Output_new
 ```
 
-`plan` displays the schedule; `run` executes the full analysis. A complete run requires the adjacent `01_reproduction_2020/Data` and an output directory that does not yet exist. Tasks execute sequentially. `--workers` accepts 1–4, defaulting to 1; the requested values 5/9 in the configurations do not control current concurrency. Recovery uses at most two workers, and preflight runs sequentially. Reduce concurrency when memory is limited.
+To run the full fitting pipeline in the configured HDDM environment:
 
-Each task's `*_run.py` supports single-chain `fit` and batch phases. The `compare`, `diagnostics`, and `ppc` operations in `*_analyze.py` can run independently; see `--help` for options. To check existing public files, run `python Scripts/hddm/reproduce.py verify --output Output`, which requires only the Python standard library. It does not recompute statistics or assess convergence. The notebook requires pandas and IPython.
+```
+python Scripts/hddm/reproduce.py run --output Output_new --workers 2
+```
 
-Databases and draw-level posterior samples are not distributed. Postprocessing has been checked using saved draws, but the current complete fitting pipeline has not been rerun from scratch. New fits should use a separate directory and must not be pooled with chains whose settings or code fingerprints differ.
+A complete run requires the adjacent `01_reproduction_2020/Data` directory and a new output directory that does not already exist. Tasks run sequentially, and `--workers` supports 1–4 concurrent jobs, defaulting to 1. Lower concurrency may be necessary on memory-constrained systems.
 
-## References
+To verify the existing public output files:
 
-- [Hu et al. (2020): original moral-self study](https://doi.org/10.1525/collabra.301)
-- [Pan et al. (2025): dockerHDDM](https://doi.org/10.1177/25152459241298700)
-- [Stimulus-coding code](https://github.com/Chuan-Peng-Lab/ddm_stim_coding_posts)
+```
+python Scripts/hddm/reproduce.py verify --output Output
+```
+
+This command checks file integrity and basic structure without recomputing parameter estimates or assessing convergence.
+
+The current complete fitting pipeline has not yet been rerun end-to-end after code reorganization. The repository provides model inputs, analysis code, and summarized results, but does not distribute full MCMC databases or draw-level posterior samples.
+
+To generate Figure 1 only (requires Matplotlib; no posterior samples or MCMC):
+
+```sh
+python Scripts/hddm/matching/matching_plot.py --kind schematic --output Output
+```
+
+## 7. References
+
+- [Hu et al. (2020), *Good me, bad me: Prioritization of the good-self during perceptual decision-making*](https://doi.org/10.1525/collabra.301)
+- [Pan et al. (2025), dockerHDDM](https://doi.org/10.1177/25152459241298700)
+- [HDDM documentation](https://hddm.readthedocs.io/en/latest/)
+- [Stimulus-coding implementation](https://github.com/Chuan-Peng-Lab/ddm_stim_coding_posts)
+- [Myers et al. (2022), A practical introduction to using the drift diffusion model](https://doi.org/10.3389/fpsyg.2022.1039172)
