@@ -66,9 +66,11 @@ $z$ 改变证据积累的初始位置，$dc$ 改变积累过程中的平均漂�
 
 相对起点为 $z$，绝对起点为 $az$；内部采样参数 `z_trans` 经逆 logit 转换后才作为 $z$ 解释。
 
-![Stimulus-coded DDM for Matching](Output/hddm/matching/figures/matching_ddm_schematic.png)
+![Matching M4 fitted-parameter simulations and effective drift](Output/hddm/matching/figures/matching_ddm_schematic.png)
 
-**图 1. Matching 任务的刺激编码漂移扩散模型。** A：示意性证据轨迹从绝对起点 $az$ 出发，首次触及 Match 或 Mismatch 边界时产生选择；反应时为决策时间与非决策时间 $t$ 之和。B：同一关联条件下，Match 刺激的有效漂移为 $+v+dc$，Mismatch 刺激为 $-v+dc$。图中仅以 $v>0$、$0<dc<v$ 说明正向漂移偏置如何同时使两个方向朝 Match 偏移；$dc$ 也可为负。轨迹、箭头长度与起点均为概念示意，不是实测数据、后验预测或拟合参数，不能作为模型检验通过的证据。
+**图 1. Matching M4 的拟合参数模拟路径与有效漂移。** A：使用 Good-self 条件的群体后验均值固定参数（$a=1.224$、$z=0.568$、$t=0.464$ 秒、$v=2.214$、$dc=0.321$），分别模拟 Match、Mismatch 刺激的前两条路径，不按结局或外观筛选。路径从 $\bar a\bar z$ 出发，首次触及边界时停止；它们不是实测证据轨迹，也不代表某位被试。图中时间从积累开始计，反应时另加非决策时间 $t$。B：四种关联条件的有效漂移 $+v+dc$ 与 $-v+dc$，点为后验均值，线为 95% 等尾可信区间；区间由四条链中配对的 $v$、$dc$ 样本计算。
+
+路径使用单位扩散噪声的 Wiener 过程，以 Euler–Maruyama 步进（$\Delta t=0.0001$ 秒，种子 `2026102301`）近似模拟，并在最后一个时间步内插值确定边界接触。A 图不传播参数的后验不确定性或个体差异，仅展示 DDM 主体，不包含离群混合成分或实验反应窗口，因此不是完整的后验预测检验。$\bar a\bar z$ 是代入均值后的起点，不等于 $E[az]$。原有 PPC 与参数恢复限制仍适用。
 
 ### 3.3 候选模型与拟合
 
@@ -215,11 +217,13 @@ python Scripts/hddm/reproduce.py verify --output Output
 
 当前完整拟合流程尚未在整理后的代码上进行端到端重跑。仓库提供模型输入、分析代码和汇总结果，但不包含完整 MCMC 数据库与逐次后验样本。
 
-仅生成图 1（需要 Matplotlib，不读取后验样本或运行 MCMC）：
+使用公开汇总结果生成图 1（需要 NumPy 和 Matplotlib，不需 HDDM 或本地后验数据库）：
 
 ```sh
 python Scripts/hddm/matching/matching_plot.py --kind schematic --output Output
 ```
+
+有效漂移表由 `python Scripts/hddm/matching/matching_analyze.py diagnostics --effective-drift --output Output` 生成，需要四条正式链的后验样本与 NumPy、pandas、ArviZ；绘图只读取公开汇总表。随机种子、数值步长、参数来源哈希和各路径的选择及反应时保存在 `Output/hddm/matching/figures/matching_ddm_simulation.json`。
 
 ## 7. 参考资料
 

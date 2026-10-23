@@ -594,6 +594,7 @@ def entry(task,operation,argv=None):
         parser.add_argument('--phase',choices=['smoke','screening','final','sensitivity','long_refit'],default='screening')
         parser.add_argument('--chain',type=int,default=1)
     if operation=='diagnostics':
+        parser.add_argument('--effective-drift',action='store_true',help='Matching M4: summarize paired posterior effective drifts without refitting')
         parser.add_argument('--review',action='store_true',help='Matching precise contrasts and predictive conventions, after PPC')
         parser.add_argument('--long-refit',action='store_true')
     if operation=='plot':
@@ -615,9 +616,9 @@ def entry(task,operation,argv=None):
     if getattr(args,"figures_output",None):FIGURES_OUTPUT=args.figures_output.expanduser().resolve()
     if args.output:OUTPUT=args.output.expanduser().resolve()
     os.environ['HU2026_OUTPUT']=str(OUTPUT)
-    if (operation in ('sensitivity','recovery') or getattr(args,'review',False)) and (task!='matching' or args.model!='m4'):
+    if (operation in ('sensitivity','recovery') or getattr(args,'review',False) or getattr(args,'effective_drift',False)) and (task!='matching' or args.model!='m4'):
         parser.error('These checks are implemented for Matching M4 only')
-    if operation=='plot' and args.kind=='summary' and (task!='matching' or args.model!='m4'):
+    if operation=='plot' and args.kind in ('summary','schematic') and (task!='matching' or args.model!='m4'):
         parser.error('Summary plotting is implemented for Matching M4; use --kind traces')
     if args.plan:
         assert (ROOT/'Data'/(task+'_input.csv')).is_file()
@@ -625,7 +626,11 @@ def entry(task,operation,argv=None):
           output_root=str(OUTPUT),task_output=str(OUTPUT/'hddm'/task)),indent=2));return
     if operation=='plot' and args.kind=='schematic':
         from matching.matching_plot import draw_schematic
-        print(draw_schematic(FIGURES_OUTPUT or OUTPUT/'hddm'/task/'figures'))
+        print(draw_schematic(OUTPUT, FIGURES_OUTPUT))
+        return
+    if operation=='diagnostics' and args.effective_drift:
+        if args.review or args.long_refit:parser.error('Use --effective-drift independently')
+        matching_effective_drift()
         return
     numerical_libraries()
     if operation=='fit':
@@ -667,6 +672,37 @@ def entry(task,operation,argv=None):
         if bool(args.scenario)!=bool(args.chain):parser.error('scenario and chain must be supplied together')
         sys.argv=[sys.argv[0],'matching']+([args.scenario,str(args.chain)] if args.scenario else [])
         matching_recovery()
+
+def matching_effective_drift():
+    """Derived estimates from paired draws; preserve existing estimates and chains."""
+    import numpy as np
+    import pandas as pd
+    import arviz as az
+    dest=OUTPUT/'hddm/matching/m4/final/diagnostics'
+    source=json.loads((dest/'chain_sources.json').read_text(encoding='utf-8-sig'))
+    paths=[OUTPUT/p for p in source['paths']]
+    if len(paths)!=4:raise ValueError('Expected four Matching M4 chains')
+    fps=[json.loads((p/'fingerprint.json').read_text(encoding='utf-8-sig')) for p in paths]
+    if not all(f==fps[0] for f in fps):raise ValueError('Chain fingerprints differ')
+    conditions=['Self.Good','Self.Bad','Other.Good','Other.Bad']
+    columns=[par+'('+c+')' for c in conditions for par in ['v','dc']]
+    traces=[pd.read_csv(p/'traces.csv.gz',usecols=columns) for p in paths]
+    if len({len(t) for t in traces})!=1:raise ValueError('Unequal chain lengths')
+    rows=[]
+    for condition in conditions:
+        v=np.stack([t['v('+condition+')'].to_numpy() for t in traces])
+        dc=np.stack([t['dc('+condition+')'].to_numpy() for t in traces])
+        for stim,sign in [(1,1),(0,-1)]:
+            mu=sign*v+dc
+            if not np.isfinite(mu).all():raise ValueError('Nonfinite effective drift')
+            rows.append(dict(condition=condition,stim=stim,mean=float(mu.mean()),
+                q025=float(np.quantile(mu,.025)),q975=float(np.quantile(mu,.975)),
+                v_mean=float(v.mean()),dc_mean=float(dc.mean()),
+                r_hat=float(az.rhat(mu)),ess_bulk=float(az.ess(mu,method='bulk')),
+                ess_tail=float(az.ess(mu,method='tail')),mcse_mean=float(az.mcse(mu,method='mean')),
+                chains=len(traces),draws_per_chain=len(traces[0])))
+    pd.DataFrame(rows).to_csv(dest/'matching_effective_drift.csv',index=False)
+
 
 def summarize_recovery():
     recovery_settings()

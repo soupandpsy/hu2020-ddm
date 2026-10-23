@@ -1,0 +1,62 @@
+{
+  "task": "matching",
+  "model": "m4",
+  "condition_panel_a": "Self.Good",
+  "parameters": {
+    "a": 1.2242069382093794,
+    "z": 0.5680916892738427,
+    "t": 0.464327964026853,
+    "v": 2.2141761931221144,
+    "dc": 0.3213603263529699,
+    "absolute_start": 0.6954617875481252
+  },
+  "parameter_policy": "Separate group posterior means plugged into DDM; a_mean*z_mean is not E[a*z].",
+  "method": "Euler-Maruyama Wiener increments; grid boundary detection with linear final-segment interpolation",
+  "seed": 2026102301,
+  "dt_seconds": 0.0001,
+  "diffusion_sd": 1.0,
+  "paths_per_stimulus": 2,
+  "max_time_seconds": 10.0,
+  "outlier_component": false,
+  "trial_response_window": false,
+  "posterior_uncertainty_in_paths": false,
+  "subject_variability_in_paths": false,
+  "path_selection": "First two paths per stimulus, Match then Mismatch; no filtering or resampling",
+  "endpoints": [
+    {
+      "stim": 1,
+      "path": 1,
+      "response": 1,
+      "decision_time": 0.13533150943443523,
+      "rt": 0.5996594734612882
+    },
+    {
+      "stim": 1,
+      "path": 2,
+      "response": 1,
+      "decision_time": 0.08183573047416298,
+      "rt": 0.546163694501016
+    },
+    {
+      "stim": 0,
+      "path": 1,
+      "response": 0,
+      "decision_time": 0.712230211153782,
+      "rt": 1.176558175180635
+    },
+    {
+      "stim": 0,
+      "path": 2,
+      "response": 0,
+      "decision_time": 0.14537424217879683,
+      "rt": 0.6097022062056499
+    }
+  ],
+  "inputs": {
+    "hddm/matching/m4/final/diagnostics/matching_precise_diagnostics.csv": "af5a5eed9f17cb5a4bbdcf8ecfd4a032266d879209e0622d8f1e4c23f0541025",
+    "hddm/matching/m4/final/diagnostics/matching_parameter_contrasts.csv": "81e468b380e44af75809fbc901c24a818ed7c929b4bf23ce72e1707a48e5796a",
+    "hddm/matching/m4/final/diagnostics/matching_effective_drift.csv": "f7d27981ad72024af820f12dededdfa065a82d623409b2085405b5c9c9336d0f"
+  },
+  "numpy_version": "1.23.3",
+  "matplotlib_version": "3.6.0"
+}

@@ -23,6 +23,7 @@ for task in policy['selection']:
  add(task,'run','final','--model',policy['selection'][task]['model'],'--workers',str(a.workers))
  add(task,'diagnostics')
 add('matching','ppc');add('matching','diagnostics','--review')
+add('matching','diagnostics','--effective-drift')
 for kind in ['summary','traces','schematic']:add('matching','plot','--kind',kind)
 add('matching','sensitivity','--workers',str(a.workers));add('matching','sensitivity','--analyze');add('matching','recovery')
 for task in ['identity','valence']:

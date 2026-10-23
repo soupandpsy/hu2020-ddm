@@ -487,6 +487,14 @@
   {
     "path": "hddm/matching/figures/matching_ddm_schematic.png",
     "producer": "matching/matching_plot.py --kind schematic",
-    "description": "Conceptual method illustration; no observations or posterior estimates."
+    "description": "Fitted group-mean DDM simulations and paired posterior effective drift intervals."
+  },
+  {
+    "path": "hddm/matching/m4/final/diagnostics/matching_effective_drift.csv",
+    "producer": "matching/matching_analyze.py diagnostics --effective-drift"
+  },
+  {
+    "path": "hddm/matching/figures/matching_ddm_simulation.json",
+    "producer": "matching/matching_plot.py --kind schematic"
   }
 ]

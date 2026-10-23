@@ -66,9 +66,11 @@ The parameters $z$ and $dc$ act on different components of the decision process:
 
 The relative starting point is $z$ and the absolute position is $az$; the internal sampling parameter `z_trans` is inverse-logit transformed before interpretation as $z$.
 
-![Stimulus-coded DDM for Matching](Output/hddm/matching/figures/matching_ddm_schematic.png)
+![Matching M4 fitted-parameter simulations and effective drift](Output/hddm/matching/figures/matching_ddm_schematic.png)
 
-**Figure 1. Stimulus-coded drift diffusion model for the Matching task.** A: Illustrative evidence paths start at the absolute position $az$; first contact with the Match or Mismatch boundary determines the choice. Reaction time is decision time plus nondecision time $t$. B: Within an association condition, effective drift is $+v+dc$ for a Match stimulus and $-v+dc$ for a Mismatch stimulus. The example uses $v>0$ and $0<dc<v$ to show how a positive drift bias shifts both directions toward Match; $dc$ can also be negative. Paths, arrow lengths, and starting position are conceptual, not observations, posterior predictions, or fitted parameters, and provide no evidence of model adequacy.
+**Figure 1. Matching M4 paths simulated at fitted parameters and effective drift.** A: Group posterior means for Good-self are held fixed ($a=1.224$, $z=0.568$, $t=0.464$ s, $v=2.214$, $dc=0.321$). The first two paths for each of the Match and Mismatch stimuli are shown without selection by outcome or appearance. Paths start at $\bar a\bar z$ and stop at the first boundary contact; they are not measured evidence trajectories or paths from a particular participant. Time is measured from accumulation onset; nondecision time $t$ is added to obtain RT. B: Effective drifts $+v+dc$ and $-v+dc$ in all four association conditions, with posterior means and 95% equal-tailed credible intervals computed from paired $v$ and $dc$ draws across four chains.
+
+Paths approximate a unit-diffusion Wiener process using Euler–Maruyama steps ($\Delta t=0.0001$ s, seed `2026102301`), with interpolation within the final step to locate boundary contact. Panel A does not propagate posterior parameter uncertainty or between-participant variability. It illustrates only the DDM component, excluding the outlier mixture and experimental response windows, and is not a full posterior predictive check. The plug-in starting point $\bar a\bar z$ is not $E[az]$. Existing PPC and parameter-recovery limitations still apply.
 
 ### 3.3 Candidate Models and Fitting
 
@@ -215,11 +217,13 @@ This command checks file integrity and basic structure without recomputing param
 
 The current complete fitting pipeline has not yet been rerun end-to-end after code reorganization. The repository provides model inputs, analysis code, and summarized results, but does not distribute full MCMC databases or draw-level posterior samples.
 
-To generate Figure 1 only (requires Matplotlib; no posterior samples or MCMC):
+To rebuild Figure 1 from public summaries (requires NumPy and Matplotlib, without HDDM or local posterior databases):
 
 ```sh
 python Scripts/hddm/matching/matching_plot.py --kind schematic --output Output
 ```
+
+The effective-drift table is produced by `python Scripts/hddm/matching/matching_analyze.py diagnostics --effective-drift --output Output`, which requires posterior samples from the four formal chains and NumPy, pandas, and ArviZ; plotting reads public summaries only. The seed, time step, source hashes, and choices and RTs of simulated paths are recorded in `Output/hddm/matching/figures/matching_ddm_simulation.json`.
 
 ## 7. References
 
