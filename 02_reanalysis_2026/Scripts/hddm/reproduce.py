@@ -40,7 +40,6 @@ if a.mode=='run':
  for cmd in commands:subprocess.run(cmd,check=True)
  c.numerical_libraries();c.regenerate_reports();c.verify_output_manifest()
 elif a.mode=='audit-data':c.regenerate_data_audit(a.source_repository)
+elif a.mode=='verify':c.verify_output_manifest()
 else:
- c.numerical_libraries()
- if a.mode=='reports':c.regenerate_reports()
- else:c.verify_output_manifest()
+ c.numerical_libraries();c.regenerate_reports()

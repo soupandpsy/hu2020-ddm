@@ -71,6 +71,10 @@ python Scripts/hddm/reproduce.py verify --output Output_new
 
 A complete run requires the adjacent `01_reproduction_2020/Data` and a new output directory. The [output manifest](Scripts/hddm/output_manifest.json) identifies file producers. Postprocessing was checked using historical draws; the reorganized full fitting pipeline has not been rerun from scratch. Databases and draw-level samples are not distributed.
 
+File integrity checks require only the Python standard library and can run outside HDDM: `python Scripts/hddm/reproduce.py verify --output Output`. This checks file presence, JSON/CSV structure and manifest producers; it does not recompute estimates or certify convergence.
+
+The CLI accepts `--workers 1` to `4` (default 1). The unchanged configuration fields `requested_screening_parallel=5` and `requested_final_parallel=9` record historical requested concurrency, not scheduler limits. The current pipeline processes tasks sequentially: five screening jobs per task with at most four active, then three additional final chains; long refits schedule four new chains. This conservative cap preserves the memory-bounded execution policy; it is not automatic memory detection or a guarantee on every machine. Choose fewer workers when memory is limited. Recovery retains its separate fixed limit of two workers, and preflight runs sequentially; the general `--workers` option does not override those stages.
+
 ### Task entries and provenance
 
 Each task retains its own configuration, models, run, analyze and plot entry points. Matching additionally has recovery and sensitivity entries. `run fit` fits one chain; the other Run phases schedule smoke, screening, final or independent long-refit jobs. Analyze operations execute independently:

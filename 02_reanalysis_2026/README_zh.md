@@ -71,6 +71,10 @@ python Scripts/hddm/reproduce.py verify --output Output_new
 
 完整运行需要相邻的`01_reproduction_2020/Data`和一个尚不存在的输出目录。[输出清单](Scripts/hddm/output_manifest.json)记录各文件的生成入口。后处理已使用历史样本验证；整理后的完整拟合流程尚未从零重跑。数据库与逐次样本不随仓库分发。
 
+文件完整性检查仅需 Python 标准库，可在没有 HDDM 的环境运行：`python Scripts/hddm/reproduce.py verify --output Output`。它检查文件存在性、JSON/CSV 结构和清单生产入口，不重新计算估计值，也不判定收敛。
+
+CLI 接受 `--workers 1` 至 `4`，默认 1。配置中的 `requested_screening_parallel=5` 和 `requested_final_parallel=9` 保留历史期望并行数，不是当前调度上限。统一流程按任务顺序执行：每任务的五个初筛作业最多同时运行四个，正式阶段追加三条链，独立长链阶段运行四条新链。该保守上限延续受内存限制的运行策略，不提供自动内存检测，也不保证适用于所有机器；内存不足时应减少 workers。恢复分析另有固定的两进程上限，preflight 顺序执行，通用 `--workers` 不覆盖这两个阶段。
+
 ### 任务入口与历史来源
 
 每个任务保留配置、模型定义、运行、分析和绘图入口；Matching 另有恢复和敏感性分析入口。`run fit` 拟合单链，其余 Run 阶段调度 smoke、screening、final 或独立长链。Analyze 的三个操作可单独执行：

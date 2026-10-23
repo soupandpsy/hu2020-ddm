@@ -129,7 +129,7 @@ def schedule(jobs,workers):
             out.parent.mkdir(parents=True,exist_ok=True)
             log=out.parent/("r%02d.stdout.log"%chain);err=out.parent/("r%02d.stderr.log"%chain)
             stdout=log.open("x");stderr=err.open("x")
-            cmd=[sys.executable,"-u",str(HERE/task/(task+"_run.py")),"fit","--model",name,"--chain",str(chain),"--phase",phase]
+            cmd=[sys.executable,"-u",str(HERE/task/(task+"_run.py")),"fit","--model",name,"--chain",str(chain),"--phase",phase,"--output",str(OUTPUT)]
             proc=subprocess.Popen(cmd,stdout=stdout,stderr=stderr)
             active.append((proc,stdout,stderr,(task,name,chain,phase)))
             print("START",proc.pid,task,name,chain,phase,flush=True)
@@ -514,7 +514,7 @@ def matching_recovery():
             while pending and len(active)<2 and not failed:
                 s,c=pending.pop(0);dest=out/s;dest.mkdir(exist_ok=True)
                 so=(dest/('r%02d.stdout.log'%c)).open('x');se=(dest/('r%02d.stderr.log'%c)).open('x')
-                proc=subprocess.Popen([sys.executable,'-u',str(HERE/'matching/matching_recovery.py'),'--scenario',s,'--chain',str(c)],stdout=so,stderr=se)
+                proc=subprocess.Popen([sys.executable,'-u',str(HERE/'matching/matching_recovery.py'),'--scenario',s,'--chain',str(c),'--output',str(OUTPUT)],stdout=so,stderr=se)
                 active.append((proc,so,se,s,c));print('START',s,c,flush=True)
             for item in active[:]:
                 proc,so,se,s,c=item
@@ -805,14 +805,27 @@ def regenerate_reports():
     pd.DataFrame(rows).to_csv(OUTPUT/'results_summary.csv',index=False)
 
 def verify_output_manifest():
-    manifest=json.loads((HERE/'output_manifest.json').read_text())
+    """Check public artifact structure, without loading scientific libraries."""
+    import csv
+    manifest=json.loads((HERE/'output_manifest.json').read_text(encoding='utf-8-sig'))
+    paths=[row['path'] for row in manifest]
+    if len(paths)!=len(set(paths)):raise ValueError('Duplicate output paths in manifest')
+    for row in manifest:
+        producer=HERE/row['producer'].split()[0]
+        if not producer.is_file():raise FileNotFoundError('Missing producer: '+str(producer))
     missing=[row['path'] for row in manifest if not (OUTPUT/row['path']).is_file()]
     if missing:raise FileNotFoundError('Missing public outputs: '+', '.join(missing))
     for row in manifest:
         p=OUTPUT/row['path']
         if p.stat().st_size==0:raise ValueError('Empty output: '+str(p))
-        if p.suffix=='.json':json.loads(p.read_text())
-        if p.suffix=='.csv':pd.read_csv(p)
+        if p.suffix=='.json':json.loads(p.read_text(encoding='utf-8-sig'))
+        if p.suffix=='.csv':
+            with p.open(encoding='utf-8-sig',newline='') as stream:
+                rows=csv.reader(stream,strict=True)
+                header=next(rows,None)
+                if not header:raise ValueError('Missing CSV header: '+str(p))
+                for number,row in enumerate(rows,2):
+                    if len(row)!=len(header):raise ValueError('CSV field count: %s line %d'%(p,number))
     print('Verified all %d public Output paths'%len(manifest),flush=True)
 
 def recovery_settings():
