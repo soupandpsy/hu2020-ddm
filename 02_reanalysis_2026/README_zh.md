@@ -1,67 +1,131 @@
-# 道德自我关联与知觉决策：HDDM再分析
+# 道德自我关联与知觉决策：HDDM 再分析
 
 [English](README.md) · [完整结果与计算过程](results.ipynb)
 
-## 研究问题与方法
+## 研究目的
 
-本分析使用Hu等（2020）的验证性研究数据，考察与“好自我”关联的刺激是否比“坏自我”和“好他人”具有更快的证据积累速度，并区分证据积累与反应偏置。
+使用 Hu 等（2020）的验证性研究数据，考察 Good-self（好自我）关联是否比 Bad-self（坏自我）和 Good-other（好他人）表现出更快的证据积累，并区分刺激相关证据与反应偏置。
 
-实验条件由身份（Self、Other）和道德属性（Good、Bad）组合而成。Matching任务要求判断形状与标签是否匹配；Identity和Valence任务分别要求判断身份和道德属性。三个任务分别纳入42、41、41名被试，有效试次为24527、14493、14431。Matching排除了一个非法按键试次。
+## 数据与实验任务
 
-每个任务比较五个模型（M0–M4），随后对候选M4进行四链评估。M4估计各条件的漂移率v和漂移偏置dc，以及跨条件共享的起点z、边界间距a和非决策时间t。Matching中匹配与不匹配刺激共享v的幅度。初筛每个模型只有一条链，模型选择仍有不确定性。
+数据来自[原研究公开材料](https://github.com/hcp4715/moralSelf_ddm)。身份（Self、Other）与道德属性（Good、Bad）构成四种关联条件，三个任务分别拟合。
 
-## Matching结果
+|任务|判断内容|被试数|有效试次|
+|---|---|---:|---:|
+|Matching|形状与标签是否匹配|42|24527|
+|Identity|刺激属于 Self 还是 Other|41|14493|
+|Valence|刺激属于 Good 还是 Bad|41|14431|
 
-Good-self的漂移率高于Bad-self，也高于Good-other。自我条件中的Good−Bad差异大于他人条件，表明道德属性与身份的关系体现在证据积累速度上。
+输入文件位于 `Data/`。主分析保留正反应时，单位为秒；Matching 排除一个非法按键试次。
+
+## 模型设定
+
+### 刺激编码
+
+模型使用 `HDDMStimCoding`，设置 `split_param="v"`。`response` 编码实际选择，`stim` 编码刺激类别，不以正确或错误重新标记反应边界。
+
+|任务|上边界：response=1；stim=1 对应类别|下边界：response=0；stim=0 对应类别|
+|---|---|---|
+|Matching|Match（匹配）|Mismatch（不匹配）|
+|Identity|Self（自我）|Other（他人）|
+|Valence|Good（好）|Bad（坏）|
+
+以朝向上边界为正方向，模型中的有符号漂移为：
+
+$$
+\mu=(2\,\mathrm{stim}-1)v+dc.
+$$
+
+因此，两个刺激方向共享同一条件下的 $v$，但符号相反；$dc$ 在两个方向上均以相同符号加入。$v$ 是刺激相关的漂移分量，不等同于某一反应方向的总体倾向。
+
+### 模型参数及心理学含义
+
+|参数|计算含义|在本研究任务中的解释|
+|---|---|---|
+|$v$|单位时间的刺激相关平均证据变化；其符号随刺激类别翻转|Matching 中反映匹配性辨别的证据积累，Identity 中反映 Self/Other 分类，Valence 中反映 Good/Bad 分类。正向 $v$ 增大表示更强的正确方向证据；条件差异不直接等同于偏好。|
+|$a$|上下决策边界之间的距离|三项任务中作出选择所需证据量的模型指标。其他参数不变时，较大的 $a$ 通常对应更谨慎的决策。|
+|$t$|证据积累以外的反应时间成分，单位为秒|三项任务中感觉编码、反应执行等过程的合计时间；该模型不能进一步区分这些阶段，对应原研究的非决策时间 $t_0$。|
+|$z$|相对起点，范围为 0–1；绝对起点为 $az$，0.5 表示居中|积累开始前的反应倾向。$z>0.5$ 分别偏向 Match、Self、Good。模型内部的 `z_trans` 经逆 logit 转换后解释为 $z$。|
+|$dc$|加在有符号漂移上的偏移量，两个刺激方向使用相同符号|积累过程中的方向性偏置。$dc>0$ 分别使漂移偏向 Match、Self、Good；它也可能吸收刺激难度不对称，不能单独解释为因果性偏好。|
+
+这些心理学含义依赖模型假设。$z$ 改变积累的起点，$dc$ 改变积累过程中的平均方向，两者并非同一参数。Matching 的 Match 反应偏置不能直接解释为 Good-self 偏好。
+
+### 候选模型与拟合
+
+所有模型均分层估计 $a$、$t$ 和 $v$。$a$、$t$ 在任务内跨条件共享；$v$ 的条件依赖及五个候选模型如下。表中的“共享”指跨实验条件共享，不表示所有被试使用相同参数值。
+
+|任务|$v$ 的条件依赖|共享的刺激方向|
+|---|---|---|
+|Matching|身份 × 道德属性|Match / Mismatch|
+|Identity|道德属性|Self / Other|
+|Valence|身份|Good / Bad|
+
+|模型|$z$|$dc$|
+|---|---|---|
+|M0|固定为 0.5|固定为 0|
+|M1|估计，跨条件共享|固定为 0|
+|M2|固定为 0.5|估计，跨条件共享|
+|M3|估计，跨条件共享|估计，跨条件共享|
+|M4|估计，跨条件共享|与 $v$ 使用相同条件划分|
+
+使用 HDDM 信息性先验（`informative=True`），离群混合概率固定为 0.05。每个模型初筛运行一条链，迭代 10000 次、舍弃前 5000 次，`thin=1`。综合 DIC、轨迹和预测检查，各任务暂选 M4，再追加三条配置相同的链。Identity、Valence 随后分别使用四条全新长链重拟合，每链迭代 60000 次、舍弃前 30000 次，不与原链合并。单链初筛不能证明收敛，M4 也不是已确定的唯一最佳模型。
+
+## 分析结果
+
+### Matching
+
+M4 中 Good-self 的漂移率高于 Bad-self 和 Good-other，自我条件的 Good−Bad 差异也大于他人条件。
 
 |漂移率对比|均值差|95%可信区间|
 |---|---:|---|
 |Good-self − Bad-self|0.666|[0.387, 0.942]|
 |Good-self − Good-other|0.438|[0.160, 0.719]|
 |Good-other − Bad-other|−0.009|[−0.278, 0.267]|
-|身份×道德属性交互¹|0.675|[0.284, 1.059]|
+|身份 × 道德属性交互¹|0.675|[0.284, 1.059]|
 
-¹ (Good-self−Bad-self)−(Good-other−Bad-other)。区间为95%等尾后验可信区间。
+¹ (Good-self−Bad-self)−(Good-other−Bad-other)。区间为 95% 等尾后验可信区间。
 
-起点z为0.568，95%可信区间[0.558, 0.578]，表明存在朝向“匹配”反应的起点偏置。Good-self与Bad-self的dc差为0.600，[0.427, 0.774]。两类偏置描述的是匹配判断中的反应倾向，不能直接等同于对“好自我”的偏好。
+$z$ 为 0.568，[0.558, 0.578]，表明起点偏向 Match 反应；Good-self 与 Bad-self 的 $dc$ 差为 0.600，[0.427, 0.774]。这些偏置描述匹配判断中的反应倾向。
 
 ![Matching参数估计与条件对比](Output/hddm/matching/figures/matching_m4_parameter_contrasts.png)
 
-**图1. Matching的参数估计与条件对比。** 点为后验均值，线段为95%可信区间。v表示证据积累速度，dc表示漂移偏置，z表示相对起点。
+**图1. Matching 的参数估计与条件对比。** 点为后验均值，线段为 95% 可信区间；$v$ 表示刺激相关漂移，$dc$ 表示漂移偏置，$z$ 表示相对起点。
 
-## 估计稳定性
+### 收敛诊断
 
-Matching的四条链得到接近的参数分布，收敛检查通过。Identity和Valence在增加迭代次数后仍有明显链间差异，因此不报告两项任务的参数解释。
+Matching M4 的四链诊断通过。Identity 和 Valence 的 M4 在独立长链重拟合后仍未收敛，因此不解释两项任务的参数估计。
 
-|任务|最大Rhat|最低bulk ESS|最低tail ESS|判断|
+|任务|最大 Rhat|最低 bulk ESS|最低 tail ESS|判断|
 |---|---:|---:|---:|---|
 |Matching|1.0022|917|472|通过|
 |Identity（长链）|1.3076|10|17|未通过|
 |Valence（长链）|1.5282|7|27|未通过|
 
-Rhat用于检查不同链的一致性，ESS表示采样包含的有效信息量。本分析采用Rhat<1.01、bulk/tail ESS均≥400，并结合轨迹检查。
+采用秩归一化 Rhat<1.01、bulk/tail ESS 均≥400，并结合轨迹检查。Rhat 衡量链间一致性，ESS 衡量有效采样信息量。M0–M3 仅完成单链初筛，不能据此判断正式四链收敛。
 
 ![Matching四链轨迹与分布](Output/hddm/matching/figures/matching_m4_traces.png)
 
-**图2. Matching的四链轨迹与参数分布。** 不同颜色表示不同链，左列为采样轨迹，右列为参数分布。
+**图2. Matching 的四链轨迹与参数分布。** 不同颜色表示不同链，左列为采样轨迹，右列为参数分布。
 
 ## 模型检验与局限
 
-模型预测的慢反应时尾部比观测数据更长（图3）。实验有约0.9–1.2秒的反应窗口，而预测未施加相同窗口，两者的可比性受到限制。逐试次窗口尚未恢复，因此还不能判断窗口对差异的贡献。
+**后验预测检验（PPC）。** 模型预测的慢反应时尾部比观测数据更长。实验反应窗口约为 0.9–1.2 秒，而预测未施加相同窗口；逐试次窗口尚未恢复，窗口对差异的贡献仍不确定。
 
 ![Matching后验预测检验](Output/hddm/matching/figures/matching_m4_ppc.png)
 
-**图3. Matching的观测数据与后验预测。** 黑色叉号为观测值；彩色点和区间表示预测均值及95%预测统计量区间。各面板分别显示选择比例及反应时分位数。两种补充离群生成约定用于检查预测对设定的敏感性，与拟合时的完整离群似然并不严格一致。
+**图3. Matching 的观测数据与后验预测。** 黑色叉号为观测值；彩色点和区间表示预测均值及 95% 预测统计量区间。各面板显示选择比例与反应时分位数。两种补充离群生成约定用于检查预测敏感性，与拟合时的完整离群似然并不严格一致。
 
-排除RT≤0.2秒后，主要群体估计变化很小，但一个个体参数的tail ESS为342，未达到预设门槛。四个模拟情景的参数恢复分析也均有收敛不足，尚不能确认参数恢复表现。
+**敏感性分析。** 排除 RT≤0.2 秒后，主要群体估计变化很小，但一个个体参数的 tail ESS 为 342，未达到预设门槛。
 
-因此，Matching结果提供了与Good-self加工优势方向一致的证据，但解释仍受模型拟合与恢复检验的限制。本次模型与2020模型的参数约束不同，数值不宜直接比较；Identity和Valence的结果也不足以评价原文的跨任务结论。
+**参数恢复。** 四个模拟情景均有收敛不足，尚不能确认恢复表现；每情景仅一个模拟数据集，也不足以评价重复抽样的区间覆盖率。
 
-## 文件与运行
+Matching 结果与 Good-self 加工优势的方向一致，但解释仍受拟合和恢复检验限制。本次 $v$ 在刺激方向间共享、$t$ 跨条件共享，并增加 $dc$、改变离群设定，与 2020 模型的估计量不完全相同，不能直接比较参数数值。Identity、Valence 未收敛，也不足以评价原文的跨任务结论。
 
-[Notebook](results.ipynb)包含模型比较、条件估计及检查结果；数据位于`Data/`，计算脚本位于`Scripts/hddm/`，结果位于`Output/`。Notebook读取已保存结果，不启动模型拟合。
+## 文件结构与复现
 
-在任务配置指定的dockerHDDM环境中，从本目录运行：
+`Data/` 保存三任务输入，`Scripts/hddm/` 包含共享计算代码与各任务入口，`Output/` 保存结果表和图。Matching 有 7 个任务级文件，Identity、Valence 各 5 个。[Notebook](results.ipynb) 只读取公开结果；[输出清单](Scripts/hddm/output_manifest.json) 列出 97 个公开结果文件及生成入口。
+
+拟合使用 dockerHDDM（HDDM 1.0.1RC），固定镜像和采样设置见[任务配置](Scripts/hddm/matching/matching_config.json)；Identity、Valence 在各自目录中有对应配置。在该环境中，从本目录执行：
 
 ```sh
 python Scripts/hddm/reproduce.py plan --output Output_new
@@ -69,29 +133,14 @@ python Scripts/hddm/reproduce.py run --output Output_new --workers 2
 python Scripts/hddm/reproduce.py verify --output Output_new
 ```
 
-完整运行需要相邻的`01_reproduction_2020/Data`和一个尚不存在的输出目录。[输出清单](Scripts/hddm/output_manifest.json)记录各文件的生成入口。后处理已使用历史样本验证；整理后的完整拟合流程尚未从零重跑。数据库与逐次样本不随仓库分发。
+`plan` 仅显示计划，`run` 执行完整分析。完整运行需要相邻的 `01_reproduction_2020/Data` 和尚不存在的输出目录。任务按顺序执行，`--workers` 接受 1–4，默认 1；配置中的期望值 5/9 不控制当前并行数。恢复分析固定最多两进程，preflight 顺序执行；内存不足时需减少并行任务。
 
-文件完整性检查仅需 Python 标准库，可在没有 HDDM 的环境运行：`python Scripts/hddm/reproduce.py verify --output Output`。它检查文件存在性、JSON/CSV 结构和清单生产入口，不重新计算估计值，也不判定收敛。
+各任务的 `*_run.py` 支持单链 `fit` 和批量阶段；`*_analyze.py` 的 `compare`、`diagnostics`、`ppc` 可独立调用，选项见 `--help`。检查已有公开文件可运行 `python Scripts/hddm/reproduce.py verify --output Output`，仅需 Python 标准库；它不重新计算统计量或判定收敛。Notebook 需要 pandas 和 IPython。
 
-CLI 接受 `--workers 1` 至 `4`，默认 1。配置中的 `requested_screening_parallel=5` 和 `requested_final_parallel=9` 保留历史期望并行数，不是当前调度上限。统一流程按任务顺序执行：每任务的五个初筛作业最多同时运行四个，正式阶段追加三条链，独立长链阶段运行四条新链。该保守上限延续受内存限制的运行策略，不提供自动内存检测，也不保证适用于所有机器；内存不足时应减少 workers。恢复分析另有固定的两进程上限，preflight 顺序执行，通用 `--workers` 不覆盖这两个阶段。
-
-### 任务入口与历史来源
-
-每个任务保留配置、模型定义、运行、分析和绘图入口；Matching 另有恢复和敏感性分析入口。`run fit` 拟合单链，其余 Run 阶段调度 smoke、screening、final 或独立长链。Analyze 的三个操作可单独执行：
-
-```sh
-python Scripts/hddm/matching/matching_run.py fit --model m4 --chain 1 --phase screening --output Output_new --plan
-python Scripts/hddm/matching/matching_analyze.py compare --output Output_new --plan
-python Scripts/hddm/matching/matching_analyze.py diagnostics --output Output_new --plan
-python Scripts/hddm/matching/matching_analyze.py ppc --output Output_new --plan
-```
-
-将 `matching` 替换为 `identity` 或 `valence` 即可使用相应入口。去掉 `--plan` 才会执行，`--help` 显示各操作选项。正式拟合在指纹一致的初筛 r01 后追加 r02–r04；长链重拟合使用四条独立链。Compare 读取已有初筛输出，不重新运行 PPC。
-
-比较表中的 `status` 和 `chains` 仅描述初筛；`selection_status` 记录暂定选择，`followup_status` 区分仅初筛（`screening_only`）、通过收敛诊断（`diagnostics_pass`）和未收敛（`nonconverged`）。通过收敛诊断不代表预测或参数恢复检验通过。
-
-重构前公开版本为提交 `639aa66af934db39b9e2962a6c5154350266758e`，历史标签为 `reanalysis-before-entry-refactor-20261023`。它标记已公开的仓库快照，不代表全部历史拟合均由该版代码产生；实际拟合来源以原始 fingerprint 为准。清单中的 `producer` 指向当前入口，`historical_snapshot` 指向先前公开结果。链来源路径相对于 `Output/`，数据库不随仓库分发。新拟合会记录变化后的 `common.py` 哈希，不能追加到指纹不同的历史链；新拟合使用独立输出目录，历史续跑则需使用与原指纹一致的代码。
+数据库与逐次后验样本不随仓库分发。后处理已使用保存的样本验证，当前完整拟合流程尚未从零重跑；新拟合应写入独立目录，不与设置或代码指纹不同的链混合。
 
 ## 参考资料
 
-[Hu等（2020）](https://doi.org/10.1525/collabra.301)；[Pan等（2025），dockerHDDM](https://doi.org/10.1177/25152459241298700)；[刺激编码方法代码](https://github.com/Chuan-Peng-Lab/ddm_stim_coding_posts)，commit `468965c8d4c991bb7633f3f38257a6bac978bce5`。
+- [Hu 等（2020）：原始道德自我研究](https://doi.org/10.1525/collabra.301)
+- [Pan 等（2025）：dockerHDDM](https://doi.org/10.1177/25152459241298700)
+- [刺激编码方法代码](https://github.com/Chuan-Peng-Lab/ddm_stim_coding_posts)
