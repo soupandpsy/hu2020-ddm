@@ -1,6 +1,6 @@
 # Hu et al.（2020）：计算复现与 HDDM 再分析
 
-[English](README.md) | 中文
+[English](README.md) · 中文
 
 本仓库包含《Good me, bad me: Prioritization of the good-self during perceptual decision-making》的计算复现和探索性再分析。两部分的研究目的及模型设定不同，分别报告。
 

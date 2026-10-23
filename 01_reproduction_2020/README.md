@@ -1,22 +1,28 @@
 # Part I: Hu et al. (2020) reproduction
 
-English | [中文](README_zh.md)
+English · [中文](README_zh.md) · [Project Home](../README.md)
+
+## Research Scope
 
 This section reproduces the principal computational analyses of *Good me, bad me: Prioritization of the good-self during perceptual decision-making*: Pilot and Confirm behavioral statistics, Pilot ex-Gaussian fits, and Confirm HDDM, with separate sensitivity analyses. Selected statistics and model analyses were reproduced, but not every statistic, supplementary analysis or model specification is identical to the paper.
 
 Original materials: [author repository](https://github.com/hcp4715/moralSelf_ddm).
 
-## Results and scope of reproduction
+## Reproduction Results
 
 - Pilot retained 29 participants; Confirm retained 42 for Matching and 41 for Categorization. Exported Confirm inputs matched the included tables. Fifteen selected t statistics agreed within tolerances (Pilot < .01; Confirm < .02), not necessarily exact printed rounding.
 - Matching/Identity/Valence vtz p0 and Identity vz p0 passed the configured four-run diagnostic gate. Matching/Valence vz have one run and are descriptive only. **Identity vz p0.05 failed the gate; do not pool its runs.**
 - Figure 3C corrects the author's Identity-summary reference to Valence data. Error bars remain mean +/- 1.96 SE; Pilot lines connect Good/Bad within Subject x Identity, while Confirm lines connect each subject's four conditions.
+## Differences and Limitations
+
 - Pilot Categorization RT differs from the author's JASP condition-column assignment; its seven F/omega comparisons are not equivalent. The other 33 comparable ANOVA F values agreed within 1e-9. Omega definitions, inclusion Bayes factors, and Pilot Categorization Accuracy nuisance-factor settings also differ; statistics are not all identical to the paper.
 - Ex-Gaussian uses 1,000 bootstrap iterations rather than the reported 2,000. One cell (7014, Val/Other/Bad; 3 trials) was not fitted; 231 completed cells yield 27 eligible subjects. Maximum mu/sigma/tau differences from available author estimates were about .0283/.0567/.0208 seconds; ANOVA equivalence is not claimed. See [cell results](Output/behavior/pilot/exgaussian/parameters_all.csv) and retained warnings.
 - Supplementary ex-Gaussian Bayesian/simple-effect analyses and Figure S3, full Table S2/S3 summaries, and Bayes-factor robustness figures remain incomplete. Pilot DDM was not reported in the paper and is not implemented here.
 - These diagnostic passes refer to the historical configured criteria; they must not be equated automatically with the rank-normalized Rhat/ESS criteria of the 2026 analysis. See the independent [2026 reanalysis](../02_reanalysis_2026/README.md).
 
-## Files and software
+## Files and Reproducibility
+
+### Files and Software
 
 |Folder|Contents|
 |---|---|
@@ -32,9 +38,11 @@ Runtime used: **R 4.6.0; Python 3.7.12; HDDM 0.8.0; NumPy 1.19.5; SciPy 1.5.3; M
 
 Run commands from this directory. Replace uppercase directory placeholders with actual output paths; use Linux paths when running in WSL.
 
-## Redraw saved results
+### Redraw saved results
 
-```text
+Figure 2, 3, 4 and supplementary figure numbers in this section follow the original paper.
+
+```bash
 Rscript --vanilla Scripts/pilot_behavior/pilot_plot.R --analysis-dir Output/behavior/pilot
 Rscript --vanilla Scripts/confirm_behavior/confirm_plot.R --analysis-dir Output/behavior/confirm
 python -B Scripts/hddm/figure04_plot.py
@@ -42,11 +50,11 @@ python -B Scripts/hddm/figure04_plot.py
 
 These use saved tables/samples, without refitting. Figure 2: Pilot behavior; Figure 3: Confirm behavior; [Figure 4](Output/figures/figure04_vtz_p0_r01_drift.pdf): Confirm vtz p0 r01 drift. Matching mismatch drift corresponds to Figure S6. Figure 4 uses 35 bundled group parameters (9,000 draws each), not pooled chains; these samples cannot replace full databases for diagnostics or PPC.
 
-## Reanalyze and refit
+### Reanalyze and refit
 
 **1. Process raw data.** Each entry prints a new analysis directory. Pilot includes ex-Gaussian fitting.
 
-```text
+```bash
 Rscript --vanilla Scripts/pilot_behavior/pilot_analysis.R
 Rscript --vanilla Scripts/confirm_behavior/confirm_analysis.R
 ```
@@ -55,7 +63,7 @@ To draw the new behavior results, rerun the Plot commands above with the new ana
 
 **2. Fit the three Confirm models.** `CONFIRM_DIR` is the completed Confirm R output; the correct exported table is selected automatically.
 
-```text
+```bash
 python -B Scripts/hddm/matching/vtz/matching_vtz_run.py --mode all --behavior-dir CONFIRM_DIR --runs r01 r02 r03 r04
 python -B Scripts/hddm/identity/vtz/identity_vtz_run.py --mode all --behavior-dir CONFIRM_DIR --runs r01 r02 r03 r04
 python -B Scripts/hddm/valence/vtz/valence_vtz_run.py --mode all --behavior-dir CONFIRM_DIR --runs r01 r02 r03 r04
@@ -65,7 +73,7 @@ Omit `--behavior-dir` to use included Confirm inputs. Use `--runs r01` for one r
 
 **3. Check diagnostics and draw new results.** Use the analysis directories printed above.
 
-```text
+```bash
 python -B Scripts/hddm/matching/matching_plot.py --analysis-dir MATCHING_ANALYSIS_DIR
 python -B Scripts/hddm/identity/identity_plot.py --analysis-dir IDENTITY_ANALYSIS_DIR
 python -B Scripts/hddm/valence/valence_plot.py --analysis-dir VALENCE_ANALYSIS_DIR
@@ -76,7 +84,7 @@ New Figure 4 uses each analysis's r01 full samples. The default `--source bundle
 
 **Optional PPC**, requiring a complete fitted model:
 
-```text
+```bash
 python -B Scripts/hddm/matching/matching_ppc.py --config Scripts/hddm/matching/vtz/matching_vtz_p0_config.json --source new --run r01 --samples 500
 ```
 
@@ -84,10 +92,16 @@ Identity and Valence have equivalent task entries. Omit `--samples` for file-ref
 
 **Identity vz sensitivity:** explicitly choose either `identity_vz_p0_config.json` or `identity_vz_p0p05_config.json` in the same `vz/` folder; there is no default setting.
 
-```text
+```bash
 python -B Scripts/hddm/identity/vz/identity_vz_run.py --config Scripts/hddm/identity/vz/identity_vz_p0_config.json --mode all --runs r01 r02 r03 r04
 ```
 
-## Organization
+### Organization
 
 This is a minimal adaptation of [TIER Protocol 4.0](https://www.projecttier.org/tier-protocol/protocol-4-0/): `Data` holds inputs, `Scripts` holds executable analyses, and `Output` holds results, including `Output/sensitivity`. The commands above specify the execution order. A complete TIER data appendix and full-pipeline master script are not yet provided; this is not a claim of full TIER compliance.
+
+## References
+
+- [Hu et al. (2020), *Good me, bad me: Prioritization of the good-self during perceptual decision-making*](https://doi.org/10.1525/collabra.301)
+- [Original data and analysis code](https://github.com/hcp4715/moralSelf_ddm)
+- [TIER Protocol 4.0](https://www.projecttier.org/tier-protocol/protocol-4-0/)

@@ -1,8 +1,8 @@
-# 道德自我关联与知觉决策：HDDM 再分析
+# 第二部分：道德自我关联与知觉决策：HDDM 再分析
 
-[English](README.md) · [分析结果 Notebook](results.ipynb) · [项目首页](../README.md)
+[English](README.md) · 中文 · [项目首页](../README_zh.md) · [分析结果 Notebook](results.ipynb)
 
-## 1. 研究目的
+## 研究目的
 
 本分析使用 Hu 等（2020）的 Confirm 数据，采用刺激编码的层级漂移扩散模型（Hierarchical Drift Diffusion Model, HDDM），考察道德自我关联对知觉决策过程的影响。
 
@@ -10,7 +10,7 @@ Matching 任务主要检验 Good-self（好自我）与其他关联条件的证�
 
 由于模型参数化与原研究不同，本项目属于探索性再分析，而非原模型的直接数值复现。
 
-## 2. 数据与实验任务
+## 数据与实验任务
 
 数据来自[原研究公开材料](https://github.com/hcp4715/moralSelf_ddm)。身份（Self、Other）与道德属性（Good、Bad）构成四种关联条件，三个任务分别拟合。
 
@@ -22,9 +22,9 @@ Matching 任务主要检验 Good-self（好自我）与其他关联条件的证�
 
 输入文件位于 `Data/`。主分析保留正反应时，单位为秒；Matching 排除了一个非法按键试次。
 
-## 3. 模型设定
+## 模型设定
 
-### 3.1 刺激编码
+### 刺激编码
 
 模型使用 `HDDMStimCoding`，设置 `split_param="v"`。
 
@@ -44,39 +44,39 @@ $$
 \mu=(2\,\mathrm{stim}-1)v+dc
 $$
 
-两个刺激方向共享同一条件下的漂移幅度 $v$，但符号相反；漂移偏置 $dc$ 在两个方向上以相同符号加入。因此，$v$ 表示刺激相关的证据积累成分，而非对某一反应方向的总体倾向。
+两个刺激方向共享同一条件下的漂移幅度 $`v`$，但符号相反；漂移偏置 $`dc`$ 在两个方向上以相同符号加入。因此，$`v`$ 表示刺激相关的证据积累成分，而非对某一反应方向的总体倾向。
 
-### 3.2 模型参数及心理学含义
+### 模型参数及心理学含义
 
 | 参数                          | 计算含义                 | 在本研究中的解释                                                                                         |
 | --------------------------- | -------------------- | ------------------------------------------------------------------------------------------------ |
-| **$v$** Drift rate          | 单位时间内刺激相关证据的平均积累率    | Matching 中反映匹配判断的证据积累效率；Identity 中反映 Self/Other 分类；Valence 中反映 Good/Bad 分类。较大的正向 $v$ 表示更强的正确方向证据 |
-| **$a$** Boundary separation | 两个决策边界之间的距离          | 反映完成判断所需的证据量。其他参数不变时，较大的 $a$ 通常对应更谨慎的决策                                                          |
-| **$t$** Non-decision time   | 证据积累以外的反应时间成分，单位为秒   | 包括感觉编码、动作准备和反应执行等过程，模型不能进一步区分这些阶段，对应原研究的非决策时间 $t_0$                                              |
-| **$z$** Starting point      | 证据积累开始时的相对位置，范围为 0–1 | 反映积累开始前的反应偏置；$z=0.5$ 表示起点居中                                                                      |
-| **$dc$** Drift criterion    | 加在刺激相关漂移上的方向性偏移      | 反映证据积累过程中的反应偏置，也可能受到刺激难度不对称等因素影响                                                                 |
+| **$`v`$** Drift rate          | 单位时间内刺激相关证据的平均积累率    | Matching 中反映匹配判断的证据积累效率；Identity 中反映 Self/Other 分类；Valence 中反映 Good/Bad 分类。较大的正向 $`v`$ 表示更强的正确方向证据 |
+| **$`a`$** Boundary separation | 两个决策边界之间的距离          | 反映完成判断所需的证据量。其他参数不变时，较大的 $`a`$ 通常对应更谨慎的决策                                                          |
+| **$`t`$** Non-decision time   | 证据积累以外的反应时间成分，单位为秒   | 包括感觉编码、动作准备和反应执行等过程，模型不能进一步区分这些阶段，对应原研究的非决策时间 $`t_0`$                                              |
+| **$`z`$** Starting point      | 证据积累开始时的相对位置，范围为 0–1 | 反映积累开始前的反应偏置；$`z=0.5`$ 表示起点居中                                                                      |
+| **$`dc`$** Drift criterion    | 加在刺激相关漂移上的方向性偏移      | 反映证据积累过程中的反应偏置，也可能受到刺激难度不对称等因素影响                                                                 |
 
-**漂移率 $v$** 是检验 Good-self 加工优势的主要参数。在 Matching 中，四种关联条件分别具有对应的漂移幅度参数。较大的 $v$ 表示更高的模型估计证据积累效率，但不能直接确定这一优势发生于哪个具体的知觉或神经加工阶段。
+**漂移率 $`v`$** 是检验 Good-self 加工优势的主要参数。在 Matching 中，四种关联条件分别具有对应的漂移幅度参数。较大的 $`v`$ 表示更高的模型估计证据积累效率，但不能直接确定这一优势发生于哪个具体的知觉或神经加工阶段。
 
-**起点 $z$** 表示证据积累开始前的反应倾向。在当前编码下，$z>0.5$ 分别表示起点更接近 Matching 的 Match、Identity 的 Self 或 Valence 的 Good 边界。Matching 中的 Match 反应偏置不能直接解释为 Good-self 偏好。
+**起点 $`z`$** 表示证据积累开始前的反应倾向。在当前编码下，$`z>0.5`$ 分别表示起点更接近 Matching 的 Match、Identity 的 Self 或 Valence 的 Good 边界。Matching 中的 Match 反应偏置不能直接解释为 Good-self 偏好。
 
-**漂移偏置 $dc$** 表示积累过程中的方向性偏移。正向 $dc$ 分别使漂移朝 Match、Self 或 Good 边界偏移，负向 $dc$ 则朝相反边界偏移。
+**漂移偏置 $`dc`$** 表示积累过程中的方向性偏移。正向 $`dc`$ 分别使漂移朝 Match、Self 或 Good 边界偏移，负向 $`dc`$ 则朝相反边界偏移。
 
-$z$ 改变证据积累的初始位置，$dc$ 改变积累过程中的平均漂移方向。两种偏置能否从现有数据中可靠区分，仍需结合参数恢复结果判断。
+$`z`$ 改变证据积累的初始位置，$`dc`$ 改变积累过程中的平均漂移方向。两种偏置能否从现有数据中可靠区分，仍需结合参数恢复结果判断。
 
-相对起点为 $z$，绝对起点为 $az$；内部采样参数 `z_trans` 经逆 logit 转换后才作为 $z$ 解释。
+相对起点为 $`z`$，绝对起点为 $`az`$；内部采样参数 `z_trans` 经逆 logit 转换后才作为 $`z`$ 解释。
 
 ![Matching M4 fitted-parameter simulations and effective drift](Output/hddm/matching/figures/matching_ddm_schematic.png)
 
-**图 1. Matching M4 的拟合参数模拟路径与有效漂移。** A：使用 Good-self 条件的群体后验均值固定参数（$a=1.224$、$z=0.568$、$t=0.464$ 秒、$v=2.214$、$dc=0.321$），分别模拟 Match、Mismatch 刺激的前两条路径，不按结局或外观筛选。路径从 $\bar a\bar z$ 出发，首次触及边界时停止；它们不是实测证据轨迹，也不代表某位被试。图中时间从积累开始计，反应时另加非决策时间 $t$。B：四种关联条件的有效漂移 $+v+dc$ 与 $-v+dc$，点为后验均值，线为 95% 等尾可信区间；区间由四条链中配对的 $v$、$dc$ 样本计算。
+**图 1. Matching M4 的模拟证据积累路径与有效漂移。**
 
-路径使用单位扩散噪声的 Wiener 过程，以 Euler–Maruyama 步进（$\Delta t=0.0001$ 秒，种子 `2026102301`）近似模拟，并在最后一个时间步内插值确定边界接触。A 图不传播参数的后验不确定性或个体差异，仅展示 DDM 主体，不包含离群混合成分或实验反应窗口，因此不是完整的后验预测检验。$\bar a\bar z$ 是代入均值后的起点，不等于 $E[az]$。原有 PPC 与参数恢复限制仍适用。
+A：根据 Good-self 条件的群体后验均值模拟 Match 与 Mismatch 刺激的证据积累路径。B：四种关联条件的有效漂移及其 95% 等尾可信区间，由配对的 v、dc 后验样本计算。模拟路径不代表实测证据轨迹，也不构成完整的后验预测检验。
 
-### 3.3 候选模型与拟合
+### 候选模型与拟合
 
-所有模型均分层估计 $a$、$t$ 和 $v$。其中，$a$ 和 $t$ 在任务内跨实验条件共享，$v$ 随相应任务的实验条件变化。跨条件共享不表示所有被试具有相同的参数值。
+所有模型均分层估计 $`a`$、$`t`$ 和 $`v`$。其中，$`a`$ 和 $`t`$ 在任务内跨实验条件共享，$`v`$ 随相应任务的实验条件变化。跨条件共享不表示所有被试具有相同的参数值。
 
-| 任务       | $v$ 的条件依赖          | 共享漂移幅度的刺激方向      |
+| 任务       | $`v`$ 的条件依赖          | 共享漂移幅度的刺激方向      |
 | -------- | ------------------ | ---------------- |
 | Matching | Identity × Valence | Match / Mismatch |
 | Identity | Valence            | Self / Other     |
@@ -84,7 +84,7 @@ $z$ 改变证据积累的初始位置，$dc$ 改变积累过程中的平均漂�
 
 三个任务分别比较五个候选模型：
 
-| 模型 | 起点 $z$     | 漂移偏置 $dc$  |
+| 模型 | 起点 $`z`$     | 漂移偏置 $`dc`$  |
 | -- | ---------- | ---------- |
 | M0 | 固定为 0.5    | 固定为 0      |
 | M1 | 自由估计，跨条件共享 | 固定为 0      |
@@ -100,9 +100,9 @@ Identity 和 Valence 随后分别进行独立长链重拟合，每条链迭代 6
 
 由于初筛阶段每个模型仅有一条链，模型选择仍存在不确定性。
 
-## 4. 分析结果
+## 分析结果
 
-### 4.1 Matching
+### Matching
 
 候选 M4 中，Good-self 的漂移幅度高于 Bad-self 和 Good-other，自我条件的 Good−Bad 差异也大于他人条件。
 
@@ -121,17 +121,18 @@ $$
 
 区间为 95% 等尾后验可信区间。
 
-起点参数 $z$ 的后验均值为 0.568，95% 可信区间为 [0.558, 0.578]，对应向 Match 边界的起点偏置。
+起点参数 $`z`$ 的后验均值为 0.568，95% 可信区间为 [0.558, 0.578]，对应向 Match 边界的起点偏置。
 
-Good-self 与 Bad-self 的 $dc$ 差异为 0.600 [0.427, 0.774]，表明两种条件在朝向 Match 边界的漂移偏置上存在差异。
+Good-self 与 Bad-self 的 $`dc`$ 差异为 0.600 [0.427, 0.774]，表明两种条件在朝向 Match 边界的漂移偏置上存在差异。
 
 上述结果均为给定候选 M4 及其参数约束的后验估计。
 
 ![Matching M4](Output/hddm/matching/figures/matching_m4_parameter_contrasts.png)
 
-*图 2. Matching M4 的参数估计与条件对比。点表示后验均值，线段表示 95% 可信区间。*
+**图 2. Matching M4 的参数估计与条件对比。**
 
-### 4.2 收敛诊断
+点表示后验均值，线段表示 95% 可信区间。
+### 收敛诊断
 
 | 任务              | 最大 R-hat | 最低 bulk ESS | 最低 tail ESS | 结果  |
 | --------------- | -------- | ----------- | ----------- | --- |
@@ -147,9 +148,9 @@ M0—M3 仅有单链初筛结果，不能据此判断多链收敛。
 
 ![Matching M4](Output/hddm/matching/figures/matching_m4_traces.png)
 
-*图 3. Matching M4 的四链采样轨迹与后验分布。*
+**图 3. Matching M4 的四链采样轨迹与后验分布。**
 
-## 5. 模型检验与局限
+## 模型检验与局限
 
 ### 后验预测检验（PPC）
 
@@ -159,8 +160,9 @@ Matching M4 预测的慢反应时尾部比观测数据更长。原实验的反�
 
 ![Matching M4](Output/hddm/matching/figures/matching_m4_ppc.png)
 
-*图 4. Matching M4 的观测与预测选择比例及反应时分位数。黑色叉号表示观测值，彩色点与区间表示后验预测统计量。*
+**图 4. Matching M4 的观测与预测选择比例及反应时分位数。**
 
+黑色叉号表示观测值，彩色点与区间表示后验预测统计量。
 ### 敏感性分析
 
 排除 RT ≤ 0.2 秒后，Matching 的主要群体参数估计变化较小，但一个个体参数的 tail ESS 为 342，低于预设标准。
@@ -173,11 +175,11 @@ Matching M4 的四个模拟情景均存在采样收敛不足，尚不能确认�
 
 Matching 的结果在方向上与 Good-self 证据积累优势一致，但仍受到模型选择、后验预测和参数恢复的限制。
 
-与原研究相比，本次分析在刺激方向间共享 $v$，使 $t$ 跨条件共享，并引入 $dc$ 和不同的离群处理设置。因此，两项分析的模型估计量不完全相同，参数数值不宜直接比较。
+与原研究相比，本次分析在刺激方向间共享 $`v`$，使 $`t`$ 跨条件共享，并引入 $`dc`$ 和不同的离群处理设置。因此，两项分析的模型估计量不完全相同，参数数值不宜直接比较。
 
 Identity 和 Valence 尚未获得满足收敛诊断要求的结果，无法据此评价跨任务效应。
 
-## 6. 文件结构与复现
+## 文件与复现方法
 
 | 目录或文件                    | 内容                                |
 | ------------------------ | --------------------------------- |
@@ -195,13 +197,13 @@ Identity 和 Valence 尚未获得满足收敛诊断要求的结果，无法据�
 
 在 `02_reanalysis_2026/` 目录中查看复现计划：
 
-```
+```bash
 python Scripts/hddm/reproduce.py plan --output Output_new
 ```
 
 在配置指定的 HDDM 环境中从头运行：
 
-```
+```bash
 python Scripts/hddm/reproduce.py run --output Output_new --workers 2
 ```
 
@@ -209,7 +211,7 @@ python Scripts/hddm/reproduce.py run --output Output_new --workers 2
 
 检查已公开结果文件：
 
-```
+```bash
 python Scripts/hddm/reproduce.py verify --output Output
 ```
 
@@ -219,13 +221,21 @@ python Scripts/hddm/reproduce.py verify --output Output
 
 使用公开汇总结果生成图 1（需要 NumPy 和 Matplotlib，不需 HDDM 或本地后验数据库）：
 
-```sh
-python Scripts/hddm/matching/matching_plot.py --kind schematic --output Output
+```bash
+python Scripts/hddm/matching/matching_plot.py --kind schematic --output Output --figures-output Figures_check
 ```
+
+图像及模拟元数据写入 `Figures_check/`，避免覆盖已公开结果。
 
 有效漂移表由 `python Scripts/hddm/matching/matching_analyze.py diagnostics --effective-drift --output Output` 生成，需要四条正式链的后验样本与 NumPy、pandas、ArviZ；绘图只读取公开汇总表。随机种子、数值步长、参数来源哈希和各路径的选择及反应时保存在 `Output/hddm/matching/figures/matching_ddm_simulation.json`。
 
-## 7. 参考资料
+### 图 1 的模拟设置
+
+固定参数为 a = 1.224、z = 0.568、t = 0.464 秒、v = 2.214、dc = 0.321。每种刺激展示前两条路径，不按结局或外观筛选；路径从群体均值的乘积出发，在首次检测到边界接触时停止。图中时间从积累开始计，反应时另加 t。
+
+路径使用单位扩散噪声的 Wiener 过程，以 Euler–Maruyama 步进（$`\Delta t=0.0001`$ 秒，种子 `2026102301`）近似模拟，并在最后一个时间步内插值确定边界接触。A 图不传播参数的后验不确定性或个体差异，仅展示 DDM 主体，不包含离群混合成分或实验反应窗口，因此不是完整的后验预测检验。$`\bar a\bar z`$ 是代入均值后的起点，不等于 $`E[az]`$。原有 PPC 与参数恢复限制仍适用。
+
+## 参考资料
 
 - [Hu et al. (2020), *Good me, bad me: Prioritization of the good-self during perceptual decision-making*](https://doi.org/10.1525/collabra.301)
 - [Pan et al. (2025), dockerHDDM](https://doi.org/10.1177/25152459241298700)

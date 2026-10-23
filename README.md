@@ -1,6 +1,6 @@
 # Hu et al. (2020): reproduction and HDDM reanalysis
 
-English | [中文](README_zh.md)
+English · [中文](README_zh.md)
 
 This repository contains a computational reproduction and an exploratory reanalysis of *Good me, bad me: Prioritization of the good-self during perceptual decision-making*. The two analyses address different questions and use different model specifications.
 
