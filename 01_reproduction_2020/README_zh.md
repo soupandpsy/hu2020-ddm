@@ -1,5 +1,14 @@
 # 第一部分：Hu et al.（2020）复现
 
+> **阅读导航 / Reading path (2026-10-28):** [复现结果 Notebook](reproduction_results.ipynb) → [历史 M0–M4 探索](../02_reanalysis_2026/README_historical_m0_m4_zh.md) → [第二部分 H0–H3](../02_reanalysis_2026/README_zh.md)。历史探索保留原路径，不与 H0–H3 结果混用；五折预测比较尚未可靠完成，第三部分尚未正式分析。
+
+## 逻辑链与图表导航 / Research sequence
+
+研究问题是先确认 Good-self 行为现象能否重现；方法沿用 Pilot/Confirm 筛选、被试内统计和历史 HDDM。核查发现选定 t 统计吻合，但 ANOVA 设置、ex-Gaussian 与部分模型诊断有差异。因此先分别报告可复现的现象和模型限制，再由 M0–M4 的预测/恢复问题引出第二部分的观察模型与 H0–H3 比较，不用行为复现直接证明机制。
+
+[复现 Notebook](reproduction_results.ipynb)依次呈现 I-1 Pilot Matching、I-2 Pilot Categorization、I-3 Confirm Matching、I-4/5 Confirm Identity/Valence 和 I-6 历史漂移参数图。I 系列编号仅作本仓库导航；原论文 Figure 2/3/4 编号保持不变。各图保留区间和样本口径说明。
+
+
 [English](README.md) · 中文 · [项目首页](../README_zh.md)
 
 ## 研究范围

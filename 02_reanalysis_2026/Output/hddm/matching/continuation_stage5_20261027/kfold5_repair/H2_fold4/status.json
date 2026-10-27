@@ -1,0 +1,16 @@
+{
+  "status": "complete",
+  "diagnostics": {
+    "max_rhat": 1.0030384440016142,
+    "min_bulk_ess": 1662.2288494294237,
+    "min_tail_ess": 2216.449632890502,
+    "all_parameters_pass": true,
+    "a_t_max_rhat": 1.0013106393186322,
+    "a_t_min_bulk": 3510.765490844153,
+    "a_t_min_tail": 2216.449632890502,
+    "severe_mixing": false,
+    "retained_draws_per_chain": 5000,
+    "criterion": "Formal sampling allowed only if all checked quantities Rhat<1.01 and bulk/tail ESS>=400. Severe t/a flag: Rhat>1.05 or ESS<100. Short-run failure is not proof of model failure."
+  },
+  "elapsed_seconds": 4240.584706544876
+}

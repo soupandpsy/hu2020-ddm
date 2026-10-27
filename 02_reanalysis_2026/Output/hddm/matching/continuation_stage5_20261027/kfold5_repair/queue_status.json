@@ -1,0 +1,19 @@
+{
+  "status": "pilot_or_fit_diagnostics_failed",
+  "phase": "severe_pilots",
+  "finished": [
+    {
+      "model": "H0",
+      "fold": 4,
+      "exit_code": 0,
+      "status": "short_diagnostics_failed"
+    },
+    {
+      "model": "H2",
+      "fold": 4,
+      "exit_code": 0,
+      "status": "complete"
+    }
+  ],
+  "ranking_permitted": false
+}

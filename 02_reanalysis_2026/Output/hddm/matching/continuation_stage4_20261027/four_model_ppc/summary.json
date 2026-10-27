@@ -1,0 +1,22 @@
+{
+  "status": "complete",
+  "models": [
+    "H0",
+    "H1",
+    "H2",
+    "H3"
+  ],
+  "replicates_per_model": 200,
+  "metric_rows": 5748,
+  "fixed_fast_cutoffs": {
+    "0": 0.6167,
+    "1": 0.56044
+  },
+  "source_folders": {
+    "H0": "/repo/02_reanalysis_2026/Output/hddm/matching/continuation_stage4_20261027/H0_ppc",
+    "H1": "/repo/02_reanalysis_2026/Output/hddm/matching/continuation_stage4_20261027/H1_ppc",
+    "H3": "/repo/02_reanalysis_2026/Output/hddm/matching/continuation_stage4_20261027/H3_ppc",
+    "H2": "/repo/02_reanalysis_2026/Output/hddm/matching/continuation_stage3_20261026/H2_ppc"
+  },
+  "scope": "PPC only, not predictive model ranking"
+}

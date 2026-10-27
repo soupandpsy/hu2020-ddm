@@ -1,0 +1,6 @@
+# Lightweight saved-result viewers only; not the historical HDDM sampling environment.
+nbformat>=5.10,<6
+nbclient>=0.10,<1
+nbconvert>=7.16,<8
+ipykernel>=6,<8
+pandas>=2,<4

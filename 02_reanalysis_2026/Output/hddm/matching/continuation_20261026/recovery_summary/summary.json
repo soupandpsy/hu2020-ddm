@@ -1,0 +1,19 @@
+{
+  "scope": "simulation only; initial batch before exact-LOO correction",
+  "replicates_per_generator": 2,
+  "fit_count": 32,
+  "subjects": 42,
+  "trials_per_subject": 600,
+  "max_rhat": 1.0095653037290768,
+  "min_bulk_ess": 683.4425774462383,
+  "min_tail_ess": 533.5115559553003,
+  "median_between_fit_completion_minutes": 38.13185436725617,
+  "remaining_fits_to_20_replicates_each": 288,
+  "estimated_serial_hours_to_20_each": 183.0329009628296,
+  "timing_caveat": "Approximate historical sequential completion spacing includes scoring and extensions; not a benchmark.",
+  "interpretation": "dc depends on zero-sum log relation-difficulty reference; predictive maximum is not decisive mechanism recovery.",
+  "sources": {
+    "parameter_recovery.csv": "3a7c20ee5ba816ed0880d4d89daebf5c1b708364ca921b2790386771a7c73f49",
+    "execution_status.json": "db936add69044e4803511b00a7ecc97628cbad4d7fd4e48678d77211825bdfc5"
+  }
+}

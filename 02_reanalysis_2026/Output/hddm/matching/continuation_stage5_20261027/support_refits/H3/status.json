@@ -1,0 +1,18 @@
+{
+  "status": "complete",
+  "diagnostics": {
+    "max_rhat": 1.0023530397432798,
+    "min_bulk_ess": 2878.888843769981,
+    "min_tail_ess": 2523.9867657009595,
+    "all_parameters_pass": true,
+    "a_t_max_rhat": 1.0009303452554903,
+    "a_t_min_bulk": 4439.618128593831,
+    "a_t_min_tail": 2523.9867657009595,
+    "severe_mixing": false,
+    "retained_draws_per_chain": 8000,
+    "criterion": "Formal sampling allowed only if all checked quantities Rhat<1.01 and bulk/tail ESS>=400. Severe t/a flag: Rhat>1.05 or ESS<100. Short-run failure is not proof of model failure."
+  },
+  "elapsed_seconds": 3386.0160019397736,
+  "ppc": "Not generated: must use upper1.5 in BOTH contamination generation and predictive deadlines. Original-upper PPC cannot be reused.",
+  "model_ranking": false
+}

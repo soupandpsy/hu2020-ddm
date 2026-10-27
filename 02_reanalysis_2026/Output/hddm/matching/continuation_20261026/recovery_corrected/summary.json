@@ -1,0 +1,83 @@
+{
+  "kind": "simulation",
+  "comparisons": [
+    {
+      "dataset": "H0_r01",
+      "comparison_reliable": true,
+      "numerical_maximum": "H2",
+      "runner_up": "H0",
+      "delta_to_runner_up": 1.3363043931773937,
+      "subject_cluster_se": 2.8925153387109197,
+      "status": "ambiguous"
+    },
+    {
+      "dataset": "H0_r02",
+      "comparison_reliable": true,
+      "numerical_maximum": "H0",
+      "runner_up": "H1",
+      "delta_to_runner_up": 1.086900826286581,
+      "subject_cluster_se": 1.9461635500927572,
+      "status": "ambiguous"
+    },
+    {
+      "dataset": "H1_r01",
+      "comparison_reliable": true,
+      "numerical_maximum": "H1",
+      "runner_up": "H3",
+      "delta_to_runner_up": 0.2969644255143644,
+      "subject_cluster_se": 1.2005954027620398,
+      "status": "ambiguous"
+    },
+    {
+      "dataset": "H1_r02",
+      "comparison_reliable": true,
+      "numerical_maximum": "H1",
+      "runner_up": "H3",
+      "delta_to_runner_up": 0.7728717437161672,
+      "subject_cluster_se": 1.1746852748650447,
+      "status": "ambiguous"
+    },
+    {
+      "dataset": "H2_r01",
+      "comparison_reliable": true,
+      "numerical_maximum": "H2",
+      "runner_up": "H3",
+      "delta_to_runner_up": 0.8236195258201795,
+      "subject_cluster_se": 1.0997081361539038,
+      "status": "ambiguous"
+    },
+    {
+      "dataset": "H2_r02",
+      "comparison_reliable": true,
+      "numerical_maximum": "H3",
+      "runner_up": "H2",
+      "delta_to_runner_up": 2.870687888061416,
+      "subject_cluster_se": 3.1597529221925726,
+      "status": "ambiguous"
+    },
+    {
+      "dataset": "H3_r01",
+      "comparison_reliable": true,
+      "numerical_maximum": "H3",
+      "runner_up": "H1",
+      "delta_to_runner_up": 29.632505061244245,
+      "subject_cluster_se": 8.023913633171418,
+      "status": "gap_exceeds_2SE"
+    },
+    {
+      "dataset": "H3_r02",
+      "comparison_reliable": true,
+      "numerical_maximum": "H3",
+      "runner_up": "H1",
+      "delta_to_runner_up": 35.82164735220221,
+      "subject_cluster_se": 7.90685361080393,
+      "status": "gap_exceeds_2SE"
+    }
+  ],
+  "predictive_target": "Same-subject held-out event conditional on fixed exogenous simulation deadline proxy",
+  "difficulty_reference": "Zero-sum log relation difficulty; dc mechanism interpretation depends on this reference.",
+  "uncertainty": "SE = sqrt(42 * sample variance of subject-level paired score sums); figure bars are +/-1 SE, not 95% intervals.",
+  "ranking_rule": "Numerical maximum only when all four candidates pass MCMC and corrected predictive diagnostics; gap >2 SE is descriptive, not a model selection theorem or unequivocal mechanism claim.",
+  "exact_mcse": "Exact-refit MCSE is reported separately; it is not included in subject-cluster sampling SE.",
+  "recovery_limit": "Two independent datasets per generator; counts include ambiguous maxima and cannot estimate precise recovery rates."
+}

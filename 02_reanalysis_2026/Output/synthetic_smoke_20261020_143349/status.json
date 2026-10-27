@@ -1,0 +1,34 @@
+[
+  {
+    "model": "B0",
+    "seed": 20261020,
+    "draws": 40,
+    "parameters": 21,
+    "finite_traces": true,
+    "status": "synthetic smoke only; not convergence or recovery evidence"
+  },
+  {
+    "model": "B1",
+    "seed": 20261020,
+    "draws": 40,
+    "parameters": 25,
+    "finite_traces": true,
+    "status": "synthetic smoke only; not convergence or recovery evidence"
+  },
+  {
+    "model": "B2",
+    "seed": 20261020,
+    "draws": 40,
+    "parameters": 34,
+    "finite_traces": true,
+    "status": "synthetic smoke only; not convergence or recovery evidence"
+  },
+  {
+    "model": "B3",
+    "seed": 20261020,
+    "draws": 40,
+    "parameters": 38,
+    "finite_traces": true,
+    "status": "synthetic smoke only; not convergence or recovery evidence"
+  }
+]

@@ -1,16 +1,17 @@
-# Hu et al. (2020): reproduction and HDDM reanalysis
+# Hu et al. (2020): reproduction and competing-mechanism reanalysis
 
-English · [中文](README_zh.md)
+English · [中文](README_zh.md) · Status: 28 October 2026
 
-This repository contains a computational reproduction and an exploratory reanalysis of *Good me, bad me: Prioritization of the good-self during perceptual decision-making*. The two analyses address different questions and use different model specifications.
+This independent project follows the Good-self behavioral advantage from reproduction to exploratory mechanism comparison.
 
-| Section | Scope | Main findings and limitations |
+| Part | Reading path | Status |
 |---|---|---|
-| [Part I: 2020 reproduction](01_reproduction_2020/README.md) | Pilot and Confirm behavioral statistics, Pilot ex-Gaussian fits, and Confirm HDDM | Selected statistics and model analyses were reproduced. Differences in analysis settings and incomplete supplementary analyses are documented. |
-| [Part II: 2026 reanalysis](02_reanalysis_2026/README.md) | Stimulus-coded HDDM distinguishing starting-point bias from drift criterion | Matching M4 meets the main sampling diagnostics, but predictive fit and parameter recovery remain unresolved. Identity and Valence estimates are withheld because their chains did not converge. |
+| I: behavioral reproduction and historical HDDM | [Guide](01_reproduction_2020/README.md) → [Notebook](01_reproduction_2020/reproduction_results.ipynb) → [historical M0–M4](02_reanalysis_2026/results.ipynb) | Selected statistics reproduced; specification differences, nonconverged branches and supplementary gaps retained |
+| II: H0–H3 v/dc competition | [Guide](02_reanalysis_2026/README.md) → [Current notebook](02_reanalysis_2026/matching_h0_h3_results.ipynb) | Full-data fits and PPC complete; reliable five-fold prediction incomplete |
+| III: subsequent research | Pending definition and formal analysis | **No formal analysis or results yet** |
 
-In the Matching reanalysis, the posterior mean difference between Self-Good and Self-Bad drift magnitude is 0.666 (95% credible interval [0.387, 0.942]). This is an exploratory estimate conditional on M4, whose model constraints differ from the 2020 specification. It is not a direct numerical replication or a causal estimate.
+Read: question → method → diagnostic finding → adjustment → result → limitation → next step. All four current models pass full-data sampling diagnostics but show PPC misfit. There is no reliable ΔELPD ranking: only one of 20 repaired model/fold fits and predictions is complete. Neither displacement of the original v explanation by H2 nor a unique H3 mechanism is established.
 
-Each section contains `Data`, `Scripts`, and `Output`, with a bilingual README describing methods, results, limitations, and software requirements. The second section includes summary tables, diagnostic evidence, and figures; complete fitted databases and posterior draws are not distributed. Recomputing posterior-based results requires the corresponding fit outputs. Detailed reproducibility limits are described in the section READMEs.
+`Data`, `Scripts` and `Output` retain inputs, source and historical outputs in place. M0–M4 remains physically under `02_reanalysis_2026` for compatibility, but is historical Part I background. See the [archive and naming map](02_reanalysis_2026/docs/ARCHIVE_AND_NAMING.md), [reproduction instructions and figure index](02_reanalysis_2026/README.md), and [validation record](02_reanalysis_2026/docs/VALIDATION.md). Notebook figures are saved for direct reading; full posterior databases and large intermediate arrays are not distributed.
 
-Data and original analysis materials derive from the [author repository](https://github.com/hcp4715/moralSelf_ddm). The reanalysis follows the stimulus-coding framework in the [method repository](https://github.com/Chuan-Peng-Lab/ddm_stim_coding_posts). This repository is an independent reproduction and reanalysis, not an official update of the original study.
+Original materials: [author repository](https://github.com/hcp4715/moralSelf_ddm). Historical stimulus coding: [method repository](https://github.com/Chuan-Peng-Lab/ddm_stim_coding_posts). This is not an official update of the original study.

@@ -1,0 +1,18 @@
+{
+  "status": "complete",
+  "review_required": true,
+  "finished": [
+    {
+      "model": "H2",
+      "exit_code": 0,
+      "status": "short_diagnostics_failed"
+    },
+    {
+      "model": "H3",
+      "exit_code": 0,
+      "status": "complete"
+    }
+  ],
+  "slot_released": true,
+  "no_model_ranking": true
+}
