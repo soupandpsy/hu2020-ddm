@@ -1,5 +1,7 @@
 # 第二部分：H0–H3 的 v / dc 竞争机制再分析
 
+> **第二部分只需阅读一份：[总 Notebook](matching_h0_h3_results.ipynb)。** 已整合行为→模型设计→模拟→识别核查→观察与采样调整→恢复→真实拟合/PPC→五折/敏感性→限制。旧Notebook仅在总文末作为历史来源，不再并列阅读。
+
 [English](README.md) · [项目总览](../README_zh.md) · [综合结果 Notebook](matching_h0_h3_results.ipynb)
 
 状态日期：**2026-10-28**。全数据四模型正式拟合及完整 PPC 已完成；**可靠五折预测比较尚未完成，第三部分尚未正式分析**。本文是第二部分当前入口；带日期的旧报告及 Notebook 是过程记录，不与本文并列作为最新结论。
@@ -24,9 +26,9 @@
 | 逻辑步骤 | 发现及调整 | 阅读入口 |
 |---|---|---|
 | 行为与历史探索 | 原论文选定统计复现；M0–M4 探索的 PPC、恢复及跨任务收敛暴露限制 | [第一部分](../01_reproduction_2020/README_zh.md)、[历史 M0–M4](README_historical_m0_m4_zh.md)、[历史结果](results.ipynb) |
-| 回到实验设计 | 区分合法响应/超时/非法按键，审查 Mismatch 标签组成和快速选择曲线 | [行为诊断](matching_behavior_review.ipynb) |
-| 检查可区分性 | 固定参数模拟不能替代恢复；难度参照影响 dc 解释，旧参数代入不等于新模型 PPC | [前向模拟](matching_mechanism_simulation.ipynb)、[结构核查](matching_mechanism_audit.ipynb) |
-| 修正观察模型与采样 | 使用一致生成—似然、共同截止积分；改善转移与精度，不靠放宽门槛 | [观察模型与恢复日志](matching_observation_recovery.ipynb) |
+| 回到实验设计 | 区分合法响应/超时/非法按键，审查 Mismatch 标签组成和快速选择曲线 | [行为诊断](matching_h0_h3_results.ipynb#ch1) |
+| 检查可区分性 | 固定参数模拟不能替代恢复；难度参照影响 dc 解释，旧参数代入不等于新模型 PPC | [前向模拟](matching_h0_h3_results.ipynb#ch3)、[结构核查](matching_h0_h3_results.ipynb#ch4) |
+| 修正观察模型与采样 | 使用一致生成—似然、共同截止积分；改善转移与精度，不靠放宽门槛 | [观察模型与恢复日志](matching_h0_h3_results.ipynb#ch5) |
 | 检查真实拟合 | 四链每链 8,000 保留样本，四模型均通过全参数 R̂<1.01、bulk/tail ESS≥400 | [诊断表](Output/hddm/matching/continuation_stage5_20261027/four_model_diagnostics.csv) |
 | 检查模型充分性 | 每模型 200 PPC 复本；四模型各有 8/8 条件正确 RT 均值和超时率失配，快速优势均低估 | [PPC 统计表](Output/hddm/matching/continuation_stage4_20261027/four_model_ppc/four_model_ppc_summary.csv)、[综合 Notebook](matching_h0_h3_results.ipynb) |
 | 检查预测比较 | 各模型 PSIS 均有高 k；首轮 20 套五折短链均失败，转为逐折修复 | [首轮诊断](Output/hddm/matching/continuation_stage5_20261027/initial_kfold_diagnostics.csv)、[修复状态](Output/hddm/matching/continuation_stage5_20261027/kfold5_repair/queue_status.json) |
@@ -49,6 +51,9 @@
 
 | 图 | 内容 | 解释边界 |
 |---|---|---|
+| P1 | 早期行为诊断：RT条件选择曲线 | 描述性分箱，不独立识别z/dc |
+| P2/P3 | 固定参数前向模拟与快速选择 | 生成锚点检查，不是真实拟合PPC |
+| P4 | 结构审查后的网格/截止诊断 | 有限网格，非后验推断 |
 | II-1 | 有限模拟目标参数恢复 | 两份/生成模型；不是稳定覆盖率 |
 | II-2 | 四模型群体目标参数森林图 | 模型内估计；固定为零项不是估计结果 |
 | II-3 | 绝对 PPC：准确率、RT、超时 | 样本内充分性，不是预测排名 |
