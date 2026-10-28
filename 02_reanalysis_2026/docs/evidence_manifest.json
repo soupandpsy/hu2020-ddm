@@ -172,6 +172,31 @@
       "path": "Output/synthetic_smoke_20261020_143349/status.json",
       "bytes": 766,
       "sha256": "654979d32e5882384ac1387927bf7f18e4eec9ab2644c0df457276c2e2812ac8"
+    },
+    {
+      "path": "Output/hddm/matching/continuation_20261026/recovery_summary/parameter_bias_coverage.csv",
+      "bytes": 18177,
+      "sha256": "4cef85db75614eeb3bf7c5dc6af0d0e471648f8b186c44bff5b3a441519fb351"
+    },
+    {
+      "path": "Output/hddm/matching/continuation_20261026/recovery_summary/individual_parameter_recovery.csv",
+      "bytes": 511573,
+      "sha256": "fd5f7e647781dcbd659b6eb23eef22b2564d56487cbcb74e214c8125eb96a156"
+    },
+    {
+      "path": "Output/hddm/matching/continuation_20261026/recovery_summary/individual_dataset_summary.csv",
+      "bytes": 21288,
+      "sha256": "919e4c13f50bc5d1fa8eade57bd8c033159282ef972651e6c4133c246ddba86f"
+    },
+    {
+      "path": "Output/hddm/matching/continuation_stage3_20261026/robustness/sensitivity_parameter_summary.csv",
+      "bytes": 2261,
+      "sha256": "7c1fcaa56ab3fc192a116cfe693a3309718ff9a590457de18bc6e56c73a90468"
+    },
+    {
+      "path": "Output/hddm/matching/continuation_stage4_20261027/robustness_H3/sensitivity_parameter_summary.csv",
+      "bytes": 5413,
+      "sha256": "05f57587b2d52950e6f573d25e3b0305799599366f00986da6b930b8f0df5543"
     }
   ]
 }

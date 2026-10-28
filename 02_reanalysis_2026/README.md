@@ -4,7 +4,7 @@
 
 English · [完整中文说明](README_zh.md) · [Project home](../README.md) · [Current notebook](matching_h0_h3_results.ipynb)
 
-Status: **28 October 2026**. Full-data fits and PPC are complete. **Reliable five-fold predictive comparison is incomplete; Part III has not formally started.** This is the current entry point. [M0–M4 guide](README_historical_m0_m4.md) and [results.ipynb](../01_reproduction_2020/reproduction_results.ipynb) are historical exploration, now treated as Part I methodological background.
+Status: **28 October 2026**. Full-data fits and PPC are complete. **Reliable five-fold predictive comparison is incomplete; Part III has not formally started.** This is the current entry point. Historical M0–M4 exploration is integrated into the [Part I notebook](../01_reproduction_2020/reproduction_results.ipynb).
 
 ## Question and method
 
@@ -27,7 +27,7 @@ H3's direct refit with contamination upper support 1.5 instead of 2 seconds pass
 
 ## Reading, figures and reproduction
 
-[Current notebook](matching_h0_h3_results.ipynb) contains saved figures II-1 (limited recovery), II-2 (target posteriors), II-3 (absolute PPC), II-4 (target behavioral PPC) and II-5 (fast shape), each with interpretation. [Part I notebook](../01_reproduction_2020/reproduction_results.ipynb) and [historical M4 notebook](../01_reproduction_2020/reproduction_results.ipynb) explain the earlier evidence. See [archive/naming map](docs/ARCHIVE_AND_NAMING.md), [evidence hashes](docs/evidence_manifest.json) and [validation](docs/VALIDATION.md).
+[Current notebook](matching_h0_h3_results.ipynb) contains early diagnostic/simulation figures II-1–II-4 and saved figures II-5 (limited recovery), II-6 (target posteriors), II-7 (absolute PPC), II-8 (target behavioral PPC) and II-9 (fast shape), each with interpretation. [Part I notebook](../01_reproduction_2020/reproduction_results.ipynb) explain the earlier evidence. See [archive/naming map](docs/ARCHIVE_AND_NAMING.md), [evidence hashes](docs/evidence_manifest.json) and [validation](docs/VALIDATION.md).
 
 From the repository root:
 
@@ -42,3 +42,5 @@ Both notebooks read saved presentation data without MCMC. Historical notebooks a
 ## 发布结构更新 / Publication layout
 
 每部分仅一份正式结果Notebook。旧Notebook已移至本机 `_local_archive/`，不再发布；早期表图使用独立JSON展示数据，采样代码使用冻结源代码单元JSON。上文涉及历史Notebook的名称仅作来源说明，不再是运行依赖。完整MCMC仍未重跑。
+
+已完成的 H2/H3 先验与截止宽度敏感性、重加权失败后转为直接重拟合的原因，以及群体/个体恢复细表，现统一收录于总 Notebook 第6、9、11节。它们不构成真实数据机制排名。

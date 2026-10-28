@@ -25,7 +25,7 @@
 
 | 逻辑步骤 | 发现及调整 | 阅读入口 |
 |---|---|---|
-| 行为与历史探索 | 原论文选定统计复现；M0–M4 探索的 PPC、恢复及跨任务收敛暴露限制 | [第一部分](../01_reproduction_2020/README_zh.md)、[历史 M0–M4](README_historical_m0_m4_zh.md)、[历史结果](../01_reproduction_2020/reproduction_results.ipynb) |
+| 行为与历史探索 | 原论文选定统计复现；M0–M4 探索的 PPC、恢复及跨任务收敛暴露限制 | [第一部分](../01_reproduction_2020/README_zh.md)、[历史 M0–M4](../01_reproduction_2020/reproduction_results.ipynb) |
 | 回到实验设计 | 区分合法响应/超时/非法按键，审查 Mismatch 标签组成和快速选择曲线 | [行为诊断](matching_h0_h3_results.ipynb#ch1) |
 | 检查可区分性 | 固定参数模拟不能替代恢复；难度参照影响 dc 解释，旧参数代入不等于新模型 PPC | [前向模拟](matching_h0_h3_results.ipynb#ch3)、[结构核查](matching_h0_h3_results.ipynb#ch4) |
 | 修正观察模型与采样 | 使用一致生成—似然、共同截止积分；改善转移与精度，不靠放宽门槛 | [观察模型与恢复日志](matching_h0_h3_results.ipynb#ch5) |
@@ -51,16 +51,16 @@
 
 | 图 | 内容 | 解释边界 |
 |---|---|---|
-| P1 | 早期行为诊断：RT条件选择曲线 | 描述性分箱，不独立识别z/dc |
-| P2/P3 | 固定参数前向模拟与快速选择 | 生成锚点检查，不是真实拟合PPC |
-| P4 | 结构审查后的网格/截止诊断 | 有限网格，非后验推断 |
-| II-1 | 有限模拟目标参数恢复 | 两份/生成模型；不是稳定覆盖率 |
-| II-2 | 四模型群体目标参数森林图 | 模型内估计；固定为零项不是估计结果 |
-| II-3 | 绝对 PPC：准确率、RT、超时 | 样本内充分性，不是预测排名 |
-| II-4 | Good-self−Bad-self 行为对比 PPC | 指标和分母同观测对齐 |
-| II-5 | 快速反应形状 PPC | 观测固定分箱；95% 逐统计量预测区间 |
+| II-1 | 早期行为诊断：RT条件选择曲线 | 描述性分箱，不独立识别z/dc |
+| II-2/II-3 | 固定参数前向模拟与快速选择 | 生成锚点检查，不是真实拟合PPC |
+| II-4 | 固定参数网格的联合行为诊断 | 有限网格，非后验推断 |
+| II-5 | 有限模拟目标参数恢复 | 两份/生成模型；不是稳定覆盖率 |
+| II-6 | 四模型群体目标参数森林图 | 模型内估计；固定为零项不是估计结果 |
+| II-7 | 绝对 PPC：准确率、RT、超时 | 样本内充分性，不是预测排名 |
+| II-8 | Good-self−Bad-self 行为对比 PPC | 指标和分母同观测对齐 |
+| II-9 | 快速反应形状 PPC | 观测固定分箱；95% 逐统计量预测区间 |
 
-第一部分图表及历史 M4 诊断见 [复现 Notebook](../01_reproduction_2020/reproduction_results.ipynb) 与 [历史结果 Notebook](../01_reproduction_2020/reproduction_results.ipynb)。[目录、归档与命名说明](docs/ARCHIVE_AND_NAMING.md)明确 B/M/H 三组标识；原始数据、历史结果和采样文件原位保留。
+第一部分图表及历史 M4 诊断见 [复现 Notebook](../01_reproduction_2020/reproduction_results.ipynb)。[目录、归档与命名说明](docs/ARCHIVE_AND_NAMING.md)明确 B/M/H 三组标识；原始数据、历史结果和采样文件原位保留。
 
 ## 复现方法与发布范围
 
@@ -82,3 +82,5 @@ GitHub 仅发布白名单中的源代码、已有公开输入、紧凑汇总/状
 ## 发布结构更新 / Publication layout
 
 每部分仅一份正式结果Notebook。旧Notebook已移至本机 `_local_archive/`，不再发布；早期表图使用独立JSON展示数据，采样代码使用冻结源代码单元JSON。上文涉及历史Notebook的名称仅作来源说明，不再是运行依赖。完整MCMC仍未重跑。
+
+已完成的 H2/H3 先验与截止宽度敏感性、重加权失败后转为直接重拟合的原因，以及群体/个体恢复细表，现统一收录于总 Notebook 第6、9、11节。它们不构成真实数据机制排名。
