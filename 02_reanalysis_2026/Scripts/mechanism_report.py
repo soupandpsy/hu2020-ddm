@@ -83,13 +83,6 @@ def main():
     text='\n\n'.join(lines)+'\n';(OUT/'REPORT.md').write_text(text,encoding='utf-8')
     receipt=dict(updated_beijing=now,queue=queue,real_fit_status=real,exact=exact,scope='simulation evidence and actual real fitting progress; incomplete outputs are not conclusions')
     (OUT/'progress_receipt.json').write_text(json.dumps(receipt,ensure_ascii=False,indent=2),encoding='utf-8')
-    nbpath=ROOT/'matching_observation_recovery.ipynb';backup=OUT/'matching_observation_recovery_before_continuation.ipynb'
-    if not backup.exists():shutil.copy2(nbpath,backup)
-    nb=json.loads(nbpath.read_text(encoding='utf-8'));marker='continuation_20261026_receipt'
-    cell=dict(cell_type='markdown',metadata={'tags':[marker]},source=text.splitlines(keepends=True))
-    existing=[i for i,c in enumerate(nb['cells']) if marker in c.get('metadata',{}).get('tags',[])]
-    if existing:nb['cells'][existing[0]]=cell
-    else:nb['cells'].append(cell)
-    nbpath.write_text(json.dumps(nb,ensure_ascii=False,indent=1)+'\n',encoding='utf-8')
+    # The historical notebook is archived; REPORT.md is the stage report.
     print(str(OUT/'REPORT.md'))
 if __name__=='__main__':main()

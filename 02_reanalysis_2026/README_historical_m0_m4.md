@@ -2,7 +2,7 @@
 
 # Part II: Moral Self-Associations and Perceptual Decision-Making: HDDM Reanalysis
 
-English · [中文](README_zh.md) · [Project Home](../README.md) · [Results Notebook](results.ipynb)
+English · [中文](README_zh.md) · [Project Home](../README.md) · [Results Notebook](../01_reproduction_2020/reproduction_results.ipynb)
 
 ## Research Aim
 

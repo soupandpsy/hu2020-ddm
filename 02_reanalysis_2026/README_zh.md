@@ -25,7 +25,7 @@
 
 | 逻辑步骤 | 发现及调整 | 阅读入口 |
 |---|---|---|
-| 行为与历史探索 | 原论文选定统计复现；M0–M4 探索的 PPC、恢复及跨任务收敛暴露限制 | [第一部分](../01_reproduction_2020/README_zh.md)、[历史 M0–M4](README_historical_m0_m4_zh.md)、[历史结果](results.ipynb) |
+| 行为与历史探索 | 原论文选定统计复现；M0–M4 探索的 PPC、恢复及跨任务收敛暴露限制 | [第一部分](../01_reproduction_2020/README_zh.md)、[历史 M0–M4](README_historical_m0_m4_zh.md)、[历史结果](../01_reproduction_2020/reproduction_results.ipynb) |
 | 回到实验设计 | 区分合法响应/超时/非法按键，审查 Mismatch 标签组成和快速选择曲线 | [行为诊断](matching_h0_h3_results.ipynb#ch1) |
 | 检查可区分性 | 固定参数模拟不能替代恢复；难度参照影响 dc 解释，旧参数代入不等于新模型 PPC | [前向模拟](matching_h0_h3_results.ipynb#ch3)、[结构核查](matching_h0_h3_results.ipynb#ch4) |
 | 修正观察模型与采样 | 使用一致生成—似然、共同截止积分；改善转移与精度，不靠放宽门槛 | [观察模型与恢复日志](matching_h0_h3_results.ipynb#ch5) |
@@ -60,7 +60,7 @@
 | II-4 | Good-self−Bad-self 行为对比 PPC | 指标和分母同观测对齐 |
 | II-5 | 快速反应形状 PPC | 观测固定分箱；95% 逐统计量预测区间 |
 
-第一部分图表及历史 M4 诊断见 [复现 Notebook](../01_reproduction_2020/reproduction_results.ipynb) 与 [历史结果 Notebook](results.ipynb)。[目录、归档与命名说明](docs/ARCHIVE_AND_NAMING.md)明确 B/M/H 三组标识；原始数据、历史结果和采样文件原位保留。
+第一部分图表及历史 M4 诊断见 [复现 Notebook](../01_reproduction_2020/reproduction_results.ipynb) 与 [历史结果 Notebook](../01_reproduction_2020/reproduction_results.ipynb)。[目录、归档与命名说明](docs/ARCHIVE_AND_NAMING.md)明确 B/M/H 三组标识；原始数据、历史结果和采样文件原位保留。
 
 ## 复现方法与发布范围
 
@@ -70,11 +70,15 @@
 python -m pip install -r requirements-notebooks.txt
 python -m jupyter nbconvert --execute --to notebook --output-dir .preview 01_reproduction_2020/reproduction_results.ipynb
 python -m jupyter nbconvert --execute --to notebook --output-dir .preview 02_reanalysis_2026/matching_h0_h3_results.ipynb
-python -m jupyter nbconvert --execute --to notebook --output-dir .preview 02_reanalysis_2026/results.ipynb
 ```
 
-这三个展示 Notebook 读取已保存 CSV/JSON/PNG，不运行 MCMC。历史行为/模拟/恢复 Notebook 保留代码和旧输出；其中模拟与恢复依赖 HDDM、SciPy、ArviZ、Linux fork 及未发布的大型中间样本，不能用展示环境宣称全流程已复现。
+这两份展示 Notebook 读取已保存 CSV/JSON/PNG，不运行 MCMC。旧 Notebook 已归档到本机 `_local_archive/notebooks/`；第二部分的早期表图保存在 `docs/presentation_outputs.json`，不需要旧 Notebook。
 
-H0–H3 的 `Scripts/mechanism_*.py` 保留原始实现；部分按 `matching_observation_recovery.ipynb` 的固定单元编号读取模型。不要重排单元。采样/报告脚本可能创建或覆盖阶段产物，不能作为轻量重读命令；完整研究重跑前必须在隔离副本恢复相应 NPZ、模型数据库与原运行环境，再核对各脚本依赖。本次不重跑采样。
+H0–H3 采样源代码单元精确保存在 `Scripts/mechanism_source_cells.json`，保持原编号和源码；机制脚本通过该文件提取模型。阶段报告脚本不再追加旧 Notebook。完整研究重跑仍需要 HDDM、SciPy、ArviZ、Linux fork 与未发布的中间样本，须在隔离副本核对依赖；不能把本次展示执行当作采样复现。
 
 GitHub 仅发布白名单中的源代码、已有公开输入、紧凑汇总/状态和图；不发布完整后验、逐事件 loglik、数据库或本地日志。图表可以重读，后验计算不能仅凭此克隆完整再生。[证据 SHA-256 清单](docs/evidence_manifest.json)记录当前发布的结果来源；[整理验证记录](docs/VALIDATION.md)说明执行与保留范围。
+
+
+## 发布结构更新 / Publication layout
+
+每部分仅一份正式结果Notebook。旧Notebook已移至本机 `_local_archive/`，不再发布；早期表图使用独立JSON展示数据，采样代码使用冻结源代码单元JSON。上文涉及历史Notebook的名称仅作来源说明，不再是运行依赖。完整MCMC仍未重跑。

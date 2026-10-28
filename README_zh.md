@@ -6,7 +6,7 @@
 
 | 部分 | 问题、阅读入口 | 当前状态 |
 |---|---|---|
-| 一：行为复现与历史 HDDM | [README](01_reproduction_2020/README_zh.md) → [复现 Notebook](01_reproduction_2020/reproduction_results.ipynb) → [历史 M0–M4](02_reanalysis_2026/results.ipynb) | 选定统计复现；模型设定差异、未收敛分支和补充分析缺口保留 |
+| 一：行为复现与历史 HDDM | [README](01_reproduction_2020/README_zh.md) → [复现 Notebook](01_reproduction_2020/reproduction_results.ipynb) → [历史 M0–M4](01_reproduction_2020/reproduction_results.ipynb) | 选定统计复现；模型设定差异、未收敛分支和补充分析缺口保留 |
 | 二：H0–H3 v/dc 竞争机制 | [README](02_reanalysis_2026/README_zh.md) → [综合 Notebook](02_reanalysis_2026/matching_h0_h3_results.ipynb) | 全数据拟合与 PPC 完成；可靠五折预测比较尚未完成 |
 | 三：后续研究 | 待明确方案和开展正式分析 | **尚未正式分析，无第三部分结果** |
 

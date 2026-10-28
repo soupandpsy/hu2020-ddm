@@ -6,7 +6,7 @@ This independent project follows the Good-self behavioral advantage from reprodu
 
 | Part | Reading path | Status |
 |---|---|---|
-| I: behavioral reproduction and historical HDDM | [Guide](01_reproduction_2020/README.md) → [Notebook](01_reproduction_2020/reproduction_results.ipynb) → [historical M0–M4](02_reanalysis_2026/results.ipynb) | Selected statistics reproduced; specification differences, nonconverged branches and supplementary gaps retained |
+| I: behavioral reproduction and historical HDDM | [Guide](01_reproduction_2020/README.md) → [Notebook](01_reproduction_2020/reproduction_results.ipynb) → [historical M0–M4](01_reproduction_2020/reproduction_results.ipynb) | Selected statistics reproduced; specification differences, nonconverged branches and supplementary gaps retained |
 | II: H0–H3 v/dc competition | [Guide](02_reanalysis_2026/README.md) → [Current notebook](02_reanalysis_2026/matching_h0_h3_results.ipynb) | Full-data fits and PPC complete; reliable five-fold prediction incomplete |
 | III: subsequent research | Pending definition and formal analysis | **No formal analysis or results yet** |
 

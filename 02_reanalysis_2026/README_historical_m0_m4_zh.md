@@ -2,7 +2,7 @@
 
 # 第二部分：道德自我关联与知觉决策：HDDM 再分析
 
-[English](README.md) · 中文 · [项目首页](../README_zh.md) · [分析结果 Notebook](results.ipynb)
+[English](README.md) · 中文 · [项目首页](../README_zh.md) · [分析结果 Notebook](../01_reproduction_2020/reproduction_results.ipynb)
 
 ## 研究目的
 

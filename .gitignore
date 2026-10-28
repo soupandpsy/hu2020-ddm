@@ -6,3 +6,6 @@ __pycache__/
 .ipynb_checkpoints/
 *.pyc
 .preview/
+
+# Local historical records, never published.
+/_local_archive/

@@ -4,7 +4,7 @@
 
 English · [完整中文说明](README_zh.md) · [Project home](../README.md) · [Current notebook](matching_h0_h3_results.ipynb)
 
-Status: **28 October 2026**. Full-data fits and PPC are complete. **Reliable five-fold predictive comparison is incomplete; Part III has not formally started.** This is the current entry point. [M0–M4 guide](README_historical_m0_m4.md) and [results.ipynb](results.ipynb) are historical exploration, now treated as Part I methodological background.
+Status: **28 October 2026**. Full-data fits and PPC are complete. **Reliable five-fold predictive comparison is incomplete; Part III has not formally started.** This is the current entry point. [M0–M4 guide](README_historical_m0_m4.md) and [results.ipynb](../01_reproduction_2020/reproduction_results.ipynb) are historical exploration, now treated as Part I methodological background.
 
 ## Question and method
 
@@ -27,7 +27,7 @@ H3's direct refit with contamination upper support 1.5 instead of 2 seconds pass
 
 ## Reading, figures and reproduction
 
-[Current notebook](matching_h0_h3_results.ipynb) contains saved figures II-1 (limited recovery), II-2 (target posteriors), II-3 (absolute PPC), II-4 (target behavioral PPC) and II-5 (fast shape), each with interpretation. [Part I notebook](../01_reproduction_2020/reproduction_results.ipynb) and [historical M4 notebook](results.ipynb) explain the earlier evidence. See [archive/naming map](docs/ARCHIVE_AND_NAMING.md), [evidence hashes](docs/evidence_manifest.json) and [validation](docs/VALIDATION.md).
+[Current notebook](matching_h0_h3_results.ipynb) contains saved figures II-1 (limited recovery), II-2 (target posteriors), II-3 (absolute PPC), II-4 (target behavioral PPC) and II-5 (fast shape), each with interpretation. [Part I notebook](../01_reproduction_2020/reproduction_results.ipynb) and [historical M4 notebook](../01_reproduction_2020/reproduction_results.ipynb) explain the earlier evidence. See [archive/naming map](docs/ARCHIVE_AND_NAMING.md), [evidence hashes](docs/evidence_manifest.json) and [validation](docs/VALIDATION.md).
 
 From the repository root:
 
@@ -35,7 +35,10 @@ From the repository root:
 python -m pip install -r requirements-notebooks.txt
 python -m jupyter nbconvert --execute --to notebook --output-dir .preview 01_reproduction_2020/reproduction_results.ipynb
 python -m jupyter nbconvert --execute --to notebook --output-dir .preview 02_reanalysis_2026/matching_h0_h3_results.ipynb
-python -m jupyter nbconvert --execute --to notebook --output-dir .preview 02_reanalysis_2026/results.ipynb
 ```
 
-These display notebooks read saved CSV/JSON/PNG, without MCMC. Historical simulation/recovery logs require HDDM/SciPy/ArviZ, Linux fork and local intermediate samples; do not Run All. Mechanism scripts are preserved for inspection, some extract fixed notebook cell indices and some write results on import/execution. Full reruns require an isolated copy, missing posterior/intermediate files and the original environment. The Git whitelist publishes compact evidence and source, not databases, posterior arrays or per-event log likelihoods. No claim of a fully reproducible sampling pipeline is made.
+Both notebooks read saved presentation data without MCMC. Historical notebooks are now local-only archives. Early displays use `docs/presentation_outputs.json`; the sampler reads exact frozen code cells in `Scripts/mechanism_source_cells.json`, preserving legacy indices and code. Full sampling still requires the original HDDM environment and unpublished intermediate/posterior files. Stage reports retain Markdown/JSON outputs without updating the archived source notebook.
+
+## 发布结构更新 / Publication layout
+
+每部分仅一份正式结果Notebook。旧Notebook已移至本机 `_local_archive/`，不再发布；早期表图使用独立JSON展示数据，采样代码使用冻结源代码单元JSON。上文涉及历史Notebook的名称仅作来源说明，不再是运行依赖。完整MCMC仍未重跑。

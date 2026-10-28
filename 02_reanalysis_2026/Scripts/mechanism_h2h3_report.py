@@ -68,10 +68,5 @@ text+='\n## 实测资源\n\n```json\n'+json.dumps(resources,ensure_ascii=False,i
 text+='\n## 产出\n\n每个模型目录包括specification.json、逐链NPZ与日志、全部参数diagnostics.csv、a/t诊断子表、链轨迹/密度PNG/PDF。修正版另有proposal_components.npz、proposal_validation.json、joint_proposal_acceptance.csv。common_sampler_review保存共性多峰证据。诊断失败的样本只能用于采样器分析。dc解释仍依赖零和关系难度参照。\n'
 (BASE/'REPORT.md').write_text(text,encoding='utf-8')
 (BASE/'status_summary.json').write_text(json.dumps(dict(updated_beijing=now,runs=status,diagnostics=rows,resources=resources),indent=2),encoding='utf-8')
-nbpath=ROOT/'matching_observation_recovery.ipynb';nb=json.loads(nbpath.read_text(encoding='utf-8'));tag='h2h3_short_diagnostics_20261026'
-cell=dict(cell_type='markdown',metadata={'tags':[tag]},source=text.splitlines(keepends=True))
-indices=[i for i,c in enumerate(nb['cells']) if tag in c.get('metadata',{}).get('tags',[])]
-if indices:nb['cells'][indices[0]]=cell
-else:nb['cells'].append(cell)
-nbpath.write_text(json.dumps(nb,ensure_ascii=False,indent=1)+'\n',encoding='utf-8')
+# Historical notebook updates retired; stage REPORT.md remains the output.
 print(str(BASE/'REPORT.md'))

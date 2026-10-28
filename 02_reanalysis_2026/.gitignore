@@ -102,3 +102,8 @@ __pycache__/
 !/Output/hddm/matching/continuation_20261026/recovery_corrected/summary.json
 !/Output/synthetic_smoke_20261020_143349/status.json
 !/Output/hddm/matching/m4/final/diagnostics/matching_effective_drift.csv
+
+!/Scripts/mechanism_source_cells.json
+# Only the consolidated result notebook is a publication entry.
+**/*.ipynb
+!/matching_h0_h3_results.ipynb

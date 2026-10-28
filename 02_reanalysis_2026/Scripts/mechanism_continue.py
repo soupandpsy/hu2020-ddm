@@ -6,7 +6,7 @@ import ast, json, sys, time, traceback
 from pathlib import Path
 ROOT=Path(__file__).resolve().parents[1]
 os.chdir(ROOT)
-NB=ROOT/'matching_observation_recovery.ipynb'
+NB=ROOT/'Scripts/mechanism_source_cells.json'
 nb=json.loads(NB.read_text(encoding='utf-8'))
 # Execute setup, then only declarations from historical experimental cells.
 exec(compile(''.join(nb['cells'][1]['source']),str(NB)+':setup','exec'))
