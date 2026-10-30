@@ -6,8 +6,8 @@
 
 | 部分 | 问题、阅读入口 | 当前状态 |
 |---|---|---|
-| 一：行为复现与历史 HDDM | [README](01_reproduction_2020/README_zh.md) → [复现 Notebook](01_reproduction_2020/reproduction_results.ipynb) | 选定统计复现；模型设定差异、未收敛分支和补充分析缺口保留 |
-| 二：H0–H3 v/dc 竞争机制 | [README](02_reanalysis_2026/README_zh.md) → [综合 Notebook](02_reanalysis_2026/matching_h0_h3_results.ipynb) | 全数据采样诊断通过；PPC有RT、超时和快速优势失配；可靠五折预测比较未完成 |
+| 一：行为复现与历史 HDDM | [README](01_reproduction_2020/README_zh.md) → [复现 Notebook](01_reproduction_2020/01_reproduction_2020.ipynb) | 选定统计复现；模型设定差异、未收敛分支和补充分析缺口保留 |
+| 二：H0–H3 v/dc 竞争机制 | [README](02_reanalysis_2026/README_zh.md) → [综合 Notebook](02_reanalysis_2026/02_reanalysis_2026.ipynb) | 全数据采样诊断通过；PPC有RT、超时和快速优势失配；可靠五折预测比较未完成 |
 | 三：后续研究 | 待明确方案和开展正式分析 | **尚未正式分析，无第三部分结果** |
 
 阅读主线：研究问题 → 方法选择 → 诊断发现 → 方法调整 → 结果 → 限制 → 下一步。第一部分支持选定行为现象的复现，不等于原机制解释已获独立验证；第二部分四模型采样均通过但 PPC 均有失配，不能宣布 H2 推翻 v 解释或 H3 已是最佳或唯一机制。五折为四模型 × 五折的 20 套训练拟合，修复仅一套完成，暂无可靠 ΔELPD 排名。
@@ -24,6 +24,6 @@
 
 ```bash
 python -m pip install -r requirements-notebooks.txt
-python -m jupyter nbconvert --execute --to notebook --output-dir .preview 01_reproduction_2020/reproduction_results.ipynb
-python -m jupyter nbconvert --execute --to notebook --output-dir .preview 02_reanalysis_2026/matching_h0_h3_results.ipynb
+python -m jupyter nbconvert --execute --to notebook --output-dir .preview 01_reproduction_2020/01_reproduction_2020.ipynb
+python -m jupyter nbconvert --execute --to notebook --output-dir .preview 02_reanalysis_2026/02_reanalysis_2026.ipynb
 ```

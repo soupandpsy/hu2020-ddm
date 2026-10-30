@@ -1,6 +1,6 @@
 # 发布结构与历史归档
 
-正式结果只保留两份：[第一部分](../../01_reproduction_2020/reproduction_results.ipynb)、[第二部分](../matching_h0_h3_results.ipynb)。第一部分含原论文行为复现和历史M0–M4；第二部分含行为诊断至H0–H3结果全链条。第三部分未正式分析。
+正式结果只保留两份：[第一部分](../../01_reproduction_2020/01_reproduction_2020.ipynb)、[第二部分](../02_reanalysis_2026.ipynb)。第一部分含原论文行为复现和历史M0–M4；第二部分含行为诊断至H0–H3结果全链条。第三部分未正式分析。
 
 所有其他本地Notebook已移到仓库 `_local_archive/notebooks/`，保持原相对路径。该目录由Git忽略；本地manifest逐文件记录SHA-256。旧文件从Git当前版本移除，但仍可通过提交历史恢复。原数据、CSV/PNG结果、后验与数据库不搬动、不覆盖。
 

@@ -1,8 +1,8 @@
 # 第二部分：H0–H3 的 v / dc 竞争机制再分析
 
-> **第二部分只需阅读一份：[总 Notebook](matching_h0_h3_results.ipynb)。** 已整合行为→模型设计→模拟→识别核查→观察与采样调整→恢复→真实拟合/PPC→五折/敏感性→限制。旧Notebook仅在总文末作为历史来源，不再并列阅读。
+> **第二部分只需阅读一份：[总 Notebook](02_reanalysis_2026.ipynb)。** 已整合行为→模型设计→模拟→识别核查→观察与采样调整→恢复→真实拟合/PPC→五折/敏感性→限制。旧Notebook仅在总文末作为历史来源，不再并列阅读。
 
-[English](README.md) · [项目总览](../README_zh.md) · [综合结果 Notebook](matching_h0_h3_results.ipynb)
+[English](README.md) · [项目总览](../README_zh.md) · [综合结果 Notebook](02_reanalysis_2026.ipynb)
 
 状态日期：**2026-10-28**。全数据四模型均通过当前采样诊断；PPC均存在RT、超时率与快速Good-self优势失配；**可靠五折预测比较尚未完成，第三部分尚未正式分析**。本文是第二部分当前入口；带日期的旧报告及 Notebook 是过程记录，不与本文并列作为最新结论。
 
@@ -25,12 +25,12 @@
 
 | 逻辑步骤 | 发现及调整 | 阅读入口 |
 |---|---|---|
-| 行为与历史探索 | 原论文选定统计复现；M0–M4 探索的 PPC、恢复及跨任务收敛暴露限制 | [第一部分](../01_reproduction_2020/README_zh.md)、[历史 M0–M4](../01_reproduction_2020/reproduction_results.ipynb) |
-| 回到实验设计 | 区分合法响应/超时/非法按键，审查 Mismatch 标签组成和快速选择曲线 | [行为诊断](matching_h0_h3_results.ipynb#ch1) |
-| 检查可区分性 | 固定参数模拟不能替代恢复；难度参照影响 dc 解释，旧参数代入不等于新模型 PPC | [前向模拟](matching_h0_h3_results.ipynb#ch3)、[结构核查](matching_h0_h3_results.ipynb#ch4) |
-| 修正观察模型与采样 | 使用一致生成—似然、共同截止积分；改善转移与精度，不靠放宽门槛 | [观察模型与恢复日志](matching_h0_h3_results.ipynb#ch5) |
+| 行为与历史探索 | 原论文选定统计复现；M0–M4 探索的 PPC、恢复及跨任务收敛暴露限制 | [第一部分](../01_reproduction_2020/README_zh.md)、[历史 M0–M4](../01_reproduction_2020/01_reproduction_2020.ipynb) |
+| 回到实验设计 | 区分合法响应/超时/非法按键，审查 Mismatch 标签组成和快速选择曲线 | [行为诊断](02_reanalysis_2026.ipynb#ch1) |
+| 检查可区分性 | 固定参数模拟不能替代恢复；难度参照影响 dc 解释，旧参数代入不等于新模型 PPC | [前向模拟](02_reanalysis_2026.ipynb#ch3)、[结构核查](02_reanalysis_2026.ipynb#ch4) |
+| 修正观察模型与采样 | 使用一致生成—似然、共同截止积分；改善转移与精度，不靠放宽门槛 | [观察模型与恢复日志](02_reanalysis_2026.ipynb#ch5) |
 | 检查真实拟合 | 四链每链 8,000 保留样本，四模型均通过全参数 R̂<1.01、bulk/tail ESS≥400 | [诊断表](Output/hddm/matching/continuation_stage5_20261027/four_model_diagnostics.csv) |
-| 检查模型充分性 | 每模型 200 PPC 复本；四模型各有 8/8 条件正确 RT 均值和超时率失配，快速优势均低估 | [PPC 统计表](Output/hddm/matching/continuation_stage4_20261027/four_model_ppc/four_model_ppc_summary.csv)、[综合 Notebook](matching_h0_h3_results.ipynb) |
+| 检查模型充分性 | 每模型 200 PPC 复本；四模型各有 8/8 条件正确 RT 均值和超时率失配，快速优势均低估 | [PPC 统计表](Output/hddm/matching/continuation_stage4_20261027/four_model_ppc/four_model_ppc_summary.csv)、[综合 Notebook](02_reanalysis_2026.ipynb) |
 | 检查预测比较 | 各模型 PSIS 均有高 k；首轮 20 套五折短链均失败，转为逐折修复 | [首轮诊断](Output/hddm/matching/continuation_stage5_20261027/initial_kfold_diagnostics.csv)、[修复状态](Output/hddm/matching/continuation_stage5_20261027/kfold5_repair/queue_status.json) |
 
 全数据最大 R̂：H0=1.001248、H1=1.001703、H2=1.002674、H3=1.001241。收敛是计算诊断，不能保证心理模型充分。快速 Match 准确率优势观测 0.204；H0/H1/H2/H3 预测中位数约 −0.002/0.027/0.022/0.065，95% 逐统计量预测区间均未覆盖观测。
@@ -47,7 +47,7 @@
 
 ## Notebook 与图表索引
 
-主线入口是 [matching_h0_h3_results.ipynb](matching_h0_h3_results.ipynb)，保存表格与内嵌图片，可直接在 GitHub 阅读。
+主线入口是 [02_reanalysis_2026.ipynb](02_reanalysis_2026.ipynb)，保存表格与内嵌图片，可直接在 GitHub 阅读。
 
 | 图 | 内容 | 解释边界 |
 |---|---|---|
@@ -60,7 +60,7 @@
 | II-8 | Good-self−Bad-self 行为对比 PPC | 指标和分母同观测对齐 |
 | II-9 | 快速反应形状 PPC | 观测固定分箱；95% 逐统计量预测区间 |
 
-第一部分图表及历史 M4 诊断见 [复现 Notebook](../01_reproduction_2020/reproduction_results.ipynb)。[目录、归档与命名说明](docs/ARCHIVE_AND_NAMING.md)明确 B/M/H 三组标识；原始数据、历史结果和采样文件原位保留。
+第一部分图表及历史 M4 诊断见 [复现 Notebook](../01_reproduction_2020/01_reproduction_2020.ipynb)。[目录、归档与命名说明](docs/ARCHIVE_AND_NAMING.md)明确 B/M/H 三组标识；原始数据、历史结果和采样文件原位保留。
 
 ## 复现方法与发布范围
 
@@ -68,8 +68,8 @@
 
 ```bash
 python -m pip install -r requirements-notebooks.txt
-python -m jupyter nbconvert --execute --to notebook --output-dir .preview 01_reproduction_2020/reproduction_results.ipynb
-python -m jupyter nbconvert --execute --to notebook --output-dir .preview 02_reanalysis_2026/matching_h0_h3_results.ipynb
+python -m jupyter nbconvert --execute --to notebook --output-dir .preview 01_reproduction_2020/01_reproduction_2020.ipynb
+python -m jupyter nbconvert --execute --to notebook --output-dir .preview 02_reanalysis_2026/02_reanalysis_2026.ipynb
 ```
 
 这两份展示 Notebook 读取已保存 CSV/JSON/PNG，不运行 MCMC。旧 Notebook 已归档到本机 `_local_archive/notebooks/`；第二部分的早期表图保存在 `docs/presentation_outputs.json`，不需要旧 Notebook。

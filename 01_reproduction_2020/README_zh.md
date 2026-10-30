@@ -1,6 +1,6 @@
 # 第一部分：原论文复现与历史 HDDM
 
-[English](README.md) · [项目首页](../README_zh.md) · [本部分总 Notebook](reproduction_results.ipynb)
+[English](README.md) · [项目首页](../README_zh.md) · [本部分总 Notebook](01_reproduction_2020.ipynb)
 
 ## 研究范围
 
@@ -32,7 +32,7 @@
 轻量查看：从仓库根目录安装 `requirements-notebooks.txt` 后执行：
 
 ```bash
-python -m jupyter nbconvert --execute --to notebook --output-dir .preview 01_reproduction_2020/reproduction_results.ipynb
+python -m jupyter nbconvert --execute --to notebook --output-dir .preview 01_reproduction_2020/01_reproduction_2020.ipynb
 ```
 
 数据口径见[Data说明](Data/README.md)。以下原论文复现命令从 `01_reproduction_2020/` 运行；R分析会产生新输出，绘图命令默认读取已保存结果。

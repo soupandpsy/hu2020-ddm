@@ -58,7 +58,7 @@ __pycache__/
 *.log
 
 # Reviewed Part I/II narrative, source and compact evidence (2026-10-28).
-!/matching_h0_h3_results.ipynb
+!/02_reanalysis_2026.ipynb
 !/matching_behavior_review.ipynb
 !/matching_mechanism_simulation.ipynb
 !/matching_mechanism_audit.ipynb
@@ -106,4 +106,4 @@ __pycache__/
 !/Scripts/mechanism_source_cells.json
 # Only the consolidated result notebook is a publication entry.
 **/*.ipynb
-!/matching_h0_h3_results.ipynb
+!/02_reanalysis_2026.ipynb

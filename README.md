@@ -6,8 +6,8 @@ This independent project follows the Good-self behavioral advantage from reprodu
 
 | Part | Reading path | Status |
 |---|---|---|
-| I: behavioral reproduction and historical HDDM | [Guide](01_reproduction_2020/README.md) → [Notebook](01_reproduction_2020/reproduction_results.ipynb) | Selected statistics reproduced; specification differences, nonconverged branches and supplementary gaps retained |
-| II: H0–H3 v/dc competition | [Guide](02_reanalysis_2026/README.md) → [Current notebook](02_reanalysis_2026/matching_h0_h3_results.ipynb) | Full-data sampling diagnostics pass; PPC misses RT, timeouts and fast Good-self advantage; reliable five-fold comparison incomplete |
+| I: behavioral reproduction and historical HDDM | [Guide](01_reproduction_2020/README.md) → [Notebook](01_reproduction_2020/01_reproduction_2020.ipynb) | Selected statistics reproduced; specification differences, nonconverged branches and supplementary gaps retained |
+| II: H0–H3 v/dc competition | [Guide](02_reanalysis_2026/README.md) → [Current notebook](02_reanalysis_2026/02_reanalysis_2026.ipynb) | Full-data sampling diagnostics pass; PPC misses RT, timeouts and fast Good-self advantage; reliable five-fold comparison incomplete |
 | III: subsequent research | Pending definition and formal analysis | **No formal analysis or results yet** |
 
 Read: question → method → diagnostic finding → adjustment → result → limitation → next step. All four current models pass full-data sampling diagnostics but show PPC misfit. There is no reliable ΔELPD ranking: only one of 20 repaired model/fold fits and predictions is complete. Neither displacement of the original v explanation by H2 nor H3 as the best or a unique mechanism is established.
@@ -22,6 +22,6 @@ Run from the repository root; this reads saved results without MCMC:
 
 ```bash
 python -m pip install -r requirements-notebooks.txt
-python -m jupyter nbconvert --execute --to notebook --output-dir .preview 01_reproduction_2020/reproduction_results.ipynb
-python -m jupyter nbconvert --execute --to notebook --output-dir .preview 02_reanalysis_2026/matching_h0_h3_results.ipynb
+python -m jupyter nbconvert --execute --to notebook --output-dir .preview 01_reproduction_2020/01_reproduction_2020.ipynb
+python -m jupyter nbconvert --execute --to notebook --output-dir .preview 02_reanalysis_2026/02_reanalysis_2026.ipynb
 ```

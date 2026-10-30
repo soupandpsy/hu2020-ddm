@@ -1,6 +1,6 @@
 # Part I: reproduction and historical HDDM
 
-[中文](README_zh.md) · [Project home](../README.md) · [Part I notebook](reproduction_results.ipynb)
+[中文](README_zh.md) · [Project home](../README.md) · [Part I notebook](01_reproduction_2020.ipynb)
 
 ## Research Scope
 
@@ -32,7 +32,7 @@ As of 28 October 2026, Part II H0–H3 full-data fits pass current sampling diag
 Install `requirements-notebooks.txt` and run from the repository root:
 
 ```bash
-python -m jupyter nbconvert --execute --to notebook --output-dir .preview 01_reproduction_2020/reproduction_results.ipynb
+python -m jupyter nbconvert --execute --to notebook --output-dir .preview 01_reproduction_2020/01_reproduction_2020.ipynb
 ```
 
 See [data definitions](Data/README.md). Run original-paper analysis and plotting from `01_reproduction_2020/`; analyses create new output directories and these plotting commands read saved results:

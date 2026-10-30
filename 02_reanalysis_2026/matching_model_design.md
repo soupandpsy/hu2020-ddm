@@ -1,10 +1,10 @@
-> **历史设计与阶段记录（2026-10-25），非当前进度。** 下文计划、18/32 进度与“尚未拟合”等文字保留用于追溯，不代表截至 2026-10-28 的状态。当前入口为 [README](README_zh.md) 和 [综合结果 Notebook](matching_h0_h3_results.ipynb)。其中“第一/第二阶段”指模拟方案内部步骤，不是项目的第一/第二/第三部分；第三部分尚未正式分析。
+> **历史设计与阶段记录（2026-10-25），非当前进度。** 下文计划、18/32 进度与“尚未拟合”等文字保留用于追溯，不代表截至 2026-10-28 的状态。当前入口为 [README](README_zh.md) 和 [综合结果 Notebook](02_reanalysis_2026.ipynb)。其中“第一/第二阶段”指模拟方案内部步骤，不是项目的第一/第二/第三部分；第三部分尚未正式分析。
 
 # Matching 竞争机制模型设计与模拟方案
 
 状态：42 人 H3 采样检验已通过全部 1,496 个检查量的当前诊断标准。已实现八份独立模拟数据、32 个候选拟合的首批恢复计算，完成情况以执行状态文件为准；尚无完整恢复矩阵或真实数据机制结论。日期：2026-10-25。
 
-本方案接续 [Matching 前期行为诊断](matching_h0_h3_results.ipynb)，不替代现有 M0—M4 分析，也不改变此前估计。研究范围限于 Matching。已执行内容见 [首轮模拟](matching_h0_h3_results.ipynb) 、[独立核查和敏感性分析](matching_h0_h3_results.ipynb) 与 [观察模型及层级恢复技术试验](matching_h0_h3_results.ipynb)；下文完整恢复规模和验收规则仍属研究设计。
+本方案接续 [Matching 前期行为诊断](02_reanalysis_2026.ipynb)，不替代现有 M0—M4 分析，也不改变此前估计。研究范围限于 Matching。已执行内容见 [首轮模拟](02_reanalysis_2026.ipynb) 、[独立核查和敏感性分析](02_reanalysis_2026.ipynb) 与 [观察模型及层级恢复技术试验](02_reanalysis_2026.ipynb)；下文完整恢复规模和验收规则仍属研究设计。
 
 阶段性恢复结果（18/32 个拟合已完成）：全部已完成拟合的最大 R̂≤1.009565、最小 bulk ESS≥699.46、最小 tail ESS≥533.51。两份 H1 生成数据中，H1 相对 H2 的预测得分差为 64.27（被试聚类 SE=13.67）和 51.96（SE=12.53）；但 H1 与 H3 得分相近，两份 H0 数据也均无明确胜者。H2/H3 生成数据的比较尚未全部完成。这是给定生成效应与参照约束的初步结果，不是实际数据的机制结论。
 
@@ -245,7 +245,7 @@ o_c 在 Self 条件为 0、Other 条件为 1；w_c 在 Good-other 为 +1/2、Bad
 
 ## 当前交付与未完成项
 
-已完成本方案、独立的前期诊断 Notebook、[H0–H3 前向生成模拟](matching_h0_h3_results.ipynb)、结构审查及两轮层级恢复技术试验。技术试验尚未通过采样验收，不构成完整参数恢复或模型恢复。首轮模拟采用四个生成情景、四个模型、每组合 20 次重复，共 320 个数据集；生成规格、数值检查、结果表与图均保存在该 Notebook 中。它是固定参数下的有限前向检查，尚未覆盖完整效应范围，也不是参数恢复、模型恢复或真实数据拟合。推断先验及恢复验收标准仍需确定。
+已完成本方案、独立的前期诊断 Notebook、[H0–H3 前向生成模拟](02_reanalysis_2026.ipynb)、结构审查及两轮层级恢复技术试验。技术试验尚未通过采样验收，不构成完整参数恢复或模型恢复。首轮模拟采用四个生成情景、四个模型、每组合 20 次重复，共 320 个数据集；生成规格、数值检查、结果表与图均保存在该 Notebook 中。它是固定参数下的有限前向检查，尚未覆盖完整效应范围，也不是参数恢复、模型恢复或真实数据拟合。推断先验及恢复验收标准仍需确定。
 
 所选参数下 H1、H2、H3 产生不同的方向性预测，但 H3 未同时重现 RT 差异、快速响应偏向与超时比例。代表情景中模拟超时比例约 7.22%–7.33%，高于观测 2.58%；这说明历史 M4 参数锚点与新观察规则的组合需要进一步检验，不能直接视为已验证的生成模型。没有修改 `common.py`、任务模型、采样配置、README 或已有 Output；没有进行恢复、MCMC 或远程推送。
 
@@ -253,7 +253,7 @@ o_c 在 Self 条件为 0、Other 条件为 1；w_c 在 Good-other 为 +1/2、Bad
 
 ### 参考资料
 
-- [前期行为诊断与来源哈希](matching_h0_h3_results.ipynb)
+- [前期行为诊断与来源哈希](02_reanalysis_2026.ipynb)
 - [原始 Confirm 实验程序](https://github.com/hcp4715/moralSelf_ddm/tree/master/2_confirm_study/Procedure/confirmStudy_proc)
 - [Stan：Wiener diffusion model，含截断与删失处理](https://mc-stan.org/docs/stan-users-guide/wiener_diffusion_model.html)
 - [Wilson & Collins (2019)：Ten simple rules for the computational modeling of behavioral data](https://pmc.ncbi.nlm.nih.gov/articles/PMC6879303/)

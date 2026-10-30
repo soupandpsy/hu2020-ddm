@@ -1,6 +1,6 @@
 # 验证范围与复现边界
 
-截至2026-10-28。当前结果入口为[第二部分总Notebook](../matching_h0_h3_results.ipynb)；[第一部分总Notebook](../../01_reproduction_2020/reproduction_results.ipynb)包含原论文复现与历史M0–M4。
+截至2026-10-28。当前结果入口为[第二部分总Notebook](../02_reanalysis_2026.ipynb)；[第一部分总Notebook](../../01_reproduction_2020/01_reproduction_2020.ipynb)包含原论文复现与历史M0–M4。
 
 ## 检查范围
 
