@@ -1,0 +1,15 @@
+{
+  "seed": 2026110719,
+  "train_rows": 19580,
+  "test_rows": 4919,
+  "train_hash": "2dfcb00ea2bc985b516d40614a8af2cde3cbc004f96d67fd2f7ef2ff13456951",
+  "test_hash": "ca287d559640cdd879f1b5d79fcb4f66b966f542b9a5cb1bf81d06f6ebcfa7d7",
+  "full_hash": "6974fe14b686e66279dc631a26626a672fa7129a0efc95910932f72dc22f2ceb",
+  "strata": 336,
+  "rt_policy": "rt_ge_0p2_20261107",
+  "rt_min_seconds": 0.2,
+  "assignment": "Preserve the recorded assignment for all retained event IDs; remove only RT < .2, no reassignment",
+  "previous_split": "Output/tables/local_bulk/full_comparison_20261107/split_manifest.json",
+  "new_mcmc_started": false,
+  "old_predictions_not_validated_on_this_data_version": true
+}

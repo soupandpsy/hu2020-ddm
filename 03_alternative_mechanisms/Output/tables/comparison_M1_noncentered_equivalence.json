@@ -1,0 +1,28 @@
+{
+  "pass": true,
+  "common_nodes_checked": 58,
+  "fixed_parameter_checks": [
+    {
+      "mu": 0.0,
+      "sigma": 0.01,
+      "observed_logp_error": 0.0,
+      "prior_jacobian_error": 0.0
+    },
+    {
+      "mu": 0.15,
+      "sigma": 0.1,
+      "observed_logp_error": 0.0,
+      "prior_jacobian_error": 0.0
+    },
+    {
+      "mu": 0.6,
+      "sigma": 0.25,
+      "observed_logp_error": 0.0,
+      "prior_jacobian_error": 0.0
+    }
+  ],
+  "transformation": "beta_i=mu_beta_z+sigma_beta_z*eta_i; eta_i~N(0,1)",
+  "scientific_priors_unchanged": true,
+  "data_regenerated": false,
+  "runner_sha256": "afb0a74a8801ee39f7ff13b2f6ee2b9df784bf47b9029857afc0971a121e4ded"
+}

@@ -1,0 +1,32 @@
+[
+  {
+    "scenario": "null",
+    "draws_per_model": 8000,
+    "delta_elpd": 1.1937456042204935,
+    "se_subject_cluster": 1.500095406960453,
+    "split_delta": [
+      2.130138764045874,
+      0.23194764093967635
+    ],
+    "split_shift": 1.8981911231061979,
+    "limit": 0.15000954069604533,
+    "pass_existing_rule": false,
+    "repetitions": 1,
+    "sampling": false
+  },
+  {
+    "scenario": "weak",
+    "draws_per_model": 8000,
+    "delta_elpd": 13.560009968350748,
+    "se_subject_cluster": 5.23193715147712,
+    "split_delta": [
+      12.49633033760321,
+      14.62659622966581
+    ],
+    "split_shift": 2.1302658920625994,
+    "limit": 0.5231937151477121,
+    "pass_existing_rule": false,
+    "repetitions": 1,
+    "sampling": false
+  }
+]

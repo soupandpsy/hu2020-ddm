@@ -1,0 +1,29 @@
+{
+  "model": "M0",
+  "analysis_date": "2026-11-11",
+  "n_chains": 4,
+  "retained_per_chain": 5000,
+  "data_hash": "2dfcb00ea2bc985b516d40614a8af2cde3cbc004f96d67fd2f7ef2ff13456951",
+  "n_events": 19580,
+  "posterior_hash": "70aed4c9096262c7f8dd181f085fd12ab96efaf9c4cf45ff1e679fa10aa6d738",
+  "ppc_draws": 2000,
+  "ppc_seed": 2026110842,
+  "ppc_chain_counts": {
+    "0": 488,
+    "1": 490,
+    "2": 494,
+    "3": 528
+  },
+  "ppc_selection": "uniform chain, uniform retained draw; 500 times chain count total replicates",
+  "DIC": -3552.2852428435435,
+  "pD": 655.277557217878,
+  "diagnostics_pass": true,
+  "observation_model": "untruncated valid-response RT-choice density; RT selection and Deadline unmodeled",
+  "code_sha256": {
+    "baseline_v.py": "cf3ac33e66799009601738e4f53c8ee69cbdcde634287660c2a8a1a15894463f",
+    "data_utils.py": "4af0dbd106903c70ec443689b306a2de0217fe051c02a2b0370cf4138b88a166",
+    "evaluation_utils.py": "98948b2f23d69c260bce56fa2820ddeaecaf69b3b5ee94b99a2980ecce64dd87",
+    "simulation_utils.py": "4cde6f689d2e7a42e3b44ed2131d41251b354444bcdcd1e8c235a40d13f5cd76"
+  },
+  "mcmc_run": false
+}

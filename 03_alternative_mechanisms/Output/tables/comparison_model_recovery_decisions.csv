@@ -1,0 +1,4 @@
+scenario,generator,repetitions,decision,reason,identification_rate
+null,M0,1,UNRESOLVED,Predictive integration precision or separation insufficient,
+weak,M1,1,UNRESOLVED,Predictive integration precision or separation insufficient,
+strong,M1,1,M1,Paired predictive difference exceeds two cluster SE,

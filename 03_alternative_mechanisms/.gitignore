@@ -1,0 +1,24 @@
+# Local bulk artifacts only; keep small tables, figures and documentation.
+*.db
+*.hddm
+*.nc
+*.h5
+*.hdf5
+*.pkl
+*.pickle
+*.npy
+*.npz
+*.parquet
+*.tar
+*.tar.gz
+*.zip
+*.log
+.venv/
+**/traces/
+**/chains/
+**/posterior_samples/
+# Local bulk data can use this dedicated untracked directory.
+Data/**/local_bulk/
+
+# Local posterior chains and trial-level simulations
+**/local_bulk/

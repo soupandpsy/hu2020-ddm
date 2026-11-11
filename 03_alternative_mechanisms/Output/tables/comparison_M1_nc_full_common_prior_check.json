@@ -1,0 +1,8 @@
+{
+  "common_stochastic_nodes": 778,
+  "native_M0_vs_actual_noncentered_M1_common_priors_equal": true,
+  "common_mismatch": [],
+  "additional_stochastic_nodes": 44,
+  "actual_scientific_beta_reconstructed": true,
+  "full_diagnostics_pending_all_four_chains": true
+}

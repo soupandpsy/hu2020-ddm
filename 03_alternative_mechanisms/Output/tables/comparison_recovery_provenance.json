@@ -1,0 +1,41 @@
+{
+  "reused_source": "Output/01_starting_point_z/local_bulk/m1_research_design_20261106/bounded_executed_notebook.ipynb",
+  "common_generating_values": "Part 1 full four-chain individual posterior medians; used only as simulation generating constants, not empirical priors or heldout training posterior",
+  "subjects": 42,
+  "simulated_train_rows": 24527,
+  "simulated_test_rows": 24527,
+  "empirical_train_rows": 19599,
+  "empirical_test_rows": 4928,
+  "repetitions_per_effect_setting": 1,
+  "null": {
+    "generator": "M0",
+    "mu_beta_z": 0.0,
+    "sigma_beta_z": 0.0,
+    "train_seed": 2026111607,
+    "test_seed": 2026111608,
+    "data_regenerated": false
+  },
+  "weak": {
+    "generator": "M1",
+    "mu_beta_z": 0.15,
+    "sigma_beta_z": 0.2,
+    "train_seed": 2026110751,
+    "test_seed": 2026110752,
+    "individual_effects": "Original strong-case beta values shifted by -0.45; between-participant heterogeneity unchanged",
+    "scope": "Weak population mean, not zero individual heterogeneity"
+  },
+  "strong": {
+    "generator": "M1",
+    "mu_beta_z": 0.6,
+    "sigma_beta_z": 0.2,
+    "coefficient_seed": 2026110637,
+    "train_seed": 2026111617,
+    "test_seed": 2026111618,
+    "data_regenerated": false
+  },
+  "prior_predictive_reference": "Output/01_starting_point_z/m1_research_prior_predictive.csv",
+  "prior_predictive_reused_draws_per_model": 8,
+  "prior_generation_failures": 0,
+  "prior_predictive_scope": "Limited pre-existing checks, not exhaustive prior-space validation; recorded floating-point rounding flags are retained",
+  "limits": "Different effect settings are not iid repetitions; cannot report a precise identification probability or claim recovery at all parameter values. Synthetic observation rule is ordinary untruncated joint choice/RT generation."
+}

@@ -1,0 +1,36 @@
+[
+  {
+    "model": "M0",
+    "rows": 19580,
+    "subjects": 42,
+    "cells": 336,
+    "rt_min": 0.204,
+    "rt_max": 1.1685,
+    "hash": "2dfcb00ea2bc985b516d40614a8af2cde3cbc004f96d67fd2f7ef2ff13456951",
+    "observed_rows": 19580,
+    "observed_nodes": 336,
+    "initial_logp": -33761.86250904536,
+    "after_bounded_initialization_logp": -27645.164915775054,
+    "seconds": 6.769937677999678,
+    "mcmc_draws": 0,
+    "full_input_construction_pass": true,
+    "scientific_validation_pass": false
+  },
+  {
+    "model": "M1",
+    "rows": 19580,
+    "subjects": 42,
+    "cells": 336,
+    "rt_min": 0.204,
+    "rt_max": 1.1685,
+    "hash": "2dfcb00ea2bc985b516d40614a8af2cde3cbc004f96d67fd2f7ef2ff13456951",
+    "observed_rows": 19580,
+    "observed_nodes": 336,
+    "initial_logp": -33799.60321578412,
+    "after_bounded_initialization_logp": -27682.90562251386,
+    "seconds": 7.445537004000016,
+    "mcmc_draws": 0,
+    "full_input_construction_pass": true,
+    "scientific_validation_pass": false
+  }
+]

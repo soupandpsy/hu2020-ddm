@@ -1,0 +1,16 @@
+[
+  {
+    "chain": "chain_00",
+    "retained": 4000,
+    "columns": 906,
+    "scientific_individual_beta_columns": 42,
+    "max_saved_transform_error": 1.1102230246251565e-16
+  },
+  {
+    "chain": "chain_01",
+    "retained": 4000,
+    "columns": 906,
+    "scientific_individual_beta_columns": 42,
+    "max_saved_transform_error": 5.551115123125783e-17
+  }
+]

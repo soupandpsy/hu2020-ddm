@@ -1,0 +1,2299 @@
+{
+  "M0": {
+    "a": {
+      "distribution": "Gamma",
+      "parents": {
+        "alpha": 4.0,
+        "beta": 2.6666666666666665
+      }
+    },
+    "a_std": {
+      "distribution": "HalfNormal",
+      "parents": {
+        "tau": 0.25
+      }
+    },
+    "a_subj.7304": {
+      "distribution": "Gamma",
+      "parents": {
+        "alpha": {
+          "node": "a_shape"
+        },
+        "beta": {
+          "node": "a_rate"
+        }
+      }
+    },
+    "a_subj.7305": {
+      "distribution": "Gamma",
+      "parents": {
+        "alpha": {
+          "node": "a_shape"
+        },
+        "beta": {
+          "node": "a_rate"
+        }
+      }
+    },
+    "v(Other.match.Bad)": {
+      "distribution": "Normal",
+      "parents": {
+        "mu": 2,
+        "tau": 0.1111111111111111
+      }
+    },
+    "v(Other.match.Good)": {
+      "distribution": "Normal",
+      "parents": {
+        "mu": 2,
+        "tau": 0.1111111111111111
+      }
+    },
+    "v(Other.mismatch.Bad)": {
+      "distribution": "Normal",
+      "parents": {
+        "mu": 2,
+        "tau": 0.1111111111111111
+      }
+    },
+    "v(Other.mismatch.Good)": {
+      "distribution": "Normal",
+      "parents": {
+        "mu": 2,
+        "tau": 0.1111111111111111
+      }
+    },
+    "v(Self.match.Bad)": {
+      "distribution": "Normal",
+      "parents": {
+        "mu": 2,
+        "tau": 0.1111111111111111
+      }
+    },
+    "v(Self.match.Good)": {
+      "distribution": "Normal",
+      "parents": {
+        "mu": 2,
+        "tau": 0.1111111111111111
+      }
+    },
+    "v(Self.mismatch.Bad)": {
+      "distribution": "Normal",
+      "parents": {
+        "mu": 2,
+        "tau": 0.1111111111111111
+      }
+    },
+    "v(Self.mismatch.Good)": {
+      "distribution": "Normal",
+      "parents": {
+        "mu": 2,
+        "tau": 0.1111111111111111
+      }
+    },
+    "v_std": {
+      "distribution": "HalfNormal",
+      "parents": {
+        "tau": 0.25
+      }
+    },
+    "v_subj(Other.match.Bad).7304": {
+      "distribution": "Normal",
+      "parents": {
+        "mu": {
+          "node": "v(Other.match.Bad)"
+        },
+        "tau": {
+          "node": "v_tau"
+        }
+      }
+    },
+    "v_subj(Other.match.Good).7304": {
+      "distribution": "Normal",
+      "parents": {
+        "mu": {
+          "node": "v(Other.match.Good)"
+        },
+        "tau": {
+          "node": "v_tau"
+        }
+      }
+    },
+    "v_subj(Other.match.Bad).7305": {
+      "distribution": "Normal",
+      "parents": {
+        "mu": {
+          "node": "v(Other.match.Bad)"
+        },
+        "tau": {
+          "node": "v_tau"
+        }
+      }
+    },
+    "v_subj(Other.match.Good).7305": {
+      "distribution": "Normal",
+      "parents": {
+        "mu": {
+          "node": "v(Other.match.Good)"
+        },
+        "tau": {
+          "node": "v_tau"
+        }
+      }
+    },
+    "v_subj(Other.mismatch.Bad).7304": {
+      "distribution": "Normal",
+      "parents": {
+        "mu": {
+          "node": "v(Other.mismatch.Bad)"
+        },
+        "tau": {
+          "node": "v_tau"
+        }
+      }
+    },
+    "v_subj(Other.mismatch.Good).7304": {
+      "distribution": "Normal",
+      "parents": {
+        "mu": {
+          "node": "v(Other.mismatch.Good)"
+        },
+        "tau": {
+          "node": "v_tau"
+        }
+      }
+    },
+    "v_subj(Other.mismatch.Bad).7305": {
+      "distribution": "Normal",
+      "parents": {
+        "mu": {
+          "node": "v(Other.mismatch.Bad)"
+        },
+        "tau": {
+          "node": "v_tau"
+        }
+      }
+    },
+    "v_subj(Other.mismatch.Good).7305": {
+      "distribution": "Normal",
+      "parents": {
+        "mu": {
+          "node": "v(Other.mismatch.Good)"
+        },
+        "tau": {
+          "node": "v_tau"
+        }
+      }
+    },
+    "v_subj(Self.match.Bad).7304": {
+      "distribution": "Normal",
+      "parents": {
+        "mu": {
+          "node": "v(Self.match.Bad)"
+        },
+        "tau": {
+          "node": "v_tau"
+        }
+      }
+    },
+    "v_subj(Self.match.Good).7304": {
+      "distribution": "Normal",
+      "parents": {
+        "mu": {
+          "node": "v(Self.match.Good)"
+        },
+        "tau": {
+          "node": "v_tau"
+        }
+      }
+    },
+    "v_subj(Self.match.Bad).7305": {
+      "distribution": "Normal",
+      "parents": {
+        "mu": {
+          "node": "v(Self.match.Bad)"
+        },
+        "tau": {
+          "node": "v_tau"
+        }
+      }
+    },
+    "v_subj(Self.match.Good).7305": {
+      "distribution": "Normal",
+      "parents": {
+        "mu": {
+          "node": "v(Self.match.Good)"
+        },
+        "tau": {
+          "node": "v_tau"
+        }
+      }
+    },
+    "v_subj(Self.mismatch.Bad).7304": {
+      "distribution": "Normal",
+      "parents": {
+        "mu": {
+          "node": "v(Self.mismatch.Bad)"
+        },
+        "tau": {
+          "node": "v_tau"
+        }
+      }
+    },
+    "v_subj(Self.mismatch.Good).7304": {
+      "distribution": "Normal",
+      "parents": {
+        "mu": {
+          "node": "v(Self.mismatch.Good)"
+        },
+        "tau": {
+          "node": "v_tau"
+        }
+      }
+    },
+    "v_subj(Self.mismatch.Bad).7305": {
+      "distribution": "Normal",
+      "parents": {
+        "mu": {
+          "node": "v(Self.mismatch.Bad)"
+        },
+        "tau": {
+          "node": "v_tau"
+        }
+      }
+    },
+    "v_subj(Self.mismatch.Good).7305": {
+      "distribution": "Normal",
+      "parents": {
+        "mu": {
+          "node": "v(Self.mismatch.Good)"
+        },
+        "tau": {
+          "node": "v_tau"
+        }
+      }
+    },
+    "t(Other.match.Bad)": {
+      "distribution": "Gamma",
+      "parents": {
+        "alpha": 4.0,
+        "beta": 9.999999999999998
+      }
+    },
+    "t(Other.match.Good)": {
+      "distribution": "Gamma",
+      "parents": {
+        "alpha": 4.0,
+        "beta": 9.999999999999998
+      }
+    },
+    "t(Other.mismatch.Bad)": {
+      "distribution": "Gamma",
+      "parents": {
+        "alpha": 4.0,
+        "beta": 9.999999999999998
+      }
+    },
+    "t(Other.mismatch.Good)": {
+      "distribution": "Gamma",
+      "parents": {
+        "alpha": 4.0,
+        "beta": 9.999999999999998
+      }
+    },
+    "t(Self.match.Bad)": {
+      "distribution": "Gamma",
+      "parents": {
+        "alpha": 4.0,
+        "beta": 9.999999999999998
+      }
+    },
+    "t(Self.match.Good)": {
+      "distribution": "Gamma",
+      "parents": {
+        "alpha": 4.0,
+        "beta": 9.999999999999998
+      }
+    },
+    "t(Self.mismatch.Bad)": {
+      "distribution": "Gamma",
+      "parents": {
+        "alpha": 4.0,
+        "beta": 9.999999999999998
+      }
+    },
+    "t(Self.mismatch.Good)": {
+      "distribution": "Gamma",
+      "parents": {
+        "alpha": 4.0,
+        "beta": 9.999999999999998
+      }
+    },
+    "t_std": {
+      "distribution": "HalfNormal",
+      "parents": {
+        "tau": 1.0
+      }
+    },
+    "t_subj(Other.match.Bad).7304": {
+      "distribution": "Gamma",
+      "parents": {
+        "alpha": {
+          "node": "t_shape(Other.match.Bad)"
+        },
+        "beta": {
+          "node": "t_rate(Other.match.Bad)"
+        }
+      }
+    },
+    "t_subj(Other.match.Good).7304": {
+      "distribution": "Gamma",
+      "parents": {
+        "alpha": {
+          "node": "t_shape(Other.match.Good)"
+        },
+        "beta": {
+          "node": "t_rate(Other.match.Good)"
+        }
+      }
+    },
+    "t_subj(Other.match.Bad).7305": {
+      "distribution": "Gamma",
+      "parents": {
+        "alpha": {
+          "node": "t_shape(Other.match.Bad)"
+        },
+        "beta": {
+          "node": "t_rate(Other.match.Bad)"
+        }
+      }
+    },
+    "t_subj(Other.match.Good).7305": {
+      "distribution": "Gamma",
+      "parents": {
+        "alpha": {
+          "node": "t_shape(Other.match.Good)"
+        },
+        "beta": {
+          "node": "t_rate(Other.match.Good)"
+        }
+      }
+    },
+    "t_subj(Other.mismatch.Bad).7304": {
+      "distribution": "Gamma",
+      "parents": {
+        "alpha": {
+          "node": "t_shape(Other.mismatch.Bad)"
+        },
+        "beta": {
+          "node": "t_rate(Other.mismatch.Bad)"
+        }
+      }
+    },
+    "t_subj(Other.mismatch.Good).7304": {
+      "distribution": "Gamma",
+      "parents": {
+        "alpha": {
+          "node": "t_shape(Other.mismatch.Good)"
+        },
+        "beta": {
+          "node": "t_rate(Other.mismatch.Good)"
+        }
+      }
+    },
+    "t_subj(Other.mismatch.Bad).7305": {
+      "distribution": "Gamma",
+      "parents": {
+        "alpha": {
+          "node": "t_shape(Other.mismatch.Bad)"
+        },
+        "beta": {
+          "node": "t_rate(Other.mismatch.Bad)"
+        }
+      }
+    },
+    "t_subj(Other.mismatch.Good).7305": {
+      "distribution": "Gamma",
+      "parents": {
+        "alpha": {
+          "node": "t_shape(Other.mismatch.Good)"
+        },
+        "beta": {
+          "node": "t_rate(Other.mismatch.Good)"
+        }
+      }
+    },
+    "t_subj(Self.match.Bad).7304": {
+      "distribution": "Gamma",
+      "parents": {
+        "alpha": {
+          "node": "t_shape(Self.match.Bad)"
+        },
+        "beta": {
+          "node": "t_rate(Self.match.Bad)"
+        }
+      }
+    },
+    "t_subj(Self.match.Good).7304": {
+      "distribution": "Gamma",
+      "parents": {
+        "alpha": {
+          "node": "t_shape(Self.match.Good)"
+        },
+        "beta": {
+          "node": "t_rate(Self.match.Good)"
+        }
+      }
+    },
+    "t_subj(Self.match.Bad).7305": {
+      "distribution": "Gamma",
+      "parents": {
+        "alpha": {
+          "node": "t_shape(Self.match.Bad)"
+        },
+        "beta": {
+          "node": "t_rate(Self.match.Bad)"
+        }
+      }
+    },
+    "t_subj(Self.match.Good).7305": {
+      "distribution": "Gamma",
+      "parents": {
+        "alpha": {
+          "node": "t_shape(Self.match.Good)"
+        },
+        "beta": {
+          "node": "t_rate(Self.match.Good)"
+        }
+      }
+    },
+    "t_subj(Self.mismatch.Bad).7304": {
+      "distribution": "Gamma",
+      "parents": {
+        "alpha": {
+          "node": "t_shape(Self.mismatch.Bad)"
+        },
+        "beta": {
+          "node": "t_rate(Self.mismatch.Bad)"
+        }
+      }
+    },
+    "t_subj(Self.mismatch.Good).7304": {
+      "distribution": "Gamma",
+      "parents": {
+        "alpha": {
+          "node": "t_shape(Self.mismatch.Good)"
+        },
+        "beta": {
+          "node": "t_rate(Self.mismatch.Good)"
+        }
+      }
+    },
+    "t_subj(Self.mismatch.Bad).7305": {
+      "distribution": "Gamma",
+      "parents": {
+        "alpha": {
+          "node": "t_shape(Self.mismatch.Bad)"
+        },
+        "beta": {
+          "node": "t_rate(Self.mismatch.Bad)"
+        }
+      }
+    },
+    "t_subj(Self.mismatch.Good).7305": {
+      "distribution": "Gamma",
+      "parents": {
+        "alpha": {
+          "node": "t_shape(Self.mismatch.Good)"
+        },
+        "beta": {
+          "node": "t_rate(Self.mismatch.Good)"
+        }
+      }
+    },
+    "z_trans": {
+      "distribution": "Normal",
+      "parents": {
+        "mu": 0.0,
+        "tau": 4.0
+      }
+    },
+    "z_std": {
+      "distribution": "HalfNormal",
+      "parents": {
+        "tau": 399.99999999999994
+      }
+    },
+    "z_subj_trans.7304": {
+      "distribution": "Normal",
+      "parents": {
+        "mu": {
+          "node": "z_trans"
+        },
+        "tau": {
+          "node": "z_tau"
+        }
+      }
+    },
+    "z_subj_trans.7305": {
+      "distribution": "Normal",
+      "parents": {
+        "mu": {
+          "node": "z_trans"
+        },
+        "tau": {
+          "node": "z_tau"
+        }
+      }
+    }
+  },
+  "M1": {
+    "a": {
+      "distribution": "Gamma",
+      "parents": {
+        "alpha": 4.0,
+        "beta": 2.6666666666666665
+      }
+    },
+    "a_std": {
+      "distribution": "HalfNormal",
+      "parents": {
+        "tau": 0.25
+      }
+    },
+    "a_subj.7304": {
+      "distribution": "Gamma",
+      "parents": {
+        "alpha": {
+          "node": "a_shape"
+        },
+        "beta": {
+          "node": "a_rate"
+        }
+      }
+    },
+    "a_subj.7305": {
+      "distribution": "Gamma",
+      "parents": {
+        "alpha": {
+          "node": "a_shape"
+        },
+        "beta": {
+          "node": "a_rate"
+        }
+      }
+    },
+    "v(Other.match.Bad)": {
+      "distribution": "Normal",
+      "parents": {
+        "mu": 2,
+        "tau": 0.1111111111111111
+      }
+    },
+    "v(Other.match.Good)": {
+      "distribution": "Normal",
+      "parents": {
+        "mu": 2,
+        "tau": 0.1111111111111111
+      }
+    },
+    "v(Other.mismatch.Bad)": {
+      "distribution": "Normal",
+      "parents": {
+        "mu": 2,
+        "tau": 0.1111111111111111
+      }
+    },
+    "v(Other.mismatch.Good)": {
+      "distribution": "Normal",
+      "parents": {
+        "mu": 2,
+        "tau": 0.1111111111111111
+      }
+    },
+    "v(Self.match.Bad)": {
+      "distribution": "Normal",
+      "parents": {
+        "mu": 2,
+        "tau": 0.1111111111111111
+      }
+    },
+    "v(Self.match.Good)": {
+      "distribution": "Normal",
+      "parents": {
+        "mu": 2,
+        "tau": 0.1111111111111111
+      }
+    },
+    "v(Self.mismatch.Bad)": {
+      "distribution": "Normal",
+      "parents": {
+        "mu": 2,
+        "tau": 0.1111111111111111
+      }
+    },
+    "v(Self.mismatch.Good)": {
+      "distribution": "Normal",
+      "parents": {
+        "mu": 2,
+        "tau": 0.1111111111111111
+      }
+    },
+    "v_std": {
+      "distribution": "HalfNormal",
+      "parents": {
+        "tau": 0.25
+      }
+    },
+    "v_subj(Other.match.Bad).7304": {
+      "distribution": "Normal",
+      "parents": {
+        "mu": {
+          "node": "v(Other.match.Bad)"
+        },
+        "tau": {
+          "node": "v_tau"
+        }
+      }
+    },
+    "v_subj(Other.match.Good).7304": {
+      "distribution": "Normal",
+      "parents": {
+        "mu": {
+          "node": "v(Other.match.Good)"
+        },
+        "tau": {
+          "node": "v_tau"
+        }
+      }
+    },
+    "v_subj(Other.match.Bad).7305": {
+      "distribution": "Normal",
+      "parents": {
+        "mu": {
+          "node": "v(Other.match.Bad)"
+        },
+        "tau": {
+          "node": "v_tau"
+        }
+      }
+    },
+    "v_subj(Other.match.Good).7305": {
+      "distribution": "Normal",
+      "parents": {
+        "mu": {
+          "node": "v(Other.match.Good)"
+        },
+        "tau": {
+          "node": "v_tau"
+        }
+      }
+    },
+    "v_subj(Other.mismatch.Bad).7304": {
+      "distribution": "Normal",
+      "parents": {
+        "mu": {
+          "node": "v(Other.mismatch.Bad)"
+        },
+        "tau": {
+          "node": "v_tau"
+        }
+      }
+    },
+    "v_subj(Other.mismatch.Good).7304": {
+      "distribution": "Normal",
+      "parents": {
+        "mu": {
+          "node": "v(Other.mismatch.Good)"
+        },
+        "tau": {
+          "node": "v_tau"
+        }
+      }
+    },
+    "v_subj(Other.mismatch.Bad).7305": {
+      "distribution": "Normal",
+      "parents": {
+        "mu": {
+          "node": "v(Other.mismatch.Bad)"
+        },
+        "tau": {
+          "node": "v_tau"
+        }
+      }
+    },
+    "v_subj(Other.mismatch.Good).7305": {
+      "distribution": "Normal",
+      "parents": {
+        "mu": {
+          "node": "v(Other.mismatch.Good)"
+        },
+        "tau": {
+          "node": "v_tau"
+        }
+      }
+    },
+    "v_subj(Self.match.Bad).7304": {
+      "distribution": "Normal",
+      "parents": {
+        "mu": {
+          "node": "v(Self.match.Bad)"
+        },
+        "tau": {
+          "node": "v_tau"
+        }
+      }
+    },
+    "v_subj(Self.match.Good).7304": {
+      "distribution": "Normal",
+      "parents": {
+        "mu": {
+          "node": "v(Self.match.Good)"
+        },
+        "tau": {
+          "node": "v_tau"
+        }
+      }
+    },
+    "v_subj(Self.match.Bad).7305": {
+      "distribution": "Normal",
+      "parents": {
+        "mu": {
+          "node": "v(Self.match.Bad)"
+        },
+        "tau": {
+          "node": "v_tau"
+        }
+      }
+    },
+    "v_subj(Self.match.Good).7305": {
+      "distribution": "Normal",
+      "parents": {
+        "mu": {
+          "node": "v(Self.match.Good)"
+        },
+        "tau": {
+          "node": "v_tau"
+        }
+      }
+    },
+    "v_subj(Self.mismatch.Bad).7304": {
+      "distribution": "Normal",
+      "parents": {
+        "mu": {
+          "node": "v(Self.mismatch.Bad)"
+        },
+        "tau": {
+          "node": "v_tau"
+        }
+      }
+    },
+    "v_subj(Self.mismatch.Good).7304": {
+      "distribution": "Normal",
+      "parents": {
+        "mu": {
+          "node": "v(Self.mismatch.Good)"
+        },
+        "tau": {
+          "node": "v_tau"
+        }
+      }
+    },
+    "v_subj(Self.mismatch.Bad).7305": {
+      "distribution": "Normal",
+      "parents": {
+        "mu": {
+          "node": "v(Self.mismatch.Bad)"
+        },
+        "tau": {
+          "node": "v_tau"
+        }
+      }
+    },
+    "v_subj(Self.mismatch.Good).7305": {
+      "distribution": "Normal",
+      "parents": {
+        "mu": {
+          "node": "v(Self.mismatch.Good)"
+        },
+        "tau": {
+          "node": "v_tau"
+        }
+      }
+    },
+    "t(Other.match.Bad)": {
+      "distribution": "Gamma",
+      "parents": {
+        "alpha": 4.0,
+        "beta": 9.999999999999998
+      }
+    },
+    "t(Other.match.Good)": {
+      "distribution": "Gamma",
+      "parents": {
+        "alpha": 4.0,
+        "beta": 9.999999999999998
+      }
+    },
+    "t(Other.mismatch.Bad)": {
+      "distribution": "Gamma",
+      "parents": {
+        "alpha": 4.0,
+        "beta": 9.999999999999998
+      }
+    },
+    "t(Other.mismatch.Good)": {
+      "distribution": "Gamma",
+      "parents": {
+        "alpha": 4.0,
+        "beta": 9.999999999999998
+      }
+    },
+    "t(Self.match.Bad)": {
+      "distribution": "Gamma",
+      "parents": {
+        "alpha": 4.0,
+        "beta": 9.999999999999998
+      }
+    },
+    "t(Self.match.Good)": {
+      "distribution": "Gamma",
+      "parents": {
+        "alpha": 4.0,
+        "beta": 9.999999999999998
+      }
+    },
+    "t(Self.mismatch.Bad)": {
+      "distribution": "Gamma",
+      "parents": {
+        "alpha": 4.0,
+        "beta": 9.999999999999998
+      }
+    },
+    "t(Self.mismatch.Good)": {
+      "distribution": "Gamma",
+      "parents": {
+        "alpha": 4.0,
+        "beta": 9.999999999999998
+      }
+    },
+    "t_std": {
+      "distribution": "HalfNormal",
+      "parents": {
+        "tau": 1.0
+      }
+    },
+    "t_subj(Other.match.Bad).7304": {
+      "distribution": "Gamma",
+      "parents": {
+        "alpha": {
+          "node": "t_shape(Other.match.Bad)"
+        },
+        "beta": {
+          "node": "t_rate(Other.match.Bad)"
+        }
+      }
+    },
+    "t_subj(Other.match.Good).7304": {
+      "distribution": "Gamma",
+      "parents": {
+        "alpha": {
+          "node": "t_shape(Other.match.Good)"
+        },
+        "beta": {
+          "node": "t_rate(Other.match.Good)"
+        }
+      }
+    },
+    "t_subj(Other.match.Bad).7305": {
+      "distribution": "Gamma",
+      "parents": {
+        "alpha": {
+          "node": "t_shape(Other.match.Bad)"
+        },
+        "beta": {
+          "node": "t_rate(Other.match.Bad)"
+        }
+      }
+    },
+    "t_subj(Other.match.Good).7305": {
+      "distribution": "Gamma",
+      "parents": {
+        "alpha": {
+          "node": "t_shape(Other.match.Good)"
+        },
+        "beta": {
+          "node": "t_rate(Other.match.Good)"
+        }
+      }
+    },
+    "t_subj(Other.mismatch.Bad).7304": {
+      "distribution": "Gamma",
+      "parents": {
+        "alpha": {
+          "node": "t_shape(Other.mismatch.Bad)"
+        },
+        "beta": {
+          "node": "t_rate(Other.mismatch.Bad)"
+        }
+      }
+    },
+    "t_subj(Other.mismatch.Good).7304": {
+      "distribution": "Gamma",
+      "parents": {
+        "alpha": {
+          "node": "t_shape(Other.mismatch.Good)"
+        },
+        "beta": {
+          "node": "t_rate(Other.mismatch.Good)"
+        }
+      }
+    },
+    "t_subj(Other.mismatch.Bad).7305": {
+      "distribution": "Gamma",
+      "parents": {
+        "alpha": {
+          "node": "t_shape(Other.mismatch.Bad)"
+        },
+        "beta": {
+          "node": "t_rate(Other.mismatch.Bad)"
+        }
+      }
+    },
+    "t_subj(Other.mismatch.Good).7305": {
+      "distribution": "Gamma",
+      "parents": {
+        "alpha": {
+          "node": "t_shape(Other.mismatch.Good)"
+        },
+        "beta": {
+          "node": "t_rate(Other.mismatch.Good)"
+        }
+      }
+    },
+    "t_subj(Self.match.Bad).7304": {
+      "distribution": "Gamma",
+      "parents": {
+        "alpha": {
+          "node": "t_shape(Self.match.Bad)"
+        },
+        "beta": {
+          "node": "t_rate(Self.match.Bad)"
+        }
+      }
+    },
+    "t_subj(Self.match.Good).7304": {
+      "distribution": "Gamma",
+      "parents": {
+        "alpha": {
+          "node": "t_shape(Self.match.Good)"
+        },
+        "beta": {
+          "node": "t_rate(Self.match.Good)"
+        }
+      }
+    },
+    "t_subj(Self.match.Bad).7305": {
+      "distribution": "Gamma",
+      "parents": {
+        "alpha": {
+          "node": "t_shape(Self.match.Bad)"
+        },
+        "beta": {
+          "node": "t_rate(Self.match.Bad)"
+        }
+      }
+    },
+    "t_subj(Self.match.Good).7305": {
+      "distribution": "Gamma",
+      "parents": {
+        "alpha": {
+          "node": "t_shape(Self.match.Good)"
+        },
+        "beta": {
+          "node": "t_rate(Self.match.Good)"
+        }
+      }
+    },
+    "t_subj(Self.mismatch.Bad).7304": {
+      "distribution": "Gamma",
+      "parents": {
+        "alpha": {
+          "node": "t_shape(Self.mismatch.Bad)"
+        },
+        "beta": {
+          "node": "t_rate(Self.mismatch.Bad)"
+        }
+      }
+    },
+    "t_subj(Self.mismatch.Good).7304": {
+      "distribution": "Gamma",
+      "parents": {
+        "alpha": {
+          "node": "t_shape(Self.mismatch.Good)"
+        },
+        "beta": {
+          "node": "t_rate(Self.mismatch.Good)"
+        }
+      }
+    },
+    "t_subj(Self.mismatch.Bad).7305": {
+      "distribution": "Gamma",
+      "parents": {
+        "alpha": {
+          "node": "t_shape(Self.mismatch.Bad)"
+        },
+        "beta": {
+          "node": "t_rate(Self.mismatch.Bad)"
+        }
+      }
+    },
+    "t_subj(Self.mismatch.Good).7305": {
+      "distribution": "Gamma",
+      "parents": {
+        "alpha": {
+          "node": "t_shape(Self.mismatch.Good)"
+        },
+        "beta": {
+          "node": "t_rate(Self.mismatch.Good)"
+        }
+      }
+    },
+    "z_trans": {
+      "distribution": "Normal",
+      "parents": {
+        "mu": 0.0,
+        "tau": 4.0
+      }
+    },
+    "z_std": {
+      "distribution": "HalfNormal",
+      "parents": {
+        "tau": 399.99999999999994
+      }
+    },
+    "z_subj_trans.7304": {
+      "distribution": "Normal",
+      "parents": {
+        "mu": {
+          "node": "z_trans"
+        },
+        "tau": {
+          "node": "z_tau"
+        }
+      }
+    },
+    "z_subj_trans.7305": {
+      "distribution": "Normal",
+      "parents": {
+        "mu": {
+          "node": "z_trans"
+        },
+        "tau": {
+          "node": "z_tau"
+        }
+      }
+    },
+    "bz": {
+      "distribution": "Normal",
+      "parents": {
+        "mu": 0.0,
+        "tau": 4.0
+      }
+    },
+    "bz_std": {
+      "distribution": "HalfNormal",
+      "parents": {
+        "tau": 16.0
+      }
+    },
+    "bz_subj.7304": {
+      "distribution": "Normal",
+      "parents": {
+        "mu": {
+          "node": "bz"
+        },
+        "tau": {
+          "node": "bz_tau"
+        }
+      }
+    },
+    "bz_subj.7305": {
+      "distribution": "Normal",
+      "parents": {
+        "mu": {
+          "node": "bz"
+        },
+        "tau": {
+          "node": "bz_tau"
+        }
+      }
+    }
+  },
+  "M2": {
+    "a": {
+      "distribution": "Gamma",
+      "parents": {
+        "alpha": 4.0,
+        "beta": 2.6666666666666665
+      }
+    },
+    "a_std": {
+      "distribution": "HalfNormal",
+      "parents": {
+        "tau": 0.25
+      }
+    },
+    "a_subj.7304": {
+      "distribution": "Gamma",
+      "parents": {
+        "alpha": {
+          "node": "a_shape"
+        },
+        "beta": {
+          "node": "a_rate"
+        }
+      }
+    },
+    "a_subj.7305": {
+      "distribution": "Gamma",
+      "parents": {
+        "alpha": {
+          "node": "a_shape"
+        },
+        "beta": {
+          "node": "a_rate"
+        }
+      }
+    },
+    "v(Other.match.Bad)": {
+      "distribution": "Normal",
+      "parents": {
+        "mu": 2,
+        "tau": 0.1111111111111111
+      }
+    },
+    "v(Other.match.Good)": {
+      "distribution": "Normal",
+      "parents": {
+        "mu": 2,
+        "tau": 0.1111111111111111
+      }
+    },
+    "v(Other.mismatch.Bad)": {
+      "distribution": "Normal",
+      "parents": {
+        "mu": 2,
+        "tau": 0.1111111111111111
+      }
+    },
+    "v(Other.mismatch.Good)": {
+      "distribution": "Normal",
+      "parents": {
+        "mu": 2,
+        "tau": 0.1111111111111111
+      }
+    },
+    "v(Self.match.Bad)": {
+      "distribution": "Normal",
+      "parents": {
+        "mu": 2,
+        "tau": 0.1111111111111111
+      }
+    },
+    "v(Self.match.Good)": {
+      "distribution": "Normal",
+      "parents": {
+        "mu": 2,
+        "tau": 0.1111111111111111
+      }
+    },
+    "v(Self.mismatch.Bad)": {
+      "distribution": "Normal",
+      "parents": {
+        "mu": 2,
+        "tau": 0.1111111111111111
+      }
+    },
+    "v(Self.mismatch.Good)": {
+      "distribution": "Normal",
+      "parents": {
+        "mu": 2,
+        "tau": 0.1111111111111111
+      }
+    },
+    "v_std": {
+      "distribution": "HalfNormal",
+      "parents": {
+        "tau": 0.25
+      }
+    },
+    "v_subj(Other.match.Bad).7304": {
+      "distribution": "Normal",
+      "parents": {
+        "mu": {
+          "node": "v(Other.match.Bad)"
+        },
+        "tau": {
+          "node": "v_tau"
+        }
+      }
+    },
+    "v_subj(Other.match.Good).7304": {
+      "distribution": "Normal",
+      "parents": {
+        "mu": {
+          "node": "v(Other.match.Good)"
+        },
+        "tau": {
+          "node": "v_tau"
+        }
+      }
+    },
+    "v_subj(Other.match.Bad).7305": {
+      "distribution": "Normal",
+      "parents": {
+        "mu": {
+          "node": "v(Other.match.Bad)"
+        },
+        "tau": {
+          "node": "v_tau"
+        }
+      }
+    },
+    "v_subj(Other.match.Good).7305": {
+      "distribution": "Normal",
+      "parents": {
+        "mu": {
+          "node": "v(Other.match.Good)"
+        },
+        "tau": {
+          "node": "v_tau"
+        }
+      }
+    },
+    "v_subj(Other.mismatch.Bad).7304": {
+      "distribution": "Normal",
+      "parents": {
+        "mu": {
+          "node": "v(Other.mismatch.Bad)"
+        },
+        "tau": {
+          "node": "v_tau"
+        }
+      }
+    },
+    "v_subj(Other.mismatch.Good).7304": {
+      "distribution": "Normal",
+      "parents": {
+        "mu": {
+          "node": "v(Other.mismatch.Good)"
+        },
+        "tau": {
+          "node": "v_tau"
+        }
+      }
+    },
+    "v_subj(Other.mismatch.Bad).7305": {
+      "distribution": "Normal",
+      "parents": {
+        "mu": {
+          "node": "v(Other.mismatch.Bad)"
+        },
+        "tau": {
+          "node": "v_tau"
+        }
+      }
+    },
+    "v_subj(Other.mismatch.Good).7305": {
+      "distribution": "Normal",
+      "parents": {
+        "mu": {
+          "node": "v(Other.mismatch.Good)"
+        },
+        "tau": {
+          "node": "v_tau"
+        }
+      }
+    },
+    "v_subj(Self.match.Bad).7304": {
+      "distribution": "Normal",
+      "parents": {
+        "mu": {
+          "node": "v(Self.match.Bad)"
+        },
+        "tau": {
+          "node": "v_tau"
+        }
+      }
+    },
+    "v_subj(Self.match.Good).7304": {
+      "distribution": "Normal",
+      "parents": {
+        "mu": {
+          "node": "v(Self.match.Good)"
+        },
+        "tau": {
+          "node": "v_tau"
+        }
+      }
+    },
+    "v_subj(Self.match.Bad).7305": {
+      "distribution": "Normal",
+      "parents": {
+        "mu": {
+          "node": "v(Self.match.Bad)"
+        },
+        "tau": {
+          "node": "v_tau"
+        }
+      }
+    },
+    "v_subj(Self.match.Good).7305": {
+      "distribution": "Normal",
+      "parents": {
+        "mu": {
+          "node": "v(Self.match.Good)"
+        },
+        "tau": {
+          "node": "v_tau"
+        }
+      }
+    },
+    "v_subj(Self.mismatch.Bad).7304": {
+      "distribution": "Normal",
+      "parents": {
+        "mu": {
+          "node": "v(Self.mismatch.Bad)"
+        },
+        "tau": {
+          "node": "v_tau"
+        }
+      }
+    },
+    "v_subj(Self.mismatch.Good).7304": {
+      "distribution": "Normal",
+      "parents": {
+        "mu": {
+          "node": "v(Self.mismatch.Good)"
+        },
+        "tau": {
+          "node": "v_tau"
+        }
+      }
+    },
+    "v_subj(Self.mismatch.Bad).7305": {
+      "distribution": "Normal",
+      "parents": {
+        "mu": {
+          "node": "v(Self.mismatch.Bad)"
+        },
+        "tau": {
+          "node": "v_tau"
+        }
+      }
+    },
+    "v_subj(Self.mismatch.Good).7305": {
+      "distribution": "Normal",
+      "parents": {
+        "mu": {
+          "node": "v(Self.mismatch.Good)"
+        },
+        "tau": {
+          "node": "v_tau"
+        }
+      }
+    },
+    "t(Other.match.Bad)": {
+      "distribution": "Gamma",
+      "parents": {
+        "alpha": 4.0,
+        "beta": 9.999999999999998
+      }
+    },
+    "t(Other.match.Good)": {
+      "distribution": "Gamma",
+      "parents": {
+        "alpha": 4.0,
+        "beta": 9.999999999999998
+      }
+    },
+    "t(Other.mismatch.Bad)": {
+      "distribution": "Gamma",
+      "parents": {
+        "alpha": 4.0,
+        "beta": 9.999999999999998
+      }
+    },
+    "t(Other.mismatch.Good)": {
+      "distribution": "Gamma",
+      "parents": {
+        "alpha": 4.0,
+        "beta": 9.999999999999998
+      }
+    },
+    "t(Self.match.Bad)": {
+      "distribution": "Gamma",
+      "parents": {
+        "alpha": 4.0,
+        "beta": 9.999999999999998
+      }
+    },
+    "t(Self.match.Good)": {
+      "distribution": "Gamma",
+      "parents": {
+        "alpha": 4.0,
+        "beta": 9.999999999999998
+      }
+    },
+    "t(Self.mismatch.Bad)": {
+      "distribution": "Gamma",
+      "parents": {
+        "alpha": 4.0,
+        "beta": 9.999999999999998
+      }
+    },
+    "t(Self.mismatch.Good)": {
+      "distribution": "Gamma",
+      "parents": {
+        "alpha": 4.0,
+        "beta": 9.999999999999998
+      }
+    },
+    "t_std": {
+      "distribution": "HalfNormal",
+      "parents": {
+        "tau": 1.0
+      }
+    },
+    "t_subj(Other.match.Bad).7304": {
+      "distribution": "Gamma",
+      "parents": {
+        "alpha": {
+          "node": "t_shape(Other.match.Bad)"
+        },
+        "beta": {
+          "node": "t_rate(Other.match.Bad)"
+        }
+      }
+    },
+    "t_subj(Other.match.Good).7304": {
+      "distribution": "Gamma",
+      "parents": {
+        "alpha": {
+          "node": "t_shape(Other.match.Good)"
+        },
+        "beta": {
+          "node": "t_rate(Other.match.Good)"
+        }
+      }
+    },
+    "t_subj(Other.match.Bad).7305": {
+      "distribution": "Gamma",
+      "parents": {
+        "alpha": {
+          "node": "t_shape(Other.match.Bad)"
+        },
+        "beta": {
+          "node": "t_rate(Other.match.Bad)"
+        }
+      }
+    },
+    "t_subj(Other.match.Good).7305": {
+      "distribution": "Gamma",
+      "parents": {
+        "alpha": {
+          "node": "t_shape(Other.match.Good)"
+        },
+        "beta": {
+          "node": "t_rate(Other.match.Good)"
+        }
+      }
+    },
+    "t_subj(Other.mismatch.Bad).7304": {
+      "distribution": "Gamma",
+      "parents": {
+        "alpha": {
+          "node": "t_shape(Other.mismatch.Bad)"
+        },
+        "beta": {
+          "node": "t_rate(Other.mismatch.Bad)"
+        }
+      }
+    },
+    "t_subj(Other.mismatch.Good).7304": {
+      "distribution": "Gamma",
+      "parents": {
+        "alpha": {
+          "node": "t_shape(Other.mismatch.Good)"
+        },
+        "beta": {
+          "node": "t_rate(Other.mismatch.Good)"
+        }
+      }
+    },
+    "t_subj(Other.mismatch.Bad).7305": {
+      "distribution": "Gamma",
+      "parents": {
+        "alpha": {
+          "node": "t_shape(Other.mismatch.Bad)"
+        },
+        "beta": {
+          "node": "t_rate(Other.mismatch.Bad)"
+        }
+      }
+    },
+    "t_subj(Other.mismatch.Good).7305": {
+      "distribution": "Gamma",
+      "parents": {
+        "alpha": {
+          "node": "t_shape(Other.mismatch.Good)"
+        },
+        "beta": {
+          "node": "t_rate(Other.mismatch.Good)"
+        }
+      }
+    },
+    "t_subj(Self.match.Bad).7304": {
+      "distribution": "Gamma",
+      "parents": {
+        "alpha": {
+          "node": "t_shape(Self.match.Bad)"
+        },
+        "beta": {
+          "node": "t_rate(Self.match.Bad)"
+        }
+      }
+    },
+    "t_subj(Self.match.Good).7304": {
+      "distribution": "Gamma",
+      "parents": {
+        "alpha": {
+          "node": "t_shape(Self.match.Good)"
+        },
+        "beta": {
+          "node": "t_rate(Self.match.Good)"
+        }
+      }
+    },
+    "t_subj(Self.match.Bad).7305": {
+      "distribution": "Gamma",
+      "parents": {
+        "alpha": {
+          "node": "t_shape(Self.match.Bad)"
+        },
+        "beta": {
+          "node": "t_rate(Self.match.Bad)"
+        }
+      }
+    },
+    "t_subj(Self.match.Good).7305": {
+      "distribution": "Gamma",
+      "parents": {
+        "alpha": {
+          "node": "t_shape(Self.match.Good)"
+        },
+        "beta": {
+          "node": "t_rate(Self.match.Good)"
+        }
+      }
+    },
+    "t_subj(Self.mismatch.Bad).7304": {
+      "distribution": "Gamma",
+      "parents": {
+        "alpha": {
+          "node": "t_shape(Self.mismatch.Bad)"
+        },
+        "beta": {
+          "node": "t_rate(Self.mismatch.Bad)"
+        }
+      }
+    },
+    "t_subj(Self.mismatch.Good).7304": {
+      "distribution": "Gamma",
+      "parents": {
+        "alpha": {
+          "node": "t_shape(Self.mismatch.Good)"
+        },
+        "beta": {
+          "node": "t_rate(Self.mismatch.Good)"
+        }
+      }
+    },
+    "t_subj(Self.mismatch.Bad).7305": {
+      "distribution": "Gamma",
+      "parents": {
+        "alpha": {
+          "node": "t_shape(Self.mismatch.Bad)"
+        },
+        "beta": {
+          "node": "t_rate(Self.mismatch.Bad)"
+        }
+      }
+    },
+    "t_subj(Self.mismatch.Good).7305": {
+      "distribution": "Gamma",
+      "parents": {
+        "alpha": {
+          "node": "t_shape(Self.mismatch.Good)"
+        },
+        "beta": {
+          "node": "t_rate(Self.mismatch.Good)"
+        }
+      }
+    },
+    "z_trans": {
+      "distribution": "Normal",
+      "parents": {
+        "mu": 0.0,
+        "tau": 4.0
+      }
+    },
+    "z_std": {
+      "distribution": "HalfNormal",
+      "parents": {
+        "tau": 399.99999999999994
+      }
+    },
+    "z_subj_trans.7304": {
+      "distribution": "Normal",
+      "parents": {
+        "mu": {
+          "node": "z_trans"
+        },
+        "tau": {
+          "node": "z_tau"
+        }
+      }
+    },
+    "z_subj_trans.7305": {
+      "distribution": "Normal",
+      "parents": {
+        "mu": {
+          "node": "z_trans"
+        },
+        "tau": {
+          "node": "z_tau"
+        }
+      }
+    },
+    "beta_dc": {
+      "distribution": "Normal",
+      "parents": {
+        "mu": 0.0,
+        "tau": 4.0
+      }
+    },
+    "beta_dc_std": {
+      "distribution": "HalfNormal",
+      "parents": {
+        "tau": 16.0
+      }
+    },
+    "beta_dc_subj.7304": {
+      "distribution": "Normal",
+      "parents": {
+        "mu": {
+          "node": "beta_dc"
+        },
+        "tau": {
+          "node": "beta_dc_tau"
+        }
+      }
+    },
+    "beta_dc_subj.7305": {
+      "distribution": "Normal",
+      "parents": {
+        "mu": {
+          "node": "beta_dc"
+        },
+        "tau": {
+          "node": "beta_dc_tau"
+        }
+      }
+    }
+  },
+  "M4": {
+    "a": {
+      "distribution": "Gamma",
+      "parents": {
+        "alpha": 4.0,
+        "beta": 2.6666666666666665
+      }
+    },
+    "a_std": {
+      "distribution": "HalfNormal",
+      "parents": {
+        "tau": 0.25
+      }
+    },
+    "a_subj.7304": {
+      "distribution": "Gamma",
+      "parents": {
+        "alpha": {
+          "node": "a_shape"
+        },
+        "beta": {
+          "node": "a_rate"
+        }
+      }
+    },
+    "a_subj.7305": {
+      "distribution": "Gamma",
+      "parents": {
+        "alpha": {
+          "node": "a_shape"
+        },
+        "beta": {
+          "node": "a_rate"
+        }
+      }
+    },
+    "v(Other.match.Bad)": {
+      "distribution": "Normal",
+      "parents": {
+        "mu": 2,
+        "tau": 0.1111111111111111
+      }
+    },
+    "v(Other.match.Good)": {
+      "distribution": "Normal",
+      "parents": {
+        "mu": 2,
+        "tau": 0.1111111111111111
+      }
+    },
+    "v(Other.mismatch.Bad)": {
+      "distribution": "Normal",
+      "parents": {
+        "mu": 2,
+        "tau": 0.1111111111111111
+      }
+    },
+    "v(Other.mismatch.Good)": {
+      "distribution": "Normal",
+      "parents": {
+        "mu": 2,
+        "tau": 0.1111111111111111
+      }
+    },
+    "v(Self.match.Bad)": {
+      "distribution": "Normal",
+      "parents": {
+        "mu": 2,
+        "tau": 0.1111111111111111
+      }
+    },
+    "v(Self.match.Good)": {
+      "distribution": "Normal",
+      "parents": {
+        "mu": 2,
+        "tau": 0.1111111111111111
+      }
+    },
+    "v(Self.mismatch.Bad)": {
+      "distribution": "Normal",
+      "parents": {
+        "mu": 2,
+        "tau": 0.1111111111111111
+      }
+    },
+    "v(Self.mismatch.Good)": {
+      "distribution": "Normal",
+      "parents": {
+        "mu": 2,
+        "tau": 0.1111111111111111
+      }
+    },
+    "v_std": {
+      "distribution": "HalfNormal",
+      "parents": {
+        "tau": 0.25
+      }
+    },
+    "v_subj(Other.match.Bad).7304": {
+      "distribution": "Normal",
+      "parents": {
+        "mu": {
+          "node": "v(Other.match.Bad)"
+        },
+        "tau": {
+          "node": "v_tau"
+        }
+      }
+    },
+    "v_subj(Other.match.Good).7304": {
+      "distribution": "Normal",
+      "parents": {
+        "mu": {
+          "node": "v(Other.match.Good)"
+        },
+        "tau": {
+          "node": "v_tau"
+        }
+      }
+    },
+    "v_subj(Other.match.Bad).7305": {
+      "distribution": "Normal",
+      "parents": {
+        "mu": {
+          "node": "v(Other.match.Bad)"
+        },
+        "tau": {
+          "node": "v_tau"
+        }
+      }
+    },
+    "v_subj(Other.match.Good).7305": {
+      "distribution": "Normal",
+      "parents": {
+        "mu": {
+          "node": "v(Other.match.Good)"
+        },
+        "tau": {
+          "node": "v_tau"
+        }
+      }
+    },
+    "v_subj(Other.mismatch.Bad).7304": {
+      "distribution": "Normal",
+      "parents": {
+        "mu": {
+          "node": "v(Other.mismatch.Bad)"
+        },
+        "tau": {
+          "node": "v_tau"
+        }
+      }
+    },
+    "v_subj(Other.mismatch.Good).7304": {
+      "distribution": "Normal",
+      "parents": {
+        "mu": {
+          "node": "v(Other.mismatch.Good)"
+        },
+        "tau": {
+          "node": "v_tau"
+        }
+      }
+    },
+    "v_subj(Other.mismatch.Bad).7305": {
+      "distribution": "Normal",
+      "parents": {
+        "mu": {
+          "node": "v(Other.mismatch.Bad)"
+        },
+        "tau": {
+          "node": "v_tau"
+        }
+      }
+    },
+    "v_subj(Other.mismatch.Good).7305": {
+      "distribution": "Normal",
+      "parents": {
+        "mu": {
+          "node": "v(Other.mismatch.Good)"
+        },
+        "tau": {
+          "node": "v_tau"
+        }
+      }
+    },
+    "v_subj(Self.match.Bad).7304": {
+      "distribution": "Normal",
+      "parents": {
+        "mu": {
+          "node": "v(Self.match.Bad)"
+        },
+        "tau": {
+          "node": "v_tau"
+        }
+      }
+    },
+    "v_subj(Self.match.Good).7304": {
+      "distribution": "Normal",
+      "parents": {
+        "mu": {
+          "node": "v(Self.match.Good)"
+        },
+        "tau": {
+          "node": "v_tau"
+        }
+      }
+    },
+    "v_subj(Self.match.Bad).7305": {
+      "distribution": "Normal",
+      "parents": {
+        "mu": {
+          "node": "v(Self.match.Bad)"
+        },
+        "tau": {
+          "node": "v_tau"
+        }
+      }
+    },
+    "v_subj(Self.match.Good).7305": {
+      "distribution": "Normal",
+      "parents": {
+        "mu": {
+          "node": "v(Self.match.Good)"
+        },
+        "tau": {
+          "node": "v_tau"
+        }
+      }
+    },
+    "v_subj(Self.mismatch.Bad).7304": {
+      "distribution": "Normal",
+      "parents": {
+        "mu": {
+          "node": "v(Self.mismatch.Bad)"
+        },
+        "tau": {
+          "node": "v_tau"
+        }
+      }
+    },
+    "v_subj(Self.mismatch.Good).7304": {
+      "distribution": "Normal",
+      "parents": {
+        "mu": {
+          "node": "v(Self.mismatch.Good)"
+        },
+        "tau": {
+          "node": "v_tau"
+        }
+      }
+    },
+    "v_subj(Self.mismatch.Bad).7305": {
+      "distribution": "Normal",
+      "parents": {
+        "mu": {
+          "node": "v(Self.mismatch.Bad)"
+        },
+        "tau": {
+          "node": "v_tau"
+        }
+      }
+    },
+    "v_subj(Self.mismatch.Good).7305": {
+      "distribution": "Normal",
+      "parents": {
+        "mu": {
+          "node": "v(Self.mismatch.Good)"
+        },
+        "tau": {
+          "node": "v_tau"
+        }
+      }
+    },
+    "t(Other.match.Bad)": {
+      "distribution": "Gamma",
+      "parents": {
+        "alpha": 4.0,
+        "beta": 9.999999999999998
+      }
+    },
+    "t(Other.match.Good)": {
+      "distribution": "Gamma",
+      "parents": {
+        "alpha": 4.0,
+        "beta": 9.999999999999998
+      }
+    },
+    "t(Other.mismatch.Bad)": {
+      "distribution": "Gamma",
+      "parents": {
+        "alpha": 4.0,
+        "beta": 9.999999999999998
+      }
+    },
+    "t(Other.mismatch.Good)": {
+      "distribution": "Gamma",
+      "parents": {
+        "alpha": 4.0,
+        "beta": 9.999999999999998
+      }
+    },
+    "t(Self.match.Bad)": {
+      "distribution": "Gamma",
+      "parents": {
+        "alpha": 4.0,
+        "beta": 9.999999999999998
+      }
+    },
+    "t(Self.match.Good)": {
+      "distribution": "Gamma",
+      "parents": {
+        "alpha": 4.0,
+        "beta": 9.999999999999998
+      }
+    },
+    "t(Self.mismatch.Bad)": {
+      "distribution": "Gamma",
+      "parents": {
+        "alpha": 4.0,
+        "beta": 9.999999999999998
+      }
+    },
+    "t(Self.mismatch.Good)": {
+      "distribution": "Gamma",
+      "parents": {
+        "alpha": 4.0,
+        "beta": 9.999999999999998
+      }
+    },
+    "t_std": {
+      "distribution": "HalfNormal",
+      "parents": {
+        "tau": 1.0
+      }
+    },
+    "t_subj(Other.match.Bad).7304": {
+      "distribution": "Gamma",
+      "parents": {
+        "alpha": {
+          "node": "t_shape(Other.match.Bad)"
+        },
+        "beta": {
+          "node": "t_rate(Other.match.Bad)"
+        }
+      }
+    },
+    "t_subj(Other.match.Good).7304": {
+      "distribution": "Gamma",
+      "parents": {
+        "alpha": {
+          "node": "t_shape(Other.match.Good)"
+        },
+        "beta": {
+          "node": "t_rate(Other.match.Good)"
+        }
+      }
+    },
+    "t_subj(Other.match.Bad).7305": {
+      "distribution": "Gamma",
+      "parents": {
+        "alpha": {
+          "node": "t_shape(Other.match.Bad)"
+        },
+        "beta": {
+          "node": "t_rate(Other.match.Bad)"
+        }
+      }
+    },
+    "t_subj(Other.match.Good).7305": {
+      "distribution": "Gamma",
+      "parents": {
+        "alpha": {
+          "node": "t_shape(Other.match.Good)"
+        },
+        "beta": {
+          "node": "t_rate(Other.match.Good)"
+        }
+      }
+    },
+    "t_subj(Other.mismatch.Bad).7304": {
+      "distribution": "Gamma",
+      "parents": {
+        "alpha": {
+          "node": "t_shape(Other.mismatch.Bad)"
+        },
+        "beta": {
+          "node": "t_rate(Other.mismatch.Bad)"
+        }
+      }
+    },
+    "t_subj(Other.mismatch.Good).7304": {
+      "distribution": "Gamma",
+      "parents": {
+        "alpha": {
+          "node": "t_shape(Other.mismatch.Good)"
+        },
+        "beta": {
+          "node": "t_rate(Other.mismatch.Good)"
+        }
+      }
+    },
+    "t_subj(Other.mismatch.Bad).7305": {
+      "distribution": "Gamma",
+      "parents": {
+        "alpha": {
+          "node": "t_shape(Other.mismatch.Bad)"
+        },
+        "beta": {
+          "node": "t_rate(Other.mismatch.Bad)"
+        }
+      }
+    },
+    "t_subj(Other.mismatch.Good).7305": {
+      "distribution": "Gamma",
+      "parents": {
+        "alpha": {
+          "node": "t_shape(Other.mismatch.Good)"
+        },
+        "beta": {
+          "node": "t_rate(Other.mismatch.Good)"
+        }
+      }
+    },
+    "t_subj(Self.match.Bad).7304": {
+      "distribution": "Gamma",
+      "parents": {
+        "alpha": {
+          "node": "t_shape(Self.match.Bad)"
+        },
+        "beta": {
+          "node": "t_rate(Self.match.Bad)"
+        }
+      }
+    },
+    "t_subj(Self.match.Good).7304": {
+      "distribution": "Gamma",
+      "parents": {
+        "alpha": {
+          "node": "t_shape(Self.match.Good)"
+        },
+        "beta": {
+          "node": "t_rate(Self.match.Good)"
+        }
+      }
+    },
+    "t_subj(Self.match.Bad).7305": {
+      "distribution": "Gamma",
+      "parents": {
+        "alpha": {
+          "node": "t_shape(Self.match.Bad)"
+        },
+        "beta": {
+          "node": "t_rate(Self.match.Bad)"
+        }
+      }
+    },
+    "t_subj(Self.match.Good).7305": {
+      "distribution": "Gamma",
+      "parents": {
+        "alpha": {
+          "node": "t_shape(Self.match.Good)"
+        },
+        "beta": {
+          "node": "t_rate(Self.match.Good)"
+        }
+      }
+    },
+    "t_subj(Self.mismatch.Bad).7304": {
+      "distribution": "Gamma",
+      "parents": {
+        "alpha": {
+          "node": "t_shape(Self.mismatch.Bad)"
+        },
+        "beta": {
+          "node": "t_rate(Self.mismatch.Bad)"
+        }
+      }
+    },
+    "t_subj(Self.mismatch.Good).7304": {
+      "distribution": "Gamma",
+      "parents": {
+        "alpha": {
+          "node": "t_shape(Self.mismatch.Good)"
+        },
+        "beta": {
+          "node": "t_rate(Self.mismatch.Good)"
+        }
+      }
+    },
+    "t_subj(Self.mismatch.Bad).7305": {
+      "distribution": "Gamma",
+      "parents": {
+        "alpha": {
+          "node": "t_shape(Self.mismatch.Bad)"
+        },
+        "beta": {
+          "node": "t_rate(Self.mismatch.Bad)"
+        }
+      }
+    },
+    "t_subj(Self.mismatch.Good).7305": {
+      "distribution": "Gamma",
+      "parents": {
+        "alpha": {
+          "node": "t_shape(Self.mismatch.Good)"
+        },
+        "beta": {
+          "node": "t_rate(Self.mismatch.Good)"
+        }
+      }
+    },
+    "z_trans": {
+      "distribution": "Normal",
+      "parents": {
+        "mu": 0.0,
+        "tau": 4.0
+      }
+    },
+    "z_std": {
+      "distribution": "HalfNormal",
+      "parents": {
+        "tau": 399.99999999999994
+      }
+    },
+    "z_subj_trans.7304": {
+      "distribution": "Normal",
+      "parents": {
+        "mu": {
+          "node": "z_trans"
+        },
+        "tau": {
+          "node": "z_tau"
+        }
+      }
+    },
+    "z_subj_trans.7305": {
+      "distribution": "Normal",
+      "parents": {
+        "mu": {
+          "node": "z_trans"
+        },
+        "tau": {
+          "node": "z_tau"
+        }
+      }
+    },
+    "beta_v": {
+      "distribution": "Normal",
+      "parents": {
+        "mu": 0.0,
+        "tau": 4.0
+      }
+    },
+    "beta_v_std": {
+      "distribution": "HalfNormal",
+      "parents": {
+        "tau": 16.0
+      }
+    },
+    "beta_v_subj.7304": {
+      "distribution": "Normal",
+      "parents": {
+        "mu": {
+          "node": "beta_v"
+        },
+        "tau": {
+          "node": "beta_v_tau"
+        }
+      }
+    },
+    "beta_v_subj.7305": {
+      "distribution": "Normal",
+      "parents": {
+        "mu": {
+          "node": "beta_v"
+        },
+        "tau": {
+          "node": "beta_v_tau"
+        }
+      }
+    }
+  }
+}

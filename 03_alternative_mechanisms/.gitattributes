@@ -1,0 +1,6 @@
+# Source hashes are part of the saved-chain identity; keep Python bytes stable across OSes.
+Scripts/common/*.py text eol=lf
+Scripts/notebooks/*.ipynb text eol=lf
+*.csv text eol=lf
+*.json text eol=lf
+*.md text eol=lf
