@@ -1,0 +1,9 @@
+.env
+.env.*
+.ipynb_checkpoints/
+__pycache__/
+.Rhistory
+.RData
+
+/01_reproduction_2020/outputs/*/chain_*.db
+/01_reproduction_2020/outputs/*/chain_*.hddm

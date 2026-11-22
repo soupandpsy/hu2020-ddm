@@ -1,0 +1,49 @@
+"outcome","model","BF10"
+"matching_rt","Subject",1
+"matching_rt","Valence + Subject",8390528.60671528
+"matching_rt","Identity + Subject",0.582228510150366
+"matching_rt","Valence + Identity + Subject",6756599.49983219
+"matching_rt","Valence + Identity + Valence:Identity + Subject",550878240.264786
+"matching_dprime","Subject",1
+"matching_dprime","Valence + Subject",0.918970135530329
+"matching_dprime","Identity + Subject",0.212729890987915
+"matching_dprime","Valence + Identity + Subject",0.239483171027643
+"matching_dprime","Valence + Identity + Valence:Identity + Subject",14.3472411007743
+"categ_rt","Subject",1
+"categ_rt","Task + Subject",0.301898434352859
+"categ_rt","Valence + Subject",4.1859616709124
+"categ_rt","Task + Valence + Subject",1.31596868127708
+"categ_rt","Task + Valence + Task:Valence + Subject",8.39912666903543
+"categ_rt","Identity + Subject",13106.4089018094
+"categ_rt","Task + Identity + Subject",4053.95779199709
+"categ_rt","Valence + Identity + Subject",74584.0967269935
+"categ_rt","Task + Valence + Identity + Subject",24590.6208303157
+"categ_rt","Task + Valence + Task:Valence + Identity + Subject",228364.142114682
+"categ_rt","Task + Identity + Task:Identity + Subject",14203.5645558151
+"categ_rt","Task + Valence + Identity + Task:Identity + Subject",88262.0747735111
+"categ_rt","Task + Valence + Task:Valence + Identity + Task:Identity + Subject",890307.213394702
+"categ_rt","Valence + Identity + Valence:Identity + Subject",1485636.88418987
+"categ_rt","Task + Valence + Identity + Valence:Identity + Subject",470510.051677824
+"categ_rt","Task + Valence + Task:Valence + Identity + Valence:Identity + Subject",4281053.67511063
+"categ_rt","Task + Valence + Identity + Task:Identity + Valence:Identity + Subject",1799384.68672526
+"categ_rt","Task + Valence + Task:Valence + Identity + Task:Identity + Valence:Identity + Subject",21511572.4741817
+"categ_rt","Task + Valence + Task:Valence + Identity + Task:Identity + Valence:Identity + Task:Valence:Identity + Subject",5728997.18055746
+"categ_accuracy","Subject",1
+"categ_accuracy","Task + Subject",0.14017989966909
+"categ_accuracy","Valence + Subject",0.139837240404339
+"categ_accuracy","Task + Valence + Subject",0.018897885121523
+"categ_accuracy","Task + Valence + Task:Valence + Subject",0.00337263727177682
+"categ_accuracy","Identity + Subject",0.52367594469338
+"categ_accuracy","Task + Identity + Subject",0.0442312956740735
+"categ_accuracy","Valence + Identity + Subject",0.0453050156916572
+"categ_accuracy","Task + Valence + Identity + Subject",0.00571569186230657
+"categ_accuracy","Task + Valence + Task:Valence + Identity + Subject",0.00110685623433201
+"categ_accuracy","Task + Identity + Task:Identity + Subject",0.00666352771961359
+"categ_accuracy","Task + Valence + Identity + Task:Identity + Subject",0.00102128479017446
+"categ_accuracy","Task + Valence + Task:Valence + Identity + Task:Identity + Subject",0.000182697471097455
+"categ_accuracy","Valence + Identity + Valence:Identity + Subject",10.7830235622733
+"categ_accuracy","Task + Valence + Identity + Valence:Identity + Subject",1.38923811429543
+"categ_accuracy","Task + Valence + Task:Valence + Identity + Valence:Identity + Subject",0.223443917229105
+"categ_accuracy","Task + Valence + Identity + Task:Identity + Valence:Identity + Subject",0.224614297204542
+"categ_accuracy","Task + Valence + Task:Valence + Identity + Task:Identity + Valence:Identity + Subject",0.0401659925873214
+"categ_accuracy","Task + Valence + Task:Valence + Identity + Task:Identity + Valence:Identity + Task:Valence:Identity + Subject",0.0100378292369366
