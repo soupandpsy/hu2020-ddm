@@ -1,0 +1,2 @@
+batch_size,steps_per_epoch,epochs,network_members,n_validation,seed,dt_s
+32,500,30,1,512,2026,3.125e-05

@@ -6,6 +6,6 @@
 | --- | --- | --- |
 | [第一部分 · 原研究复现](01_reproduction_2020/README.md) | 主要行为结果与漂移率优势能否复现？ | 已执行 |
 | [第二部分 · 刺激编码再分析](02_reanalysis_2026/README.md) | Matching 任务中的决策起点是否随刺激条件变化？ | 已执行 |
-| [第三部分 · 计算模型拓展](03_alternative_mechanisms/README.md) | 改变证据积累噪声的假设后，Good-Self 的漂移率优势是否仍成立？ | 待开展 |
+| [第三部分 · 计算模型拓展](03_alternative_mechanisms/README.md) | 改变证据积累噪声的假设后，Good-Self 的漂移率优势是否仍成立？ | 路线一已执行 |
 
 [论文](https://doi.org/10.1525/collabra.301) · [原作者材料](https://github.com/hcp4715/moralSelf_ddm)

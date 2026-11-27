@@ -1,0 +1,3 @@
+model,heldout_trials,total_lpd,mean_lpd,zero_density_trials
+Gaussian,4929,-672.1078913358542,-0.13635785987743035,0
+Levy,4929,397.84449970921673,0.08071505370444648,0
