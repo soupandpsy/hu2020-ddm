@@ -1,0 +1,3 @@
+model,trials,total_lpd,mean_lpd,trials_with_zero_density,comparison_ready
+Fixed,4929,-inf,-inf,7,False
+Collapsing,4929,-inf,-inf,3,False

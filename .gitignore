@@ -7,3 +7,9 @@ __pycache__/
 
 /01_reproduction_2020/outputs/*/chain_*.db
 /01_reproduction_2020/outputs/*/chain_*.hddm
+
+/03_alternative_mechanisms/outputs/collapsing/*/*_fit.nc
+/03_alternative_mechanisms/outputs/levy/*/simulation_batches/epoch_*.npz
+/03_alternative_mechanisms/outputs/levy/*/checkpoints/epoch_*.weights.h5
+!/03_alternative_mechanisms/outputs/levy/individual_window_recovery_optimization/checkpoints/epoch_30.weights.h5
+/03_alternative_mechanisms/outputs/levy/*/individual_posterior.weights.h5

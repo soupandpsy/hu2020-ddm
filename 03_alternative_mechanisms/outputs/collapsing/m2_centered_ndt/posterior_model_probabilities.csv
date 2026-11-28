@@ -1,0 +1,6 @@
+chains,status,log_BF_collapsing_fixed,P_Fixed,P_Collapsing,overlapping_ranges,log_mean_bridge_weight,fixed_bridge_ess,collapsing_bridge_ess
+all_chains,ranges_disjoint,,,,False,,,
+chain_1,ranges_disjoint,,,,False,,,
+chain_2,ranges_disjoint,,,,False,,,
+chain_3,ranges_disjoint,,,,False,,,
+chain_4,ranges_disjoint,,,,False,,,

@@ -1,0 +1,3 @@
+metric,Fixed,Collapsing,fixed_minus_collapsing,comparison_ready
+rt_q90_mae_ms,83.27764372456787,56.69573685943753,26.581906865130335,True
+match_choice_mae_pp,2.203894605271271,1.7275967666775625,0.47629783859370844,True

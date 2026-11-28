@@ -1,0 +1,3 @@
+model,max_r_hat,min_ess_bulk,min_ess_tail,all_diagnostics_finite,max_depth_fraction,divergences,comparison_ready,worst_group_t_condition
+Collapsing,1.0096384285202191,452.62537680464385,929.3743744973884,True,0.0,0,True,match_Good-other
+Fixed,1.005575716988133,614.1779210759446,841.4268749981672,True,0.0,0,True,match_Bad-other
